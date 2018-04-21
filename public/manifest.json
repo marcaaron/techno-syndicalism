@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Workers' Chat App",
+  "name": "A Social Chat for Democratic Change",
   "icons": [
     {
       "src": "favicon.ico",
