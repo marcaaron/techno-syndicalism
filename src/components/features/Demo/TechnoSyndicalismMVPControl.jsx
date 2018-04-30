@@ -1,232 +1,112 @@
 import React from "react";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  NavLink
+} from "react-router-dom";
 
-class Welcome extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      name: this.props.name,
-      position: "Welcome"
-    };
+const App = () => (
+  <Router>
+    <div>
+      <NavLink to="/">Home</NavLink>
 
-    this.handleClickBlank = this.handleClickBlank.bind(this);
-    this.handleClickSearch = this.handleClickSearch.bind(this);
-    this.handleClickMyUnions = this.handleClickMyUnions.bind(this);
-    this.handleClickCreate = this.handleClickCreate.bind(this);
-  }
+      <NavLink to="/MyUnions"> My Unions </NavLink>
 
-  handleClickBlank() {
-    this.setState({ position: "Welcome" });
-  }
+      <NavLink to="/Search"> Search </NavLink>
 
-  handleClickSearch() {
-    this.setState({ position: "Search" });
-  }
+      <NavLink to="/Create"> Create Union </NavLink>
 
-  handleClickMyUnions() {
-    this.setState({ position: "My Unions" });
-  }
-
-  handleClickCreate() {
-    this.setState({ position: "Create" });
-  }
-
-  getName() {
-    if (this.state.name != "") return ", " + this.state.name;
-    else return "";
-  }
-
-  render() {
-    switch (this.state.position) {
-      case "Welcome":
-        return (
-          <div>
-            <p>Welcome to Techno-Syndicalism {this.getName}</p>
-            <button onClick={this.handleClickMyUnions}>My Unions</button>
-            <button onClick={this.handleClickSearch}>Search Unions</button>
-            <button onClick={this.handleClickCreate}>Create new Union</button>
-          </div>
-        );
-        break;
-      case "My Unions":
-        return (
-          <div>
-            <button onClick={this.handleClickBlank}>Back</button>
-            <MyUnions />
-          </div>
-        );
-        break;
-      case "Search":
-        return (
-          <div>
-            <button onClick={this.handleClickBlank}>Back</button>
-            <Search />
-          </div>
-        );
-        break;
-      case "Create":
-        return (
-          <div>
-            <button onClick={this.handleClickBlank}>Back</button>
-
-            <input type="text" placeholder="Union Name" />
-            <input type="text" placeholder="Description" />
-            <input type="submit" value="create" />
-          </div>
-        );
-        break;
-    }
-  }
-}
-
-class MyUnions extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { union: "all" };
-
-    this.handleClickDeliveroo = this.handleClickDeliveroo.bind(this);
-    this.handleClickBurger = this.handleClickBurger.bind(this);
-  }
-
-  handleClickDeliveroo() {
-    this.setState({ union: "Deliveroo" });
-  }
-
-  handleClickBurger() {
-    this.setState({ union: "Burger" });
-  }
-
-  render() {
-    switch (this.state.union) {
-      case "all":
-        return (
-          <div>
-            <p>My Unions</p>
-            <button onClick={this.handleClickDeliveroo}>
-              <p>Deliveroo Newcastle</p>
-            </button>
-            <button onClick={this.handleClickBurger}>
-              <p>Burger King Northumberland Street</p>
-            </button>
-          </div>
-        );
-        break;
-      case "Deliveroo":
-        return <Union name="Deliveroo Newcastle" />;
-        break;
-      case "Burger":
-        return <Union name="Burger King Northumberland Street" />;
-    }
-  }
-}
-
-class Union extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { name: this.props.name };
-  }
-
-  render() {
-    return (
       <div>
-        <p>{this.state.name}</p>
-        <button>
-          <p>Members</p>
-        </button>
-        <button>
-          <p>Chat</p>
-        </button>
-        <button>
-          <p>Funds</p>
-        </button>
-        <button>
-          <p>Union Info</p>
-        </button>
+        <Route exact path="/" component={Home} />
+        <Route path="/Search" component={Search} />
+        <Route path="/Create" component={Create} />
+        <Route path="/MyUnions" component={MyUnions} />
       </div>
-    );
-  }
-}
+    </div>
+  </Router>
+);
 
-class Search extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = { results: false };
+const Home = () => <h1>Welcome to Techno-Syndicalism</h1>;
 
-    this.handleClickSearch = this.handleClickSearch.bind(this);
-  }
+const Search = () => (
+  <div>
+    <input type="text" placeholder="Workplace" />
+    <nav>
+      <Link to="/Search/Results">Search</Link>
+    </nav>
+    <div>
+      <Route path={"/Search/Results"} component={Results} />
+    </div>
+  </div>
+);
 
-  handleClickSearch() {
-    this.setState({ results: true });
-  }
+const Results = () => (
+  <div>
+    <p>Results:</p>
 
-  render() {
-    if (this.state.results) {
-      return (
-        <div>
-          <p>Results:</p>
-          <button>
-            <p>Greggs Byker</p>
-          </button>
-          <button>
-            <p>Topman Eldon Square</p>
-          </button>
-          <button>
-            <p>Deliveroo Newcastle</p>
-          </button>
-          <button>
-            <p>Burger King Northumberland Street</p>
-          </button>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <input type="text" placeholder="Workplace" />
-          <button onClick={this.handleClickSearch}>Search</button>
-        </div>
-      );
-    }
-  }
-}
+    <p>Greggs, Byker</p>
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      loggedin: false,
-      name: "Sam"
-    };
+    <p>Topman, Eldon Square</p>
 
-    this.handleClickLogIn = this.handleClickLogIn.bind(this);
-    this.handleClickLogout = this.handleClickLogout.bind(this);
-  }
+    <p>Deliveroo, Newcastle</p>
 
-  handleClickLogIn() {
-    this.setState({ loggedin: true });
-  }
+    <p>Burger King, Northumberland Street</p>
+  </div>
+);
 
-  handleClickLogout() {
-    this.setState({ loggedin: false });
-  }
+const Create = () => (
+  <div>
+    <input type="text" placeholder="Union Name" />
+    <input type="text" placeholder="Description" />
+    <button>Make Union</button>
+  </div>
+);
 
-  render() {
-    if (this.state.loggedin) {
-      return (
-        <div>
-          <Welcome name={this.state.name} />
-          <p onClick={this.handleClickLogout} class="w3-text-red w3-card">
-            Log Out
-          </p>
-        </div>
-      );
-    } else {
-      return (
-        <div>
-          <p onClick={this.handleClickLogIn}>Log in</p>
-          <p>Sign up</p>
-        </div>
-      );
-    }
-  }
-}
+const MyUnions = () => (
+  <div>
+    <div>
+      <p>My Unions</p>
+      <Link to="/MyUnions/Deliveroo">
+        <p>Deliveroo, Newcastle Central</p>
+      </Link>
+      <Link to="/MyUnions/Burger">
+        <p>Burger King, Northumberland Street</p>
+      </Link>
+    </div>
+
+    <Switch>
+      <Route
+        exact
+        path="/MyUnions/Deliveroo"
+        render={name => <Union {..."Deliveroo"} />}
+      />
+      <Route
+        exact
+        path="/MyUnions/Burger"
+        render={name => <Union {..."Burger King"} />}
+      />
+    </Switch>
+  </div>
+);
+
+const Union = props => (
+  <div>
+    <p>This is the union for {props.name}</p>
+    <button>
+      <p>Members</p>
+    </button>
+    <button>
+      <p>Chat</p>
+    </button>
+    <button>
+      <p>Funds</p>
+    </button>
+    <button>
+      <p>Union Info</p>
+    </button>
+  </div>
+);
 
 export default App;
