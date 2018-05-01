@@ -18,12 +18,13 @@ const App = () => (
 
       <NavLink to="/Create"> Create Union </NavLink>
 
-      <div>
-        <Route exact path="/" component={Home} />
-        <Route path="/Search" component={Search} />
-        <Route path="/Create" component={Create} />
-        <Route path="/MyUnions" component={MyUnions} />
-      </div>
+      <Switch>
+        <Route exact path="/Search" component={Search} />
+        <Route exact path="/Create" component={Create} />
+        <Route exact path="/MyUnions/" component={MyUnions} />
+        <Route path="/MyUnions/:name" component={MyUnions} />
+        <Route path="/" component={Home} />
+      </Switch>
     </div>
   </Router>
 );
@@ -64,30 +65,21 @@ const Create = () => (
   </div>
 );
 
-const MyUnions = () => (
+const MyUnions = ({ match }) => (
   <div>
-    <div>
-      <p>My Unions</p>
-      <Link to="/MyUnions/Deliveroo">
-        <p>Deliveroo, Newcastle Central</p>
-      </Link>
-      <Link to="/MyUnions/Burger">
-        <p>Burger King, Northumberland Street</p>
-      </Link>
-    </div>
-
-    <Switch>
-      <Route
-        exact
-        path="/MyUnions/Deliveroo"
-        render={name => <Union {..."Deliveroo"} />}
-      />
-      <Route
-        exact
-        path="/MyUnions/Burger"
-        render={name => <Union {..."Burger King"} />}
-      />
-    </Switch>
+    {match.params.name ? (
+      <Union name={match.params.name} />
+    ) : (
+      <div>
+        <p>My Unions</p>
+        <Link to="/MyUnions/Deliveroo">
+          <p>Deliveroo, Newcastle Central</p>
+        </Link>
+        <Link to="/MyUnions/Burger">
+          <p>Burger King, Northumberland Street</p>
+        </Link>
+      </div>
+    )}
   </div>
 );
 
