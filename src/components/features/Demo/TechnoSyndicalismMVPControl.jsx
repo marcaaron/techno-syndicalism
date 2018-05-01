@@ -7,8 +7,18 @@ import {
   NavLink
 } from "react-router-dom";
 
-const UnionData = {Deliveroo: {name: "Deliveroo, Newcastle Central", members: 31, created: "6th May 2018"},
-Burger: {name: "Burger King, Northumberland Street", members: 17, created: "17th April 2018"} };
+const UnionData = {
+  Deliveroo: {
+    name: "Deliveroo, Newcastle Central",
+    members: 31,
+    created: "6th May 2018"
+  },
+  Burger: {
+    name: "Burger King, Northumberland Street",
+    members: 17,
+    created: "17th April 2018"
+  }
+};
 
 const App = () => (
   <Router>
@@ -21,15 +31,13 @@ const App = () => (
 
       <NavLink to="/Create"> Create Union </NavLink>
 
-      <div>
       <Switch>
-        <Route path="/Search" component={Search} />
+        <Route exact path="/Search" component={Search} />
         <Route exact path="/Create" component={Create} />
         <Route exact path="/MyUnions/" component={MyUnions} />
-        <Route path="/MyUnions/:id" component={MyUnions} />
+        <Route path="/MyUnions/:name" component={MyUnions} />
         <Route path="/" component={Home} />
       </Switch>
-      </div>
     </div>
   </Router>
 );
@@ -44,7 +52,6 @@ const Search = () => (
     </nav>
     <div>
       <Switch>
-        
         <Route path={"/Results"} component={Results} />
       </Switch>
     </div>
@@ -73,10 +80,11 @@ const Create = () => (
   </div>
 );
 
-const MyUnions = ({match}) => (
+const MyUnions = ({ match }) => (
   <div>
-  {
-    match.params.id ? ( <Union id={match.params.id} /> ) : (
+    {match.params.name ? (
+      <Union name={match.params.name} />
+    ) : (
       <div>
         <p>My Unions</p>
         <Link to="/MyUnions/Deliveroo">
@@ -86,12 +94,11 @@ const MyUnions = ({match}) => (
           <p>Burger King, Northumberland Street</p>
         </Link>
       </div>
-    )
-  }
-</div>
+    )}
+  </div>
 );
 
-const Union = ({id}) => (
+const Union = ({ id }) => (
   <div>
     <p>This is the group for {UnionData[id].name}.</p>
     <button>
