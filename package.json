@@ -1,5 +1,5 @@
 {
-  "name": "techno-syndicalism",
+  "name": "wobbly-app",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,7 +13,10 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "prop-types": "^15.6.1",
@@ -36,6 +39,7 @@
     "jest-enzyme": "^6.0.0",
     "lint-staged": "^7.0.4",
     "prettier": "^1.12.1",
-    "react-test-renderer": "^16.3.2"
+    "react-test-renderer": "^16.3.2",
+    "storybook-react-router": "^1.0.1"
   }
 }

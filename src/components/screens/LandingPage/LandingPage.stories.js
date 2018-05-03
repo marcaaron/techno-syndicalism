@@ -1,7 +1,7 @@
 import React from "react";
 
-import LandingPage from "../LandingPage";
+import { storiesOf } from "@storybook/react";
 
-storiesOf("Components/Screens", module).add("Landing Page", () => (
-  <LandingPage />
-));
+import MyComponent from "../LandingPage";
+
+storiesOf("Screens", module).add("LandingPage", () => <MyComponent />);
