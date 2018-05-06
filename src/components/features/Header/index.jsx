@@ -2,12 +2,10 @@ import React from "react";
 import styled from "styled-components";
 
 import Logo from "./Logo";
-import Title from "./Title";
 
 const Header = () => (
   <StyledHeader className="App-header">
     <Logo />
-    <Title />
   </StyledHeader>
 );
 
