@@ -7,6 +7,9 @@ import {
   NavLink
 } from "react-router-dom";
 
+const UnionData = {Deliveroo: {name: "Deliveroo, Newcastle Central", members: 31, created: "6th May 2018"},
+Burger: {name: "Burger King, Northumberland Street", members: 17, created: "17th April 2018"} };
+
 const App = () => (
   <Router>
     <div>
@@ -19,10 +22,13 @@ const App = () => (
       <NavLink to="/Create"> Create Union </NavLink>
 
       <div>
-        <Route exact path="/" component={Home} />
+      <Switch>
         <Route path="/Search" component={Search} />
-        <Route path="/Create" component={Create} />
-        <Route path="/MyUnions" component={MyUnions} />
+        <Route exact path="/Create" component={Create} />
+        <Route exact path="/MyUnions/" component={MyUnions} />
+        <Route path="/MyUnions/:id" component={MyUnions} />
+        <Route path="/" component={Home} />
+      </Switch>
       </div>
     </div>
   </Router>
@@ -34,10 +40,13 @@ const Search = () => (
   <div>
     <input type="text" placeholder="Workplace" />
     <nav>
-      <Link to="/Search/Results">Search</Link>
+      <Link to="/Results">Search</Link>
     </nav>
     <div>
-      <Route path={"/Search/Results"} component={Results} />
+      <Switch>
+        
+        <Route path={"/Results"} component={Results} />
+      </Switch>
     </div>
   </div>
 );
@@ -64,36 +73,27 @@ const Create = () => (
   </div>
 );
 
-const MyUnions = () => (
+const MyUnions = ({match}) => (
   <div>
-    <div>
-      <p>My Unions</p>
-      <Link to="/MyUnions/Deliveroo">
-        <p>Deliveroo, Newcastle Central</p>
-      </Link>
-      <Link to="/MyUnions/Burger">
-        <p>Burger King, Northumberland Street</p>
-      </Link>
-    </div>
-
-    <Switch>
-      <Route
-        exact
-        path="/MyUnions/Deliveroo"
-        render={name => <Union {..."Deliveroo"} />}
-      />
-      <Route
-        exact
-        path="/MyUnions/Burger"
-        render={name => <Union {..."Burger King"} />}
-      />
-    </Switch>
-  </div>
+  {
+    match.params.id ? ( <Union id={match.params.id} /> ) : (
+      <div>
+        <p>My Unions</p>
+        <Link to="/MyUnions/Deliveroo">
+          <p>Deliveroo, Newcastle Central</p>
+        </Link>
+        <Link to="/MyUnions/Burger">
+          <p>Burger King, Northumberland Street</p>
+        </Link>
+      </div>
+    )
+  }
+</div>
 );
 
-const Union = props => (
+const Union = ({id}) => (
   <div>
-    <p>This is the union for {props.name}</p>
+    <p>This is the group for {UnionData[id].name}.</p>
     <button>
       <p>Members</p>
     </button>
