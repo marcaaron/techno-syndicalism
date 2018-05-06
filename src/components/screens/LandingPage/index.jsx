@@ -1,22 +1,38 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 
-import Header from "../../features/Header";
-import TechnoSyndicalismMVPControl from "../../features/Demo/TechnoSyndicalismMVPControl";
+import { Page } from "../../common";
 
-class LandingPage extends Component {
-  render() {
-    return (
-      <Display>
-        <Header />
-        <TechnoSyndicalismMVPControl />
-      </Display>
-    );
-  }
-}
+import Description from "./Description";
+import Links from "./Links";
+import Logo from "./Logo";
+import Tagline from "./Tagline";
+import Title from "./Title";
 
-const Display = styled.div`
-  text-align: center;
+const LandingPage = () => (
+  <Page>
+    <StyledHeader>
+      <Title />
+      <Tagline />
+      <Logo />
+    </StyledHeader>
+    <StyledMain>
+      <Description />
+      <Links />
+    </StyledMain>
+  </Page>
+);
+
+const StyledHeader = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const StyledMain = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 export default LandingPage;
