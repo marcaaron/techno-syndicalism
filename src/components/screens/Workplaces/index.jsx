@@ -1,5 +1,11 @@
 import React from "react";
 
-const Workplaces = () => <div>Workplaces</div>;
+import { Page } from "../../common";
+
+const Workplaces = () => (
+  <Page isWhite>
+    <p>Workplaces</p>
+  </Page>
+);
 
 export default Workplaces;

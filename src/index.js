@@ -2,8 +2,10 @@ import React from "react";
 
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 
-import "./index.css";
+import { AppProvider } from "./state/context/app";
+import theme from "./theme";
 
 // Store a reference to the DOM element [Hot Module Reloading]
 const root = document.getElementById("root");
@@ -13,9 +15,13 @@ let render = () => {
   const App = require("./App").default;
 
   ReactDOM.render(
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>,
+    <AppProvider>
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </ThemeProvider>
+    </AppProvider>,
     root
   );
 };

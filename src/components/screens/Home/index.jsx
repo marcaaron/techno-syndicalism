@@ -1,5 +1,11 @@
 import React from "react";
 
-const Home = () => <div>Home</div>;
+import { Page } from "../../common";
+
+const Home = () => (
+  <Page isWhite>
+    <p>Home</p>
+  </Page>
+);
 
 export default Home;

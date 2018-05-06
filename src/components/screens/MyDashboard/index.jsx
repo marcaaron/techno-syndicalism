@@ -1,5 +1,11 @@
 import React from "react";
 
-const MyDashboard = () => <div>MyDashboard</div>;
+import { Page } from "../../common";
+
+const MyDashboard = () => (
+  <Page isWhite>
+    <p>MyDashboard</p>
+  </Page>
+);
 
 export default MyDashboard;

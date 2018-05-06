@@ -1,5 +1,11 @@
 import React from "react";
 
-const MySettings = () => <div>MySettings</div>;
+import { Page } from "../../common";
+
+const MySettings = () => (
+  <Page isWhite>
+    <p>MySettings</p>
+  </Page>
+);
 
 export default MySettings;

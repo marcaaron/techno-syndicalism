@@ -1,6 +1,6 @@
 import React from "react";
 
-import MyComponent from "../LandingPage";
+import MyComponent from "../index";
 
 it("renders without crashing", () => {
   shallow(<MyComponent />);

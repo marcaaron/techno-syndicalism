@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import styled from "styled-components";
+import React, { Component, Fragment } from "react";
 
 import { Switch, Route } from "react-router-dom";
 
@@ -7,6 +6,7 @@ import { NavBar } from "../components/features";
 
 // Routes
 import {
+  Account,
   Home,
   LandingPage,
   LearnMore,
@@ -21,27 +21,23 @@ import {
 class App extends Component {
   render() {
     return (
-      <Display>
+      <Fragment>
         <NavBar />
         <Switch>
+          <Route exact path="/account" component={Account} />
           <Route exact path="/learn" component={LearnMore} />
+          <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/unions" component={Unions} />
           <Route exact path="/workplaces" component={Workplaces} />
-          <Route exact path="/profiles" component={Profiles} />
-          <Route exact path="/my/workplaces" component={MyWorkplaces} />
           <Route exact path="/my/dashboard" component={MyDashboard} />
+          <Route exact path="/my/workplaces" component={MyWorkplaces} />
           <Route exact path="/my/settings" component={MySettings} />
-          <Route path="/my" component={Home} />
-          <Route path="/" component={LandingPage} />
+          <Route exact path="/my" component={Home} />
+          <Route exact path="/" component={LandingPage} />
         </Switch>
-      </Display>
+      </Fragment>
     );
   }
 }
-
-const Display = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
 
 export default App;
