@@ -7,7 +7,7 @@ const Logo = () => <StyledImage alt="App" src={logo} />;
 
 const StyledImage = styled.img`
   background-color: ${({ theme }) => theme.colors.white};
-  width: 150px;
+  width: 90px;
   border-radius: 10%;
 `;
 

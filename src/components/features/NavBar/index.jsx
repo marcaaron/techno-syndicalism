@@ -23,6 +23,7 @@ const NavBar = () => (
 const StyledContainer = styled.nav`
   /* display */
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
 
   /* box */
@@ -32,7 +33,7 @@ const StyledContainer = styled.nav`
   background-color: ${({ theme }) => theme.colors.white};
 
   /* text */
-  font-size: 0.8em;
+  font-size: 0.6em;
 `;
 
 export default NavBar;

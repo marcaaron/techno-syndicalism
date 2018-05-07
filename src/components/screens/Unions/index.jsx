@@ -12,7 +12,7 @@ import { Page } from "../../common";
 class Unions extends Component {
   render() {
     return (
-      <Page isWhite>
+      <Page>
         <Router>
           <div>
             <NavLink to="/">Home</NavLink>

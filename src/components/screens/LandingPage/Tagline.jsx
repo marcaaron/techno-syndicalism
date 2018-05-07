@@ -12,7 +12,7 @@ const Tagline = () => (
 const StyledContainer = styled.p`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 10px 30px;
-  font-size: 1.3em;
+  font-size: 1.1em;
   font-weight: bold;
   transform: rotate(-1deg);
 `;

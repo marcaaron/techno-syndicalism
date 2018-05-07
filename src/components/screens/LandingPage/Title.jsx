@@ -12,7 +12,7 @@ const Title = () => (
 const StyledContainer = styled.h1`
   background-color: ${({ theme }) => theme.colors.white};
   padding: 10px 30px;
-  font-size: 3em;
+  font-size: 2em;
   transform: rotate(1deg);
 `;
 

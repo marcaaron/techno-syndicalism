@@ -3,7 +3,7 @@ import React from "react";
 import { Page } from "../../common";
 
 const Home = () => (
-  <Page isWhite>
+  <Page>
     <p>Home</p>
   </Page>
 );

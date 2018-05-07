@@ -23,7 +23,7 @@ injectGlobal`
     background-color: ${theme.colors.background};
     margin: 0;
     padding: 0;
-    font-size: 1.1em;
+    font-size: 1em;
   }
   *, *:before, *:after {
     box-sizing: inherit;
