@@ -7,6 +7,9 @@ import { ThemeProvider } from "styled-components";
 import { AppProvider } from "./state/context/app";
 import theme from "./theme";
 
+// Polyfill for the Fetch API
+import "whatwg-fetch";
+
 // Store a reference to the DOM element [Hot Module Reloading]
 const root = document.getElementById("root");
 

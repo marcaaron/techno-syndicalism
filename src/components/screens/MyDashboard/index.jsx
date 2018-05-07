@@ -5,6 +5,7 @@ import { Page } from "../../common";
 const MyDashboard = () => (
   <Page>
     <p>MyDashboard</p>
+    <p>TODO</p>
   </Page>
 );
 

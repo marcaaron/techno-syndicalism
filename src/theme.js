@@ -11,6 +11,7 @@ const theme = {
   colors: {
     white: "#FFFFFF" /* white */,
     black: "#111111" /* black */,
+    gray: "#777777" /* gray */,
     background: "#00BFA5" /* Teal (MD A700) */
   }
 };

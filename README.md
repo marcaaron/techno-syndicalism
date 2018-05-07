@@ -2,9 +2,9 @@
 
 > A social app for employees. Built on [React](https://reactjs.org/).
 
-Project Description (TBD)
+Project Description (TODO)
 
-Features (TBD)
+Features (TODO)
 
 [Website (dev)](https://keen-ramanujan-43f3b4.netlify.com/)
 
@@ -26,7 +26,7 @@ See our [Contributing Guide](CONTRIBUTING.md) for more information.
 
 ### For Organizations
 
-TBD
+TODO
 
 ---
 
