@@ -30,7 +30,7 @@ var UnionData = {
 class Unions extends Component {
   render() {
     return (
-      <Page isWhite>
+      <Page>
         <Router>
           <div>
             <NavLink to="/MyUnions"> My Unions </NavLink>

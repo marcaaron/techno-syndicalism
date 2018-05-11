@@ -11,6 +11,7 @@ const theme = {
   colors: {
     white: "#FFFFFF" /* white */,
     black: "#111111" /* black */,
+    gray: "#777777" /* gray */,
     background: "#00BFA5" /* Teal (MD A700) */
   }
 };
@@ -23,7 +24,7 @@ injectGlobal`
     background-color: ${theme.colors.background};
     margin: 0;
     padding: 0;
-    font-size: 1.1em;
+    font-size: 1em;
   }
   *, *:before, *:after {
     box-sizing: inherit;

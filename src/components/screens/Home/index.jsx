@@ -1,10 +1,14 @@
-import React from "react";
+import React, { StrictMode } from "react";
 
 import { Page } from "../../common";
+import { Posts } from "../../features";
 
 const Home = () => (
-  <Page isWhite>
-    <p>Home</p>
+  <Page>
+    <StrictMode>
+      <h2>Latest Posts</h2>
+      <Posts />
+    </StrictMode>
   </Page>
 );
 

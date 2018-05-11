@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { Page } from "../../common";
 
 const LearnMore = () => (
-  <Page>
+  <Page noSolidBackground>
     <StyledContainer>
       <p>
         This project is being developed through{" "}

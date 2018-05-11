@@ -8,13 +8,16 @@ const Page = styled.div`
   align-items: center;
 
   /* box */ /* fallback styles */
-  width: 94%;
+  width: 100%;
+  border-radius: 10px;
+  margin: ${({ noSolidBackground }) =>
+    noSolidBackground ? "auto" : "30px 0 auto"};
+  padding: ${({ noSolidBackground }) =>
+    noSolidBackground ? "10px 0" : "10px 1% 40px"};
 
   /* colors */
-  background-color: ${({ isWhite, theme }) =>
-    isWhite ? theme.colors.white : "none"};
-  margin: ${({ isWhite }) => (isWhite ? "20px 2% auto" : "auto")};
-  padding: ${({ isWhite }) => (isWhite ? "10px 1% 40px" : "10px 0")};
+  background-color: ${({ noSolidBackground, theme }) =>
+    noSolidBackground ? "none" : theme.colors.white};
 `;
 
 export default Page;

@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 
 import { Switch, Route } from "react-router-dom";
 
-import { NavBar } from "../components/features";
+import { Footer, NavBar } from "../components/features";
 
 // Routes
 import {
@@ -14,6 +14,7 @@ import {
   MySettings,
   MyWorkplaces,
   Profiles,
+  Thread,
   Unions,
   Workplaces
 } from "../components/screens";
@@ -29,12 +30,14 @@ class App extends Component {
           <Route exact path="/profiles" component={Profiles} />
           <Route exact path="/unions" component={Unions} />
           <Route exact path="/workplaces" component={Workplaces} />
-          <Route exact path="/my/dashboard" component={MyDashboard} />
-          <Route exact path="/my/workplaces" component={MyWorkplaces} />
-          <Route exact path="/my/settings" component={MySettings} />
-          <Route exact path="/my" component={Home} />
+          <Route exact path="/home/dashboard" component={MyDashboard} />
+          <Route exact path="/home/workplaces" component={MyWorkplaces} />
+          <Route exact path="/home/settings" component={MySettings} />
+          <Route exact path="/home" component={Home} />
+          <Route exact path="/threads/:id" component={Thread} />
           <Route exact path="/" component={LandingPage} />
         </Switch>
+        <Footer />
       </Fragment>
     );
   }

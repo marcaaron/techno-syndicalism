@@ -10,7 +10,7 @@ import Tagline from "./Tagline";
 import Title from "./Title";
 
 const LandingPage = () => (
-  <Page>
+  <Page noSolidBackground>
     <StyledHeader>
       <Title />
       <Tagline />
