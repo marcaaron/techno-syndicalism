@@ -16,7 +16,7 @@ const Description = () => (
     <p>
       We're looking for developers to contribute to the project. Our development
       style is democratic and pro-social, we ask each other questions and aren't
-      afraid to talk about the big picture, or areas we aren't experts in.
+      afraid to talk about the big picture, or areas we aren't experts in (yet).
     </p>
     <p>
       Currently we're looking for a back-end developer to start work on our
