@@ -9,14 +9,30 @@ import {
 
 import { Page } from "../../common";
 
+var UnionData = {
+  deliverooNEW: {
+    name: "Deliveroo, Newcastle Central",
+    size: 34,
+    userMemberOf: true
+  },
+  burgerNOR: {
+    name: "Burger King, Northumberland Street",
+    size: 22,
+    userMemberOf: true
+  },
+  mcdonaldsBYK: {
+    name: "McDonalds, Byker",
+    size: 28,
+    userMemberOf: false
+  }
+};
+
 class Unions extends Component {
   render() {
     return (
       <Page>
         <Router>
           <div>
-            <NavLink to="/">Home</NavLink>
-
             <NavLink to="/MyUnions"> My Unions </NavLink>
 
             <NavLink to="/Search"> Search </NavLink>
@@ -27,8 +43,8 @@ class Unions extends Component {
               <Route exact path="/Search" component={Search} />
               <Route exact path="/Create" component={Create} />
               <Route exact path="/MyUnions/" component={MyUnions} />
-              <Route path="/MyUnions/:name" component={MyUnions} />
-              <Route path="/" component={Home} />
+              <Route path="/MyUnions/:id" component={MyUnions} />
+              <Route path="/" component={MyUnions} />
             </Switch>
           </div>
         </Router>
@@ -36,8 +52,6 @@ class Unions extends Component {
     );
   }
 }
-
-const Home = () => <h1>Welcome to Techno-Syndicalism</h1>;
 
 const Search = () => (
   <div>
@@ -75,15 +89,15 @@ const Create = () => (
 
 const MyUnions = ({ match }) => (
   <div>
-    {match.params.name ? (
-      <Union name={match.params.name} />
+    {match.params.id ? (
+      <Union id={match.params.id} />
     ) : (
       <div>
         <p>My Unions</p>
-        <Link to="/MyUnions/Deliveroo">
+        <Link to="/MyUnions/deliverooNEW">
           <p>Deliveroo, Newcastle Central</p>
         </Link>
-        <Link to="/MyUnions/Burger">
+        <Link to="/MyUnions/burgerNOR">
           <p>Burger King, Northumberland Street</p>
         </Link>
       </div>
@@ -93,7 +107,7 @@ const MyUnions = ({ match }) => (
 
 const Union = props => (
   <div>
-    <p>This is the union for {props.name}</p>
+    <p>This is the union for {UnionData[props.id].name}.</p>
     <button>
       <p>Members</p>
     </button>
