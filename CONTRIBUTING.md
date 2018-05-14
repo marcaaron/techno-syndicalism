@@ -78,6 +78,7 @@
 * Ability to explore the UI visually with [Storybook](https://github.com/storybooks/storybook)
 * Automatic Code Linting with [ESLint](https://eslint.org/)
 * Automatic Style Formatting with [Prettier](https://github.com/prettier/prettier)
+* Absolute file paths from the `/src` directory
 
 ## Project Details
 
@@ -97,6 +98,14 @@ Check out the [CRA User Guide](https://github.com/facebook/create-react-app/blob
 
 ### File Directories
 
+### Note about File Paths
+
+This project is configured to allow absolute file paths within the `src` folder.
+
+So, instead of having to figure out where two files are in relation to each other (i.e., `../../../state/context/app`) when importing them, file paths can now be written from their absolute path from `src/` (i.e., `state/context/app`).
+
+Relative file paths will still work normally.
+
 #### `/src/App`
 
 The first top-level, developer-built component called by the app.
@@ -113,9 +122,10 @@ Contains the main app code. Most of the main development should occur within thi
 
 It is currently sub-divided into an [Atomic-like](http://bradfrost.com/blog/post/atomic-web-design/) file structure.
 
-* `/common/` for atoms and molecules that can be utilized throughout multiple parts of the app
-* `/features/` for unique, distinct UI organisms
-* `/screens/` for laying the above components out into how the user will interact with them
+* `/atoms/` for basic, reusable components
+* `/molecules/` reusable combinations of atoms
+* `/organisms/` for unique, distinct UI features
+* `/screens/` for laying the above components into any given complete UI
 
 #### `/src/state`
 

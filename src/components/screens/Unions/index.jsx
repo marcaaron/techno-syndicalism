@@ -7,7 +7,7 @@ import {
   NavLink
 } from "react-router-dom";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 var UnionData = {
   deliverooNEW: {
@@ -30,7 +30,7 @@ var UnionData = {
 class Unions extends Component {
   render() {
     return (
-      <Page>
+      <MainContent>
         <Router>
           <div>
             <NavLink to="/MyUnions"> My Unions </NavLink>
@@ -48,7 +48,7 @@ class Unions extends Component {
             </Switch>
           </div>
         </Router>
-      </Page>
+      </MainContent>
     );
   }
 }

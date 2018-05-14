@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 const LearnMore = () => (
   <Page noSolidBackground>
@@ -23,11 +23,8 @@ const LearnMore = () => (
   </Page>
 );
 
-const StyledContainer = styled.p`
+const StyledText = styled.p`
   background-color: ${({ theme }) => theme.colors.white};
-  padding: 10px 30px;
-  margin: 20px auto;
-  width: 80%;
 `;
 
 export default LearnMore;

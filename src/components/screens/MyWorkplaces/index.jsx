@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 const MyWorkplaces = () => (
-  <Page>
+  <MainContent>
     <p>My Workplaces</p>
-  </Page>
+  </MainContent>
 );
 
 export default MyWorkplaces;

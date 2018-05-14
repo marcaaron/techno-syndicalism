@@ -1,12 +1,12 @@
 import React from "react";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 const MyDashboard = () => (
-  <Page>
+  <MainContent>
     <p>MyDashboard</p>
     <p>TODO</p>
-  </Page>
+  </MainContent>
 );
 
 export default MyDashboard;
