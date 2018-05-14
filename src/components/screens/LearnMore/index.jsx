@@ -4,23 +4,23 @@ import styled from "styled-components";
 import { MainContent } from "components/atoms";
 
 const LearnMore = () => (
-  <Page noSolidBackground>
-    <StyledContainer>
+  <MainContent>
+    <StyledText>
       <p>
         This project is being developed through{" "}
         <a href="https://progcode.org">ProgCode</a>, a group of progressive
         coders.
       </p>
-    </StyledContainer>
-    <StyledContainer>
+    </StyledText>
+    <StyledText>
       <p>
         Read the original outline of the app{" "}
         <a href="https://bananananaba.com/Techno-Syndicalism-Outline.html">
           here
         </a>.
       </p>
-    </StyledContainer>
-  </Page>
+    </StyledText>
+  </MainContent>
 );
 
 const StyledText = styled.p`
