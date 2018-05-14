@@ -2,8 +2,8 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { Page } from "../../common";
-import { Post, Comment } from "../../features";
+import { MainContent } from "components/atoms";
+import { Post, Comment } from "components/molecules";
 
 class Thread extends Component {
   static propTypes = {
@@ -46,25 +46,21 @@ class Thread extends Component {
     const { post, comments } = this.state;
 
     return (
-      <Page>
-        <StyledContainer>
+      <MainContent>
+        <StyledContent>
           <Post {...post} />
           {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
-        </StyledContainer>
-      </Page>
+        </StyledContent>
+      </MainContent>
     );
   }
 }
 
-const StyledContainer = styled.main`
-  /* display */
-  display: flex;
-  flex-direction: column;
-
-  /* box */
-  width: 100%;
-
-  /* text */
+const StyledContent = styled.div`
+  max-width: 98vw;
+  overflow: auto;
+  background-color: white;
+  width: 90%;
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
 
