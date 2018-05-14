@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 const Profiles = () => (
-  <Page>
+  <MainContent>
     <p>Profiles</p>
-  </Page>
+  </MainContent>
 );
 
 export default Profiles;

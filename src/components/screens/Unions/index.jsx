@@ -7,12 +7,12 @@ import {
   NavLink
 } from "react-router-dom";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 class Unions extends Component {
   render() {
     return (
-      <Page>
+      <MainContent>
         <Router>
           <div>
             <NavLink to="/">Home</NavLink>
@@ -32,7 +32,7 @@ class Unions extends Component {
             </Switch>
           </div>
         </Router>
-      </Page>
+      </MainContent>
     );
   }
 }

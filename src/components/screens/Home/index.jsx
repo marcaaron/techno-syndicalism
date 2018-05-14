@@ -1,15 +1,24 @@
-import React, { StrictMode } from "react";
+import React from "react";
+import styled from "styled-components";
 
-import { Page } from "../../common";
-import { Posts } from "../../features";
+import { MainContent } from "components/atoms";
+import { Posts } from "components/organisms";
 
 const Home = () => (
-  <Page>
-    <StrictMode>
-      <h2>Latest Posts</h2>
+  <MainContent>
+    <h2>Latest Posts</h2>
+    <StyledContent>
       <Posts />
-    </StrictMode>
-  </Page>
+    </StyledContent>
+  </MainContent>
 );
+
+const StyledContent = styled.div`
+  max-width: 98vw;
+  overflow: auto;
+  background-color: white;
+  width: 90%;
+  font-family: ${({ theme }) => theme.fonts.secondary};
+`;
 
 export default Home;
