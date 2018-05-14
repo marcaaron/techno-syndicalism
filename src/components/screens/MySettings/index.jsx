@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Page } from "../../common";
+import { MainContent } from "components/atoms";
 
 const MySettings = () => (
-  <Page>
+  <MainContent>
     <p>MySettings</p>
-  </Page>
+  </MainContent>
 );
 
 export default MySettings;

@@ -1,46 +1,31 @@
-import React, { Component, Fragment } from "react";
+import React, { Component } from "react";
+import styled from "styled-components";
 
-import { Switch, Route } from "react-router-dom";
+import { NavBar, Footer } from "components/organisms";
 
-import { Footer, NavBar } from "../components/features";
-
-// Routes
-import {
-  Account,
-  Home,
-  LandingPage,
-  LearnMore,
-  MyDashboard,
-  MySettings,
-  MyWorkplaces,
-  Profiles,
-  Thread,
-  Unions,
-  Workplaces
-} from "../components/screens";
+import Routes from "./Routes";
 
 class App extends Component {
   render() {
     return (
-      <Fragment>
+      <Display>
         <NavBar />
-        <Switch>
-          <Route exact path="/account" component={Account} />
-          <Route exact path="/learn" component={LearnMore} />
-          <Route exact path="/profiles" component={Profiles} />
-          <Route exact path="/unions" component={Unions} />
-          <Route exact path="/workplaces" component={Workplaces} />
-          <Route exact path="/home/dashboard" component={MyDashboard} />
-          <Route exact path="/home/workplaces" component={MyWorkplaces} />
-          <Route exact path="/home/settings" component={MySettings} />
-          <Route exact path="/home" component={Home} />
-          <Route exact path="/threads/:id" component={Thread} />
-          <Route exact path="/" component={LandingPage} />
-        </Switch>
+        <Routes />
         <Footer />
-      </Fragment>
+      </Display>
     );
   }
 }
+
+const Display = styled.div`
+  /* display */
+  display: grid;
+  grid-template-rows: auto 1fr 75px;
+  grid-template-areas:
+    "nav"
+    "content"
+    "footer";
+  height: 100vh;
+`;
 
 export default App;
