@@ -18,7 +18,7 @@ Ways to provide feedback:
 
 * [Submit an Issue](https://github.com/King-Mob/techno-syndicalism/issues)
   * Issues can be in the form of bug reports or helpful suggestions
-* [Join the conversation on Nametag](https://nametag.chat/rooms/ab2980f3-555b-4126-878a-0c50fd8752a0)
+* [Join the conversation on Discord](https://discord.gg/SDTUsWa)
 
 ### For Developers
 
