@@ -1,23 +1,27 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MainContent } from "components/atoms";
 import { Posts } from "components/organisms";
 
 const Home = () => (
-  <MainContent>
+  <div>
     <h2>Latest Posts</h2>
     <StyledContent>
       <Posts />
     </StyledContent>
-  </MainContent>
+  </div>
 );
 
 const StyledContent = styled.div`
+  /* box */
+  width: 90%;
   max-width: 98vw;
   overflow: auto;
+
+  /* colors */
   background-color: white;
-  width: 90%;
+
+  /* content */
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
 

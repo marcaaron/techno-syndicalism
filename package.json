@@ -6,6 +6,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
+    "test:update": "yarn test --updateSnapshot",
     "test:coverage": "yarn test --coverage",
     "storybook": "start-storybook -p 9009 -s public",
     "storybook:build": "build-storybook -s public",
@@ -13,21 +14,18 @@
     "precommit": "lint-staged"
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": [
-      "prettier --write",
-      "git add"
-    ]
+    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
   },
   "dependencies": {
     "normalize.css": "^8.0.0",
     "prop-types": "^15.6.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
-    "react-feather": "^1.1.0",
     "react-icons-kit": "^1.1.4",
     "react-router-dom": "^4.2.2",
     "react-scripts": "1.1.4",
     "styled-components": "^3.2.6",
+    "webfontloader": "^1.6.28",
     "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {

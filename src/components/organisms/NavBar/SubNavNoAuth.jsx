@@ -1,14 +1,37 @@
 import React, { Fragment } from "react";
 
-import { ListLink } from "components/atoms";
+import { ListLink, TextVisibility } from "components/atoms";
 import { Anonymous, Map, Lightbulb } from "components/atoms/Icons";
+
+import NavItemContainer from "./NavItemContainer";
 
 const SubNavNoAuth = () => (
   <Fragment>
-    <ListLink to="/learn" render={<Lightbulb title="Learn More" />} />
-    <ListLink to="/workplaces" render={<Map title="Find My Workplace" />} />
-    <ListLink to="/login" render={<Anonymous title="Login or Signup" />} />
+    <ListLink to="/learn" render={<LearnMore />} />
+    <ListLink to="/locations" render={<Workplaces />} />
+    <ListLink to="/login" render={<Login />} />
   </Fragment>
+);
+
+const LearnMore = () => (
+  <NavItemContainer>
+    <Lightbulb title="Learn More" />
+    <TextVisibility>Learn&nbsp;More</TextVisibility>
+  </NavItemContainer>
+);
+
+const Workplaces = () => (
+  <NavItemContainer>
+    <Map title="Find My Workplace" />
+    <TextVisibility>Find&nbsp;My&nbsp;Workplace</TextVisibility>
+  </NavItemContainer>
+);
+
+const Login = () => (
+  <NavItemContainer>
+    <Anonymous title="Login" />
+    <TextVisibility>Login&nbsp;></TextVisibility>
+  </NavItemContainer>
 );
 
 export default SubNavNoAuth;

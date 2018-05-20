@@ -30,24 +30,23 @@ class DevLoginButton extends Component {
     }
   };
 
+  renderForm = app => (
+    <form onSubmit={this.handleSubmit}>
+      <input type="text" name="username" onChange={this.handleChange} />
+      <button onClick={() => this.updateAuth(app)}>
+        {app.isAuthenticated ? "Logout" : "Login"}
+      </button>
+    </form>
+  );
+
   render() {
-    const { updateAuth } = this;
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {
       return <Redirect to="/home" />;
     } else {
       return (
-        <AppContext.Consumer>
-          {app => (
-            <form onSubmit={this.handleSubmit}>
-              <input type="text" name="username" onChange={this.handleChange} />
-              <button onClick={() => updateAuth(app)}>
-                {app.isAuthenticated ? "Logout" : "Login"}
-              </button>
-            </form>
-          )}
-        </AppContext.Consumer>
+        <AppContext.Consumer>{app => this.renderForm(app)}</AppContext.Consumer>
       );
     }
   }

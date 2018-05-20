@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { NavBar, Footer } from "components/organisms";
+import { NavBar } from "components/organisms";
 
 import Routes from "./Routes";
 
@@ -11,7 +11,6 @@ class App extends Component {
       <Display>
         <NavBar />
         <Routes />
-        <Footer />
       </Display>
     );
   }
@@ -19,13 +18,11 @@ class App extends Component {
 
 const Display = styled.div`
   /* display */
-  display: grid;
-  grid-template-rows: auto 1fr 75px;
-  grid-template-areas:
-    "nav"
-    "content"
-    "footer";
-  height: 100vh;
+  display: flex;
+  flex-direction: column;
+
+  /* box */
+  min-height: 100vh;
 `;
 
 export default App;

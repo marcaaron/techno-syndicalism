@@ -1,10 +1,9 @@
 import React from "react";
 
-import { MainContent } from "components/atoms";
 import { AppContext } from "state/context/app";
 
 const MyMessages = () => (
-  <MainContent>
+  <div>
     <p>My Messages</p>
     <AppContext.Consumer>
       {app => (
@@ -19,7 +18,7 @@ const MyMessages = () => (
         </div>
       )}
     </AppContext.Consumer>
-  </MainContent>
+  </div>
 );
 
 export default MyMessages;

@@ -3,7 +3,6 @@ import styled from "styled-components";
 
 const Description = () => (
   <StyledContainer>
-
     <p>
       Wobbly is a workers chat app designed for new or expanding workplace
       organising groups. We want to provide the tools for groups to grow,

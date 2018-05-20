@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
 
-import { MainContent } from "components/atoms";
 import { Post, Comment } from "components/molecules";
 
 class Thread extends Component {
@@ -46,12 +45,10 @@ class Thread extends Component {
     const { post, comments } = this.state;
 
     return (
-      <MainContent>
-        <StyledContent>
-          <Post {...post} />
-          {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
-        </StyledContent>
-      </MainContent>
+      <StyledContent>
+        <Post {...post} />
+        {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
+      </StyledContent>
     );
   }
 }
