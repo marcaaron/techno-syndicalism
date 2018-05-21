@@ -19,7 +19,7 @@ const Routes = () => (
       component={Screens.MyNotifications}
     />
     <AuthRoute exact path="/threads/:id" component={Screens.Thread} />
-    <Route path="/" component={Screens.Landing} title="Explore" />
+    <Route path="/" component={Screens.Landing} />
   </Switch>
 );
 

@@ -14,7 +14,9 @@ const Landing = () => (
       <Tagline />
       <CallToActions />
     </Panel>
-    <Panel isWhite>Image</Panel>
+    <Panel isWhite>
+      <p style={{ margin: 30 }}>Image</p>
+    </Panel>
   </StyledContainer>
 );
 

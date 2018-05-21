@@ -1,5 +1,4 @@
 export { default as Anonymous } from "./Anonymous";
-export { default as ChevronRight } from "./ChevronRight";
 export { default as Github } from "./Github";
 export { default as Home } from "./Home";
 export { default as Lightbulb } from "./Lightbulb";

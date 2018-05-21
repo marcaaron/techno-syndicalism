@@ -2,16 +2,16 @@ import React from "react";
 import styled from "styled-components";
 
 import { Paragraph, StyledLink } from "components/atoms";
-import { ChevronRight } from "components/atoms/Icons";
 
 const NewestItem = () => (
   <StyledParagraph>
     <StyledLink to="/learn">
-      <ChevronRight title="Learn More..." />
-      <span>Learn more about who we are...</span>
+      <AngleBracket />&nbsp;Learn more about who we are...
     </StyledLink>
   </StyledParagraph>
 );
+
+const AngleBracket = () => <span>&gt;</span>;
 
 const StyledParagraph = styled(Paragraph)`
   font-size: 0.8em;

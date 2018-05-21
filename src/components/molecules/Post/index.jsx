@@ -26,7 +26,6 @@ Post.propTypes = {
 };
 
 const StyledArticle = styled.article`
-  border: 1px solid ${({ theme }) => theme.colors.primaryDark};
   margin: 0;
 `;
 
