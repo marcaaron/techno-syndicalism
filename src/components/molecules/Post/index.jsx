@@ -26,7 +26,6 @@ Post.propTypes = {
 };
 
 const StyledArticle = styled.article`
-  border: 1px solid ${({ theme }) => theme.colors.gray};
   margin: 0;
 `;
 
@@ -42,7 +41,7 @@ const TitleText = styled.h3`
 
 const UserText = styled.p`
   margin-top: 0;
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.primaryDark};
   font-size: 0.8em;
 `;
 

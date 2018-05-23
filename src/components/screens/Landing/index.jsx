@@ -1,55 +1,51 @@
 import React from "react";
 import styled from "styled-components";
 
-import { MainContent } from "components/atoms";
-
-import Description from "./Description";
-import Logo from "./Logo";
+import CallToActions from "./CallToActions";
+import HeroText from "./HeroText";
+import NewestItem from "./NewestItem";
 import Tagline from "./Tagline";
 
-import { Link } from "react-router-dom";
-
 const Landing = () => (
-  <MainContent>
-    <FlexContainer>
-      <CallToAction>
-        <Logo />
-        <Link to="/login">Login</Link>
-        <div style={{ flexBasis: "100%" }}>
-          <Tagline />
-        </div>
-      </CallToAction>
-      <ValuePropositions>
-        Join Wobbly
-        <Link to="/login">Signup</Link>
-        <Link to="/workplaces">Find My Workplace</Link>
-        <Description />
-      </ValuePropositions>
-    </FlexContainer>
-  </MainContent>
+  <StyledContainer>
+    <Panel>
+      <NewestItem />
+      <HeroText />
+      <Tagline />
+      <CallToActions />
+    </Panel>
+    <Panel isWhite>
+      <p style={{ margin: 30 }}>Image</p>
+    </Panel>
+  </StyledContainer>
 );
 
-const FlexContainer = styled.div`
+const StyledContainer = styled.main`
+  /* display */
   display: flex;
   flex-wrap: wrap;
-  flex-direction: column;
-  justify-content: flex-start;
-  align-items: center;
-  width: 100%;
   height: 100%;
-  margin-top: 40px;
+  flex: 1;
+
+  /* font */
+  font-size: 1.5em;
+  line-height: 1.4;
+  font-family: ${({ theme }) => theme.fonts.secondary};
 `;
 
-const CallToAction = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-`;
+const Panel = styled.div`
+  /* display */
+  flex: 1;
 
-const ValuePropositions = styled.div`
-  display: flex;
-  flex-direction: column;
-  min-width: 45%;
+  /* box */
+  min-width: 425px;
+  padding-top: 3%;
+
+  /* color */
+  color: ${({ isWhite, theme }) =>
+    isWhite ? theme.colors.primary : theme.colors.white};
+  background-color: ${({ isWhite, theme }) =>
+    isWhite ? theme.colors.white : theme.colors.primary};
 `;
 
 export default Landing;

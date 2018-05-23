@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 // ------------------------------------
 const metadata = {
   name: "Wobbly",
+  tagline: "A workplace chat for all employees",
+  logoUrl: "https://placekitten.com/60/60",
   test: "should render a string"
 };
 
@@ -12,7 +14,8 @@ const userdata = {
   username: "",
   imageUrl: "https://placekitten.com/200/200",
   messages: 0,
-  notifications: 0
+  notifications: 0,
+  company: {}
 };
 
 // Keeping our data store "flat" for now, since we'd need
@@ -109,15 +112,6 @@ export class AppProvider extends Component {
       toggleAuth: this.toggleAuth,
       updateCounter: this.updateCounter
     };
-
-    // Print only in dev mode
-    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
-      console.log(
-        "(Dev)",
-        "Current authentication status:",
-        this.state.isAuthenticated
-      );
-    }
 
     return (
       <AppContext.Provider value={stateWithMethods}>

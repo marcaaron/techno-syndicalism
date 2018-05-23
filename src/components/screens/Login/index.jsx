@@ -1,13 +1,12 @@
 import React from "react";
 
-import { MainContent } from "components/atoms";
 import { DevLoginButton } from "components/molecules";
 
 const Login = () => (
-  <MainContent>
+  <div>
     <p>LoginPage</p>
     <DevLoginButton />
-  </MainContent>
+  </div>
 );
 
 export default Login;

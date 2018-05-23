@@ -7,8 +7,6 @@ import {
   NavLink
 } from "react-router-dom";
 
-import { MainContent } from "components/atoms";
-
 var UnionData = {
   deliverooNEW: {
     name: "Deliveroo, Newcastle Central",
@@ -30,25 +28,23 @@ var UnionData = {
 class Unions extends Component {
   render() {
     return (
-      <MainContent>
-        <Router>
-          <div>
-            <NavLink to="/MyUnions"> My Unions </NavLink>
+      <Router>
+        <div>
+          <NavLink to="/MyUnions"> My Unions </NavLink>
 
-            <NavLink to="/Search"> Search </NavLink>
+          <NavLink to="/Search"> Search </NavLink>
 
-            <NavLink to="/Create"> Create Union </NavLink>
+          <NavLink to="/Create"> Create Union </NavLink>
 
-            <Switch>
-              <Route exact path="/Search" component={Search} />
-              <Route exact path="/Create" component={Create} />
-              <Route exact path="/MyUnions/" component={MyUnions} />
-              <Route path="/MyUnions/:id" component={MyUnions} />
-              <Route path="/" component={MyUnions} />
-            </Switch>
-          </div>
-        </Router>
-      </MainContent>
+          <Switch>
+            <Route exact path="/Search" component={Search} />
+            <Route exact path="/Create" component={Create} />
+            <Route exact path="/MyUnions/" component={MyUnions} />
+            <Route path="/MyUnions/:id" component={MyUnions} />
+            <Route path="/" component={MyUnions} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

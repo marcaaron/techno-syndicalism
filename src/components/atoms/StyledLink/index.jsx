@@ -6,7 +6,7 @@ const StyledLink = styled(Link)`
   color: inherit;
 
   &:hover {
-    text-decoration: underline;
+    color: ${({ theme }) => theme.colors.secondary};
   }
 `;
 
