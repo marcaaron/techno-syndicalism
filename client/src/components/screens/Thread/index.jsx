@@ -6,16 +6,6 @@ import { gql } from "apollo-boost";
 
 import { Post, Comment } from "components/molecules";
 
-// ?? What's the deal with propTypes ?? Is this needed ?
-//   static propTypes = {
-//     match: PropTypes.shape({
-//       params: PropTypes.shape({
-//         id: PropTypes.string
-//       })
-//     })
-//   };
-//
-
 const GET_POST = gql`
   query postById($id: Int!) {
     postById(id: $id) {
@@ -62,5 +52,15 @@ const StyledContent = styled.div`
   width: 90%;
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
+
+// Note: Read that you can add propTypes to stateless components like so...?
+
+Thread.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 
 export default Thread;
