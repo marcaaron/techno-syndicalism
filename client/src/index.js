@@ -7,8 +7,14 @@ import { ThemeProvider } from "styled-components";
 import { AppProvider } from "./state/context/app";
 import theme from "./theme";
 
+import ApolloClient from "apollo-boost";
+import { ApolloProvider } from "react-apollo";
+
 // Polyfill for the Fetch API
 import "whatwg-fetch";
+
+// Set up Apollo Apollo Client
+const client = new ApolloClient({ uri: "http://localhost:4000/graphql" });
 
 // Store a reference to the DOM element [Hot Module Reloading]
 const root = document.getElementById("root");
@@ -18,13 +24,15 @@ let render = () => {
   const App = require("./App").default;
 
   ReactDOM.render(
-    <AppProvider>
-      <ThemeProvider theme={theme}>
-        <BrowserRouter>
-          <App />
-        </BrowserRouter>
-      </ThemeProvider>
-    </AppProvider>,
+    <ApolloProvider client={client}>
+      <AppProvider>
+        <ThemeProvider theme={theme}>
+          <BrowserRouter>
+            <App />
+          </BrowserRouter>
+        </ThemeProvider>
+      </AppProvider>
+    </ApolloProvider>,
     root
   );
 };
