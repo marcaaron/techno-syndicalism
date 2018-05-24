@@ -2,6 +2,7 @@ const graphql = require('graphql');
 const axios = require('axios');
 
 const { PostType, CommentType } = require('./types');
+
 const {
   GraphQLNonNull,
   GraphQLObjectType,

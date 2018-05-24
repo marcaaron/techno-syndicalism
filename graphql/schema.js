@@ -5,5 +5,6 @@ const { GraphQLSchema } = graphql;
 
 module.exports = new GraphQLSchema({
   query: RootQuery
+  // no mutations yet
   // mutation: mutation
 });

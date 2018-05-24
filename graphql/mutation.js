@@ -9,6 +9,8 @@ const {
   GraphQLList
 } = graphql;
 
+// pull in necessary types for mutations
+
 // const { } = require('./types');
 
 
