@@ -3,22 +3,22 @@ import PropTypes from "prop-types";
 import { ic_mail_outline, ic_inbox } from "react-icons-kit/md";
 
 import { switchPlural } from "util/functions";
-import { IconBase } from "components/atoms";
+import { IconNav, IconSub } from "components/atoms";
 
 const Messages = ({ number, title }) =>
   number ? (
     <MailWithNumber number={number} />
   ) : (
-    <IconBase icon={ic_inbox} title={title} />
+    <IconNav icon={ic_inbox} title={title} />
   );
 
 const MailWithNumber = ({ number }) => (
   <div>
-    <IconBase
+    <IconNav
       icon={ic_mail_outline}
       title={`${number} message${switchPlural(number)}`}
     />
-    <sub style={{ margin: "auto 15px auto -15px" }}>{number}</sub>
+    <IconSub>{number}</IconSub>
   </div>
 );
 

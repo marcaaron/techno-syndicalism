@@ -1,20 +1,21 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
 
 import { StyledLink } from "components/atoms";
 
-const ListLink = ({ render, ...rest }) => (
-  <Container>
-    <StyledLink {...rest}>{render}</StyledLink>
-  </Container>
+const ListLink = ({ render, to, linkStyle, ...rest }) => (
+  <li {...rest}>
+    <StyledLink to={to} style={linkStyle}>
+      {render}
+    </StyledLink>
+  </li>
 );
-
-const Container = styled.div``;
 
 ListLink.propTypes = {
   render: PropTypes.element.isRequired,
-  to: PropTypes.string.isRequired
+  to: PropTypes.string.isRequired,
+  linkStyle: PropTypes.object,
+  style: PropTypes.object
 };
 
 export default ListLink;
