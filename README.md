@@ -8,7 +8,7 @@ Features (TODO)
 
 [Website (dev)](https://keen-ramanujan-43f3b4.netlify.com/)
 
-[Project Outline v1](https://bananananaba.com/Techno-Syndicalism.html)
+[Project Outline v1](https://bananananaba.com/Wobbly.html)
 
 ## How to Contribute
 
