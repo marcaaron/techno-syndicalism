@@ -17,10 +17,7 @@
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run server\""
   },
   "lint-staged": {
-<<<<<<< HEAD
-=======
     "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
->>>>>>> 38ef8468bb94120d53aae92cc27fc4cf0f51af0b
   },
   "dependencies": {
     "apollo-boost": "^0.1.6",
