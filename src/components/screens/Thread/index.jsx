@@ -1,57 +1,49 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { Query } from "react-apollo";
+import { gql } from "apollo-boost";
 
 import { Post, Comment } from "components/molecules";
 
-class Thread extends Component {
-  static propTypes = {
-    match: PropTypes.shape({
-      params: PropTypes.shape({
-        id: PropTypes.string
-      })
-    })
-  };
-
-  constructor(props) {
-    super(props);
-    const { id } = props.match.params;
-    this.state = {
-      postUrl: `https://jsonplaceholder.typicode.com/posts/${id}`,
-      post: {},
-      commentsUrl: `https://jsonplaceholder.typicode.com/posts/${id}/comments`,
-      comments: []
-    };
-  }
-
-  async componentDidMount() {
-    const { postUrl, commentsUrl } = this.state;
-    {
-      /* Get Post */
-      const res = await fetch(postUrl);
-      const json = await res.json();
-      this.setState({ post: json });
-    }
-
-    {
-      /* Get Comments */
-      const res = await fetch(commentsUrl);
-      const json = await res.json();
-      this.setState({ comments: json });
+const GET_POST = gql`
+  query postById($id: Int!) {
+    postById(id: $id) {
+      userId
+      id
+      title
+      body
+      comments {
+        postId
+        id
+        name
+        email
+        body
+      }
     }
   }
+`;
 
-  render() {
-    const { post, comments } = this.state;
-
-    return (
-      <StyledContent>
-        <Post {...post} />
-        {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
-      </StyledContent>
-    );
+const Thread = ({
+  match: {
+    params: { id }
   }
-}
+}) => (
+  <Query query={GET_POST} variables={{ id }}>
+    {({ loading, error, data }) => {
+      if (loading) return null;
+      if (error) return null;
+      const { comments } = data.postById;
+      const post = data.postById;
+      return (
+        <StyledContent>
+          <Post {...post} />
+          {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
+        </StyledContent>
+      );
+    }}
+  </Query>
+);
 
 const StyledContent = styled.div`
   max-width: 98vw;
@@ -60,5 +52,15 @@ const StyledContent = styled.div`
   width: 90%;
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
+
+// Note: Read that you can add propTypes to stateless components like so...?
+
+Thread.propTypes = {
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string
+    })
+  })
+};
 
 export default Thread;
