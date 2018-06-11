@@ -2,10 +2,13 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
 
-// state
-import { AppProvider } from "state/context/app";
+// state - Redux
+import { Provider } from "react-redux";
+import configureStore from "./state/store";
+
+// state - GraphQL
 import { ApolloProvider } from "react-apollo";
-import client from "state/client";
+import client from "./state/graphql-client";
 
 // style
 import { ThemeProvider } from "styled-components";
@@ -13,6 +16,9 @@ import theme from "./theme";
 
 // polyfills
 import "whatwg-fetch"; // Additional support for fetch on older browsers
+
+// Configure the app state
+const store = configureStore();
 
 // Store a reference to the DOM element [Hot Module Reloading]
 const root = document.getElementById("root");
@@ -23,13 +29,13 @@ let render = () => {
 
   ReactDOM.render(
     <ApolloProvider client={client}>
-      <AppProvider>
+      <Provider store={store}>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </ThemeProvider>
-      </AppProvider>
+      </Provider>
     </ApolloProvider>,
     root
   );

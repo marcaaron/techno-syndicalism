@@ -1,55 +1,24 @@
-import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
+import { connect } from "react-redux";
 
-import { AppContext } from "state/context/app";
+import DevLoginButton from "./DevLoginButton";
 
-class DevLoginButton extends Component {
-  state = {
-    username: "",
-    redirectToReferrer: false
+import { toggleTestAuth } from "state/actions";
+
+const mapStateToProps = ({ user }) => {
+  return {
+    isAuthenticated: user.isAuthenticated
   };
+};
 
-  handleSubmit = e => {
-    e.preventDefault();
-  };
-
-  handleChange = e => {
-    const { value } = e.target;
-    this.setState({ username: value });
-  };
-
-  updateAuth = app => {
-    app.toggleAuth(this.state, this.checkShouldRedirect(app.isAuthenticated));
-  };
-
-  checkShouldRedirect = previousAuthStatus => {
-    // This function fires before the update to isAuthenticated is made, hence
-    //  we check if it's _not_ true
-    if (!previousAuthStatus) {
-      this.setState({ redirectToReferrer: true });
+const mapDispatchToProps = dispatch => {
+  return {
+    updateAuth: (isAuthenticated, username) => {
+      dispatch(toggleTestAuth(username));
     }
   };
+};
 
-  renderForm = app => (
-    <form onSubmit={this.handleSubmit}>
-      <input type="text" name="username" onChange={this.handleChange} />
-      <button onClick={() => this.updateAuth(app)}>
-        {app.isAuthenticated ? "Logout" : "Login"}
-      </button>
-    </form>
-  );
-
-  render() {
-    const { redirectToReferrer } = this.state;
-
-    if (redirectToReferrer) {
-      return <Redirect to="/home" />;
-    } else {
-      return (
-        <AppContext.Consumer>{app => this.renderForm(app)}</AppContext.Consumer>
-      );
-    }
-  }
-}
-
-export default DevLoginButton;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(DevLoginButton);

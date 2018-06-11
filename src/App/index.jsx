@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import styled from "styled-components";
 
 import { NavBar } from "components/organisms";
+import RenderStore from "util/RenderStore"; // dev only
 
 import Routes from "./Routes";
 
@@ -11,6 +12,7 @@ class App extends Component {
       <Display>
         <NavBar />
         <Routes />
+        <RenderStore />
       </Display>
     );
   }
