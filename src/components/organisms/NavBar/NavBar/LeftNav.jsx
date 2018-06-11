@@ -1,11 +1,11 @@
 import React from "react";
 import styled from "styled-components";
+import PropTypes from "prop-types";
 
 import { ListLink } from "components/atoms";
 
-const LeftNav = ({ app }) => {
-  const { name } = app;
-  const title = `Welcome to ${name}`;
+const LeftNav = ({ appName }) => {
+  const title = `Welcome to ${appName}`;
   const textStyle = {
     margin: 0
   };
@@ -16,7 +16,7 @@ const LeftNav = ({ app }) => {
         to="/"
         render={
           <h1 title={title} style={textStyle}>
-            {name}
+            {appName}
           </h1>
         }
       />
@@ -36,5 +36,9 @@ const StyledList = styled.ul`
   margin-left: 2%;
   list-style-type: none;
 `;
+
+LeftNav.propTypes = {
+  appName: PropTypes.string.isRequired
+};
 
 export default LeftNav;

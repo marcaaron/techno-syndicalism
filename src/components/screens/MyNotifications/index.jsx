@@ -1,24 +1,25 @@
-import React from "react";
+import { connect } from "react-redux";
 
-import { AppContext } from "state/context/app";
+import MyNotifications from "./MyNotifications";
 
-const MyNotifications = () => (
-  <div>
-    <p>My Notifications</p>
-    <AppContext.Consumer>
-      {app => (
-        <div>
-          <p>Notifications: {app.notifications}</p>
-          <button name="notifications" value={1} onClick={app.updateCounter}>
-            +1
-          </button>
-          <button name="notifications" value={-1} onClick={app.updateCounter}>
-            -1
-          </button>
-        </div>
-      )}
-    </AppContext.Consumer>
-  </div>
-);
+import { updateTestCounter } from "state/actions";
 
-export default MyNotifications;
+const mapStateToProps = ({ user }) => {
+  return {
+    notifications: user.notifications
+  };
+};
+
+const mapDispatchToProps = dispatch => {
+  return {
+    handleClick: e => {
+      const { name, value } = e.target;
+      dispatch(updateTestCounter(name, value));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(MyNotifications);

@@ -17,30 +17,35 @@
     "dev": "concurrently --kill-others-on-fail \"npm run start\" \"npm run server\""
   },
   "lint-staged": {
-    "src/**/*.{js,jsx,json,css}": ["prettier --write", "git add"]
+    "src/**/*.{js,jsx,json,css}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "dependencies": {
     "apollo-boost": "^0.1.6",
-    "graphql": "^0.13.2",
-    "normalize.css": "^8.0.0",
-    "prop-types": "^15.6.1",
-    "react": "^16.3.2",
-    "react-apollo": "^2.1.0-beta.3",
-    "react-dom": "^16.3.2",
-    "react-feather": "^1.1.0",
-    "react-icons-kit": "^1.1.4",
-    "react-router-dom": "^4.2.2",
-    "react-scripts": "1.1.4",
-    "styled-components": "^3.2.6",
-    "webfontloader": "^1.6.28",
-    "whatwg-fetch": "^2.0.4",
     "axios": "^0.18.0",
     "concurrently": "^3.5.1",
     "cors": "^2.8.4",
     "express": "^4.16.3",
     "express-graphql": "^0.6.12",
     "graphql": "^0.13.2",
-    "json-server": "^0.12.2"
+    "json-server": "^0.12.2",
+    "lodash": "^4.17.10",
+    "normalize.css": "^8.0.0",
+    "prop-types": "^15.6.1",
+    "react": "^16.3.2",
+    "react-apollo": "^2.1.0-beta.3",
+    "react-dom": "^16.3.2",
+    "react-icons-kit": "^1.1.4",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.2.2",
+    "react-scripts": "1.1.4",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "styled-components": "^3.2.6",
+    "webfontloader": "^1.6.28",
+    "whatwg-fetch": "^2.0.4"
   },
   "devDependencies": {
     "@storybook/addon-actions": "^3.4.2",
@@ -56,6 +61,7 @@
     "lint-staged": "^7.0.4",
     "prettier": "^1.12.1",
     "react-test-renderer": "^16.3.2",
+    "redux-devtools-extension": "^2.13.2",
     "storybook-react-router": "^1.0.1"
   }
 }

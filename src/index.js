@@ -1,20 +1,24 @@
 import React from "react";
-
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
-import { ThemeProvider } from "styled-components";
 
-import { AppProvider } from "./state/context/app";
+// state - Redux
+import { Provider } from "react-redux";
+import configureStore from "./state/store";
+
+// state - GraphQL
+import { ApolloProvider } from "react-apollo";
+import client from "./state/graphql-client";
+
+// style
+import { ThemeProvider } from "styled-components";
 import theme from "./theme";
 
-import ApolloClient from "apollo-boost";
-import { ApolloProvider } from "react-apollo";
+// polyfills
+import "whatwg-fetch"; // Additional support for fetch on older browsers
 
-// Polyfill for the Fetch API
-import "whatwg-fetch";
-
-// Set up Apollo Apollo Client
-const client = new ApolloClient({ uri: "http://localhost:4000/graphql" });
+// Configure the app state
+const store = configureStore();
 
 // Store a reference to the DOM element [Hot Module Reloading]
 const root = document.getElementById("root");
@@ -25,13 +29,13 @@ let render = () => {
 
   ReactDOM.render(
     <ApolloProvider client={client}>
-      <AppProvider>
+      <Provider store={store}>
         <ThemeProvider theme={theme}>
           <BrowserRouter>
             <App />
           </BrowserRouter>
         </ThemeProvider>
-      </AppProvider>
+      </Provider>
     </ApolloProvider>,
     root
   );
