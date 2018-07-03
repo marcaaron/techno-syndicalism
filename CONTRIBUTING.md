@@ -58,7 +58,7 @@
 ### Installing the Project
 
 * Clone the Repository (see "Forking a Repository" above)
-  * `git clone https://github.com/King-Mob/techno-syndicalism`
+  * `git clone https://github.com/Wobbly-App/techno-syndicalism`
 * Change into the directory with: `cd techno-syndicalism`
 * Install the packages with: `yarn install`
 * Run the project in Developer Mode with: `yarn start`
