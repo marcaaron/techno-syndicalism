@@ -4,16 +4,16 @@ import PropTypes from "prop-types";
 
 import { StyledLink } from "components/atoms";
 
-const Post = ({ id, userId, title, body }) => (
+const Post = ({ id, user: { username }, title, content }) => (
   <StyledArticle>
     <StyledLink to={`/threads/${id}`}>
-      <TitleText>Title: {title}</TitleText>
+      <TitleText>Title: {title} </TitleText>
     </StyledLink>
     <StyledLink to={`/threads/${id}`}>
-      <UserText>User: {userId}</UserText>
+      <UserText>User: {username} </UserText>
     </StyledLink>
     <StyledLink to={`/threads/${id}`}>
-      <BodyText>Body: {body}</BodyText>
+      <BodyText>Body: {content} </BodyText>
     </StyledLink>
   </StyledArticle>
 );

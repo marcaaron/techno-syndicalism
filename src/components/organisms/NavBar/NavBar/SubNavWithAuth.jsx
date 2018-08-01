@@ -8,14 +8,14 @@ import NavItemContainer from "./NavItemContainer";
 
 const UserSubNav = props => (
   <Fragment>
-    <ListLink
+    {/* <ListLink
       to="/home/notifications"
       render={<Notifications number={props.notifications} />}
     />
     <ListLink
       to="/home/messages"
       render={<Messages number={props.messages} />}
-    />
+    /> */}
     <ListLink to="/login" render={<UserView {...props} />} />
   </Fragment>
 );

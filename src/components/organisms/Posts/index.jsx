@@ -8,6 +8,7 @@ const FETCH_POSTS = gql`
     allPosts {
       user {
         id
+        username
       }
       id
       title
