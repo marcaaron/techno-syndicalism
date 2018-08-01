@@ -6,13 +6,14 @@ import { gql } from "apollo-boost";
 const FETCH_POSTS = gql`
   query fetchPosts {
     allPosts {
+      id
+      title
+      content
+      createdAt
       user {
         id
         username
       }
-      id
-      title
-      content
     }
   }
 `;

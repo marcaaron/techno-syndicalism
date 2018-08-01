@@ -7,18 +7,23 @@ import { gql } from "apollo-boost";
 import { Post, Comment } from "components/molecules";
 
 const GET_POST = gql`
-  query postById($id: Int!) {
-    postById(id: $id) {
-      userId
+  query postById($id: ID!) {
+    Post(id: $id) {
       id
       title
-      body
+      content
+      createdAt
+      user {
+        username
+      }
       comments {
-        postId
         id
-        name
-        email
-        body
+        content
+        createdAt
+        user {
+          id
+          username
+        }
       }
     }
   }
@@ -33,8 +38,8 @@ const Thread = ({
     {({ loading, error, data }) => {
       if (loading) return null;
       if (error) return null;
-      const { comments } = data.postById;
-      const post = data.postById;
+      const post = data.Post;
+      const { comments } = post;
       return (
         <StyledContent>
           <Post {...post} />
@@ -52,8 +57,6 @@ const StyledContent = styled.div`
   width: 90%;
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
-
-// Note: Read that you can add propTypes to stateless components like so...?
 
 Thread.propTypes = {
   match: PropTypes.shape({

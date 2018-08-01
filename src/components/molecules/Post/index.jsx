@@ -1,20 +1,19 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
+import { dateToString } from "../../../util/functions";
 
 import { StyledLink } from "components/atoms";
 
-const Post = ({ id, user: { username }, title, content }) => (
+const Post = ({ id, user: { username }, title, content, createdAt }) => (
   <StyledArticle>
     <StyledLink to={`/threads/${id}`}>
-      <TitleText>Title: {title} </TitleText>
+      <TitleText>{title} </TitleText>
+      <BodyText>{content} </BodyText>
     </StyledLink>
-    <StyledLink to={`/threads/${id}`}>
-      <UserText>User: {username} </UserText>
-    </StyledLink>
-    <StyledLink to={`/threads/${id}`}>
-      <BodyText>Body: {content} </BodyText>
-    </StyledLink>
+    <UserText>
+      posted by: {username} at {dateToString(createdAt)}
+    </UserText>
   </StyledArticle>
 );
 
