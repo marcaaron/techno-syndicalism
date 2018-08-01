@@ -12,7 +12,7 @@ class App extends Component {
       <Display>
         <NavBar />
         <Routes />
-        <RenderStore />
+        {/* <RenderStore /> */}
       </Display>
     );
   }

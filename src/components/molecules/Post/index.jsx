@@ -19,8 +19,7 @@ const Post = ({ id, userId, title, body }) => (
 );
 
 Post.propTypes = {
-  id: PropTypes.number,
-  userId: PropTypes.number,
+  id: PropTypes.string,
   title: PropTypes.string,
   body: PropTypes.string
 };

@@ -3,26 +3,27 @@ import { Post } from "components/molecules";
 import { Query } from "react-apollo";
 import { gql } from "apollo-boost";
 
-const GET_POSTS = gql`
-  query {
+const FETCH_POSTS = gql`
+  query fetchPosts {
     allPosts {
-      userId
+      user {
+        id
+      }
       id
       title
-      body
+      content
     }
   }
 `;
 
 const Posts = () => (
-  <Query query={GET_POSTS}>
-    {({ loading, error, data }) => {
+  <Query query={FETCH_POSTS}>
+    {({ loading, error, data: { allPosts } }) => {
       if (loading) return null;
       if (error) return null;
-      const posts = data.allPosts;
       return (
         <Fragment>
-          {posts.map(post => <Post {...post} key={post.id} />)}
+          {allPosts.map(post => <Post {...post} key={post.id} />)}
         </Fragment>
       );
     }}
