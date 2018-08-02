@@ -1,9 +1,10 @@
 export { default as Home } from "./Home";
 export { default as Landing } from "./Landing";
 export { default as Login } from "./Login";
-export { default as LearnMore } from "./LearnMore";
+export { default as Learn } from "./Learn";
 export { default as Locations } from "./Locations";
 export { default as MyMessages } from "./MyMessages";
 export { default as MyNotifications } from "./MyNotifications";
 export { default as Thread } from "./Thread";
-export { default as Unions } from "./Unions";
+export { default as Groups } from "./Groups";
+export { default as Users } from "./Users";

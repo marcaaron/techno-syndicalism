@@ -1,12 +1,9 @@
-import { connect } from "react-redux";
-
 import NavBar from "./NavBar";
+import { graphql, compose } from "react-apollo";
+import { GET_TEST_AUTH } from "state/queries";
 
-const mapStateToProps = ({ app, user }) => {
-  return {
-    appName: app.name,
-    user
-  };
-};
-
-export default connect(mapStateToProps)(NavBar);
+export default compose(
+  graphql(GET_TEST_AUTH, {
+    props: ({ data }) => ({ ...data })
+  })
+)(NavBar);

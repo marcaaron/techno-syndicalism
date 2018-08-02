@@ -1,11 +1,9 @@
-import { connect } from "react-redux";
-
 import AuthRoute from "./AuthRoute";
+import { graphql, compose } from "react-apollo";
+import { GET_TEST_AUTH } from "state/queries";
 
-const mapStateToProps = ({ user }) => {
-  return {
-    isAuthenticated: user.isAuthenticated
-  };
-};
-
-export default connect(mapStateToProps)(AuthRoute);
+export default compose(
+  graphql(GET_TEST_AUTH, {
+    props: ({ data }) => ({ ...data })
+  })
+)(AuthRoute);

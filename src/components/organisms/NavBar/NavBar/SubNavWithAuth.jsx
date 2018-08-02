@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 import { Image, ListLink, TextVisibility } from "components/atoms";
 import { Messages, Notifications } from "components/atoms/Icons";
 
-import NavItemContainer from "./NavItemContainer";
+import { NavItemContainer } from "styles";
 
 const UserSubNav = props => (
   <Fragment>

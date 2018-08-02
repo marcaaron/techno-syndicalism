@@ -1,19 +1,24 @@
 import React from "react";
-import styled from "styled-components";
-
 import { ListLink, TextVisibility } from "components/atoms";
 import { Home } from "components/atoms/Icons";
 
-import NavItemContainer from "./NavItemContainer";
+import { NavItemContainer, StyledList } from "styles";
 import SubNavNoAuth from "./SubNavNoAuth";
 import SubNavWithAuth from "./SubNavWithAuth";
 
-const RightNav = ({ user }) => (
-  <StyledList>
-    <ListLink to="/home" render={<HomeView />} />
-    {user.isAuthenticated ? <SubNavWithAuth {...user} /> : <SubNavNoAuth />}
-  </StyledList>
-);
+const RightNav = ({ userInfo }) => {
+  console.log(userInfo);
+  return (
+    <StyledList>
+      <ListLink to="/home" render={<HomeView />} />
+      {userInfo.isAuthenticated ? (
+        <SubNavWithAuth {...userInfo} />
+      ) : (
+        <SubNavNoAuth />
+      )}
+    </StyledList>
+  );
+};
 
 const HomeView = () => (
   <NavItemContainer>
@@ -21,18 +26,5 @@ const HomeView = () => (
     <TextVisibility>Home</TextVisibility>
   </NavItemContainer>
 );
-
-const StyledList = styled.ul`
-  /* display */
-  flex: 2;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-
-  /* box */
-  padding: 0;
-  margin-right: 2%;
-  list-style-type: none;
-`;
 
 export default RightNav;

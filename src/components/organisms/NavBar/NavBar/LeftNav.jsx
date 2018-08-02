@@ -1,7 +1,6 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-
+import { StyledList } from "styles";
 import { ListLink } from "components/atoms";
 
 const LeftNav = ({ appName }) => {
@@ -23,19 +22,6 @@ const LeftNav = ({ appName }) => {
     </StyledList>
   );
 };
-
-const StyledList = styled.ul`
-  /* display */
-  flex: 1;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-
-  /* box */
-  padding: 0;
-  margin-left: 2%;
-  list-style-type: none;
-`;
 
 LeftNav.propTypes = {
   appName: PropTypes.string.isRequired

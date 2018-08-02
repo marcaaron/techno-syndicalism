@@ -1,59 +1,50 @@
 import React from "react";
-import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Query } from "react-apollo";
+import { graphql } from "react-apollo";
 import { gql } from "apollo-boost";
-
 import { Post, Comment } from "components/molecules";
+import { StyledContent } from "styles";
 
 const GET_POST = gql`
-  query postById($id: Int!) {
-    postById(id: $id) {
-      userId
+  query postById($id: ID!) {
+    Post(id: $id) {
       id
       title
-      body
-      comments {
-        postId
+      content
+      createdAt
+      user {
         id
-        name
-        email
-        body
+        username
+      }
+      comments {
+        id
+        content
+        createdAt
+        user {
+          id
+          username
+        }
       }
     }
   }
 `;
 
-const Thread = ({
-  match: {
-    params: { id }
+const Thread = props => {
+  if (props.loading) return null;
+  if (props.error) {
+    // Dev Only
+    console.log(props.error);
+    return null;
   }
-}) => (
-  <Query query={GET_POST} variables={{ id }}>
-    {({ loading, error, data }) => {
-      if (loading) return null;
-      if (error) return null;
-      const { comments } = data.postById;
-      const post = data.postById;
-      return (
-        <StyledContent>
-          <Post {...post} />
-          {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
-        </StyledContent>
-      );
-    }}
-  </Query>
-);
-
-const StyledContent = styled.div`
-  max-width: 98vw;
-  overflow: auto;
-  background-color: white;
-  width: 90%;
-  font-family: ${({ theme }) => theme.fonts.secondary};
-`;
-
-// Note: Read that you can add propTypes to stateless components like so...?
+  return (
+    <StyledContent>
+      <Post {...props.Post} />
+      {props.Post.comments.map(({ id, ...rest }) => (
+        <Comment {...rest} key={id} />
+      ))}
+    </StyledContent>
+  );
+};
 
 Thread.propTypes = {
   match: PropTypes.shape({
@@ -63,4 +54,9 @@ Thread.propTypes = {
   })
 };
 
-export default Thread;
+export default graphql(GET_POST, {
+  options: ({ match }) => ({
+    variables: { id: match.params.id }
+  }),
+  props: ({ data }) => ({ ...data })
+})(Thread);

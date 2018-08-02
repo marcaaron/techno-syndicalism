@@ -1,24 +1,10 @@
 import React from "react";
-import PropTypes from "prop-types";
+import { Paragraph } from "styles";
 
-import { connect } from "react-redux";
-
-import { Paragraph } from "components/atoms";
-
-const Tagline = ({ tagline }) => (
+const Tagline = props => (
   <Paragraph style={{ margin: "auto 4% 7%" }}>
-    <span>{tagline}.</span>
+    <span>Tagline</span>
   </Paragraph>
 );
 
-const mapStateToProps = ({ app }) => {
-  return {
-    tagline: app.tagline
-  };
-};
-
-Tagline.propTypes = {
-  tagline: PropTypes.string.isRequired
-};
-
-export default connect(mapStateToProps)(Tagline);
+export default Tagline;
