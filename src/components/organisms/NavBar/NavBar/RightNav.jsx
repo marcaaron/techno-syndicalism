@@ -8,12 +8,19 @@ import NavItemContainer from "./NavItemContainer";
 import SubNavNoAuth from "./SubNavNoAuth";
 import SubNavWithAuth from "./SubNavWithAuth";
 
-const RightNav = ({ user }) => (
-  <StyledList>
-    <ListLink to="/home" render={<HomeView />} />
-    {user.isAuthenticated ? <SubNavWithAuth {...user} /> : <SubNavNoAuth />}
-  </StyledList>
-);
+const RightNav = ({ userInfo }) => {
+  console.log(userInfo);
+  return (
+    <StyledList>
+      <ListLink to="/home" render={<HomeView />} />
+      {userInfo.isAuthenticated ? (
+        <SubNavWithAuth {...userInfo} />
+      ) : (
+        <SubNavNoAuth />
+      )}
+    </StyledList>
+  );
+};
 
 const HomeView = () => (
   <NavItemContainer>

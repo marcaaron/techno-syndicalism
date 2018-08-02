@@ -2,11 +2,6 @@ import React, { Component } from "react";
 import PropTypes from "prop-types";
 
 class LoginBtn extends Component {
-  static propTypes = {
-    isAuthenticated: PropTypes.bool,
-    updateAuth: PropTypes.func
-  };
-
   state = {
     username: ""
   };
@@ -18,14 +13,27 @@ class LoginBtn extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
-    const { isAuthenticated, updateAuth } = this.props;
-    updateAuth(isAuthenticated, this.state.username);
+    const { userInfo, toggleTestAuth } = this.props;
+    const { notifications, imageUrl, messages } = userInfo;
+    const username = this.state.username;
+    toggleTestAuth({
+      variables: {
+        isAuthenticated: !userInfo.isAuthenticated,
+        notifications,
+        imageUrl,
+        messages,
+        username
+      }
+    });
   };
 
   render() {
-    const { isAuthenticated } = this.props;
-
+    const { loading, error } = this.props;
+    if (loading) return null;
+    if (error) return null;
+    const {
+      userInfo: { isAuthenticated }
+    } = this.props;
     return (
       <form onSubmit={this.handleSubmit}>
         <input type="text" name="username" onChange={this.handleChange} />

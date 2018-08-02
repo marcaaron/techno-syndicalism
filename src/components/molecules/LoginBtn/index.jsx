@@ -1,24 +1,16 @@
-import { connect } from "react-redux";
+import { compose, graphql } from "react-apollo";
+import gql from "graphql-tag";
 
 import LoginBtn from "./LoginBtn";
+import { TOGGLE_TEST_AUTH } from "state/mutations";
+import { GET_TEST_AUTH } from "state/queries";
 
-import { toggleTestAuth } from "state/actions";
-
-const mapStateToProps = ({ user }) => {
-  return {
-    isAuthenticated: user.isAuthenticated
-  };
-};
-
-const mapDispatchToProps = dispatch => {
-  return {
-    updateAuth: (isAuthenticated, username) => {
-      dispatch(toggleTestAuth(username));
-    }
-  };
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
+export default compose(
+  graphql(TOGGLE_TEST_AUTH, {
+    name: "toggleTestAuth",
+    refetchQueries: ["getAuthUser"]
+  }),
+  graphql(GET_TEST_AUTH, {
+    props: ({ data }) => ({ ...data })
+  })
 )(LoginBtn);

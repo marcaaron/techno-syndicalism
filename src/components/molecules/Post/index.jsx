@@ -3,7 +3,7 @@ import styled from "styled-components";
 import PropTypes from "prop-types";
 import { dateToString } from "util/functions";
 
-import { StyledLink } from "components/atoms";
+import { StyledLink } from "styles";
 
 const Post = ({ id, user: { username }, title, content, createdAt }) => (
   <StyledArticle>

@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { dateToString } from "util/functions";
-import { StyledLink } from "components/atoms";
+import { StyledLink } from "styles";
 
 const Comment = ({ user, content, createdAt }) => (
   <article>

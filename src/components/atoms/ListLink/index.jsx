@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 
-import { StyledLink } from "components/atoms";
+import { StyledLink } from "styles";
 
 const ListLink = ({ render, to, linkStyle, ...rest }) => (
   <li {...rest}>

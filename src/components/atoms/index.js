@@ -9,6 +9,5 @@ export { default as IconSub } from "./IconSub";
 export { default as Image } from "./Image";
 export { default as ImagePlaceholder } from "./ImagePlaceholder";
 export { default as ListLink } from "./ListLink";
-export { default as StyledLink } from "./StyledLink";
 export { default as TextVisibility } from "./TextVisibility";
 export { default as AngleBracket } from "./AngleBracket";

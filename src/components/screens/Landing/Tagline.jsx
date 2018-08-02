@@ -5,20 +5,10 @@ import { connect } from "react-redux";
 
 import { Paragraph } from "styles";
 
-const Tagline = ({ tagline }) => (
+const Tagline = props => (
   <Paragraph style={{ margin: "auto 4% 7%" }}>
-    <span>{tagline}.</span>
+    <span>Tagline</span>
   </Paragraph>
 );
 
-const mapStateToProps = ({ app }) => {
-  return {
-    tagline: app.tagline
-  };
-};
-
-Tagline.propTypes = {
-  tagline: PropTypes.string.isRequired
-};
-
-export default connect(mapStateToProps)(Tagline);
+export default Tagline;

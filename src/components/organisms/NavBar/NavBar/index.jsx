@@ -5,12 +5,15 @@ import PropTypes from "prop-types";
 import LeftNav from "./LeftNav";
 import RightNav from "./RightNav";
 
-const NavBar = ({ appName, user }) => (
-  <StyledNavigation>
-    <LeftNav appName={appName} />
-    <RightNav user={user} />
-  </StyledNavigation>
-);
+const NavBar = ({ userInfo }) => {
+  console.log(userInfo);
+  return (
+    <StyledNavigation>
+      <LeftNav appName="Wobbly" />
+      <RightNav userInfo={userInfo} />
+    </StyledNavigation>
+  );
+};
 
 const StyledNavigation = styled.nav`
   /* display */
@@ -31,10 +34,5 @@ const StyledNavigation = styled.nav`
   /* text */
   font-size: 1.1em;
 `;
-
-NavBar.propTypes = {
-  appName: PropTypes.string.isRequired,
-  user: PropTypes.object.isRequired
-};
 
 export default NavBar;

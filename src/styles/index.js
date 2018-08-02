@@ -3,6 +3,15 @@ import { Link } from "react-router-dom";
 
 // Globals
 
+export const Display = styled.div`
+  /* display */
+  display: flex;
+  flex-direction: column;
+
+  /* box */
+  min-height: 100vh;
+`;
+
 export const Input = styled.input``;
 
 export const Label = styled.label``;
