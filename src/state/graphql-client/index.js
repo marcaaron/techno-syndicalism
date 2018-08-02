@@ -1,6 +1,4 @@
 import ApolloClient, { InMemoryCache } from "apollo-boost";
-
-console.log(ApolloClient);
 const cache = new InMemoryCache();
 
 // Set up Apollo Apollo Client

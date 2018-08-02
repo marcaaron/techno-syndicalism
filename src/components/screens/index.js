@@ -6,5 +6,5 @@ export { default as Locations } from "./Locations";
 export { default as MyMessages } from "./MyMessages";
 export { default as MyNotifications } from "./MyNotifications";
 export { default as Thread } from "./Thread";
-export { default as Unions } from "./Unions";
+export { default as Groups } from "./Groups";
 export { default as Users } from "./Users";

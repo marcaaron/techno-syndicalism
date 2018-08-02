@@ -11,7 +11,7 @@ const Routes = () => (
     <Route exact path="/learn" component={Screens.LearnMore} />
     <Route exact path="/locations" component={Screens.Locations} />
     <Route exact path="/users/:username" component={Screens.Users} />
-    <AuthRoute exact path="/unions" component={Screens.Unions} />
+    <AuthRoute exact path="/groups" component={Screens.Groups} />
     <AuthRoute exact path="/home" component={Screens.Home} />
     <AuthRoute exact path="/home/messages" component={Screens.MyMessages} />
     <AuthRoute
