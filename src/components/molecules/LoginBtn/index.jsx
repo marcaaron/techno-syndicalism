@@ -1,5 +1,4 @@
 import { compose, graphql } from "react-apollo";
-import gql from "graphql-tag";
 
 import LoginBtn from "./LoginBtn";
 import { TOGGLE_TEST_AUTH } from "state/mutations";

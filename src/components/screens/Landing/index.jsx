@@ -1,6 +1,4 @@
 import React from "react";
-import styled from "styled-components";
-
 import { StyledContainer, Panel } from "styles";
 
 import CallToActions from "./CallToActions";

@@ -1,8 +1,6 @@
-import React, { Component } from "react";
-import styled from "styled-components";
-
-import { Companies } from "components/organisms";
-import { CompanySearch } from "components/organisms";
+import React from "react";
+import { Companies, CompanySearch } from "components/organisms";
+import { Container } from "styles";
 
 const Locations = () => (
   <Container>

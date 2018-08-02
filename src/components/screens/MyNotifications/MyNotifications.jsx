@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const MyNotifications = props => (
   <div>
@@ -16,10 +15,5 @@ const MyNotifications = props => (
     </div>
   </div>
 );
-
-// MyNotifications.propTypes = {
-//   notifications: PropTypes.number.isRequired,
-//   handleClick: PropTypes.func.isRequired
-// };
 
 export default MyNotifications;

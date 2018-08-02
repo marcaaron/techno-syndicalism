@@ -1,9 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-
-import { gql } from "apollo-boost";
-import { Query } from "react-apollo";
-
 import { Posts } from "components/organisms";
 
 const Home = () => (

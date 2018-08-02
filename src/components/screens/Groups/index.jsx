@@ -49,6 +49,4 @@ const MyGroups = props => <div />;
 
 const Results = props => <div />;
 
-const Group = props => <div />;
-
 export default Groups;

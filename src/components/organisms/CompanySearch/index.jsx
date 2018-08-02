@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Input, Label, Container } from "styles";
-import { capitalize } from "util/functions";
+import { Input, Label } from "styles";
 
 export default class CompanySearch extends Component {
   state = {

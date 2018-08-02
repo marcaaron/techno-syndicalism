@@ -18,9 +18,9 @@ const AuthRoute = ({
   );
 };
 
-// AuthRoute.propTypes = {
-//   component: PropTypes.any.isRequired,
-//   isAuthenticated: PropTypes.bool.isRequired
-// };
+AuthRoute.propTypes = {
+  component: PropTypes.any.isRequired,
+  userInfo: PropTypes.object
+};
 
 export default AuthRoute;

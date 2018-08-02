@@ -1,6 +1,4 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-
 import { NavBar } from "components/organisms";
 import { Display } from "styles";
 

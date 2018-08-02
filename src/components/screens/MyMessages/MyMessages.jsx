@@ -1,5 +1,4 @@
 import React from "react";
-import PropTypes from "prop-types";
 
 const MyMessages = props => (
   <div>
@@ -15,10 +14,5 @@ const MyMessages = props => (
     </div>
   </div>
 );
-
-// MyMessages.propTypes = {
-//   messages: PropTypes.number.isRequired,
-//   handleClick: PropTypes.func.isRequired
-// };
 
 export default MyMessages;

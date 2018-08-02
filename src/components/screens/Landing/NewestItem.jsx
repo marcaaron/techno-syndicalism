@@ -1,8 +1,7 @@
 import React from "react";
-import styled from "styled-components";
 
 import { AngleBracket } from "components/atoms";
-import { StyledLink, Paragraph, StyledParagraph } from "styles";
+import { StyledLink, StyledParagraph } from "styles";
 
 const NewestItem = () => (
   <StyledParagraph>
