@@ -7,3 +7,4 @@ export { default as MyMessages } from "./MyMessages";
 export { default as MyNotifications } from "./MyNotifications";
 export { default as Thread } from "./Thread";
 export { default as Unions } from "./Unions";
+export { default as Users } from "./Users";

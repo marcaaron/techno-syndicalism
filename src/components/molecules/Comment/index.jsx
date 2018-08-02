@@ -1,10 +1,14 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { dateToString } from "../../../util/functions";
+import { dateToString } from "util/functions";
+import { StyledLink } from "components/atoms";
 
 const Comment = ({ user, content, createdAt }) => (
   <article>
-    <p>Name: {user.username}</p>
+    <p>
+      Name:{" "}
+      <StyledLink to={`/users/${user.username}`}>{user.username}</StyledLink>
+    </p>
     <p>Comment: {content}</p>
     <p>Replied On: {dateToString(createdAt)}</p>
   </article>

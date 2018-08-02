@@ -1,9 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import PropTypes from "prop-types";
-import { Query } from "react-apollo";
+import { graphql } from "react-apollo";
 import { gql } from "apollo-boost";
-
 import { Post, Comment } from "components/molecules";
 
 const GET_POST = gql`
@@ -14,6 +13,7 @@ const GET_POST = gql`
       content
       createdAt
       user {
+        id
         username
       }
       comments {
@@ -29,26 +29,22 @@ const GET_POST = gql`
   }
 `;
 
-const Thread = ({
-  match: {
-    params: { id }
+const Thread = props => {
+  if (props.loading) return null;
+  if (props.error) {
+    // Dev Only
+    console.log(props.error);
+    return null;
   }
-}) => (
-  <Query query={GET_POST} variables={{ id }}>
-    {({ loading, error, data }) => {
-      if (loading) return null;
-      if (error) return null;
-      const post = data.Post;
-      const { comments } = post;
-      return (
-        <StyledContent>
-          <Post {...post} />
-          {comments.map(({ id, ...rest }) => <Comment {...rest} key={id} />)}
-        </StyledContent>
-      );
-    }}
-  </Query>
-);
+  return (
+    <StyledContent>
+      <Post {...props.Post} />
+      {props.Post.comments.map(({ id, ...rest }) => (
+        <Comment {...rest} key={id} />
+      ))}
+    </StyledContent>
+  );
+};
 
 const StyledContent = styled.div`
   max-width: 98vw;
@@ -66,4 +62,9 @@ Thread.propTypes = {
   })
 };
 
-export default Thread;
+export default graphql(GET_POST, {
+  options: ({ match }) => ({
+    variables: { id: match.params.id }
+  }),
+  props: ({ data }) => ({ ...data })
+})(Thread);

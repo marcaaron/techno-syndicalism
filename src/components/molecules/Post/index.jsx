@@ -12,7 +12,8 @@ const Post = ({ id, user: { username }, title, content, createdAt }) => (
       <BodyText>{content} </BodyText>
     </StyledLink>
     <UserText>
-      posted by: {username} at {dateToString(createdAt)}
+      posted by: <StyledLink to={`/users/${username}`}>{username}</StyledLink>{" "}
+      at {dateToString(createdAt)}
     </UserText>
   </StyledArticle>
 );
