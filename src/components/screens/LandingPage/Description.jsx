@@ -1,8 +1,9 @@
 import React from "react";
 import styled from "styled-components";
+import { DescriptionContainer } from "styles";
 
 const Description = () => (
-  <StyledContainer>
+  <DescriptionContainer>
     <p>
       Wobbly is a workers chat app designed for new or expanding workplace
       organising groups. We want to provide the tools for groups to grow,
@@ -25,19 +26,7 @@ const Description = () => (
       frameworks you enjoy working in. Send an email to john@onethreethree.net
       if you'd like to find out more.
     </p>
-  </StyledContainer>
+  </DescriptionContainer>
 );
-
-const StyledContainer = styled.p`
-  /* box */
-  padding: 10px 30px;
-  width: 90%;
-
-  /* color */
-  background-color: ${({ theme }) => theme.colors.white};
-
-  /* text */
-  font-size: 0.9em;
-`;
 
 export default Description;

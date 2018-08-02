@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import { StyledContent } from "styles";
 import { Posts } from "components/organisms";
 
 const Home = () => (
@@ -10,18 +10,5 @@ const Home = () => (
     </StyledContent>
   </div>
 );
-
-const StyledContent = styled.div`
-  /* box */
-  width: 90%;
-  max-width: 98vw;
-  overflow: auto;
-
-  /* colors */
-  background-color: white;
-
-  /* content */
-  font-family: ${({ theme }) => theme.fonts.secondary};
-`;
 
 export default Home;

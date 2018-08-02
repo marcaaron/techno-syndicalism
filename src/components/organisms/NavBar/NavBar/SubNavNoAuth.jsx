@@ -3,7 +3,7 @@ import React, { Fragment } from "react";
 import { ListLink, TextVisibility } from "components/atoms";
 import { Anonymous, Map, Lightbulb } from "components/atoms/Icons";
 
-import NavItemContainer from "./NavItemContainer";
+import { NavItemContainer } from "styles";
 
 const SubNavNoAuth = () => (
   <Fragment>

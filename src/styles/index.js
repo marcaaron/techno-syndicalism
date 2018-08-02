@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 
 // Globals
 
+export const StyledArticle = styled.article`
+  margin: 0;
+`;
+
 export const Display = styled.div`
   /* display */
   display: flex;
@@ -55,6 +59,18 @@ export const StyledContainer = styled.main`
   font-family: ${({ theme }) => theme.fonts.secondary};
 `;
 
+export const DescriptionContainer = styled.p`
+  /* box */
+  padding: 10px 30px;
+  width: 90%;
+
+  /* color */
+  background-color: ${({ theme }) => theme.colors.white};
+
+  /* text */
+  font-size: 0.9em;
+`;
+
 export const Panel = styled.div`
   /* display */
   flex: 1;
@@ -86,4 +102,98 @@ export const StyledContent = styled.div`
   background-color: white;
   width: 90%;
   font-family: ${({ theme }) => theme.fonts.secondary};
+`;
+
+// Post
+
+export const TitleText = styled.h3`
+  /* box */
+  margin-bottom: 0;
+
+  /* text */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+export const UserText = styled.p`
+  margin-top: 0;
+  color: ${({ theme }) => theme.colors.primaryDark};
+  font-size: 0.8em;
+`;
+
+export const BodyText = styled.p`
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+`;
+
+// Footer
+
+export const Wrapper = styled.div`
+  overflow: hidden;
+  bottom: 0;
+  width: 100%;
+  max-height: 10vh;
+  flex: 1;
+`;
+
+export const StyledFooter = styled.footer`
+  /* display */
+  display: flex;
+  justify-content: center;
+  flex: 1;
+
+  /* box */
+  padding-top: 2%;
+
+  /* colors */
+  background-color: ${({ theme }) => theme.colors.white};
+  border-top: 1px solid ${({ theme }) => theme.colors.primary};
+  color: ${({ theme }) => theme.colors.primary};
+
+  /* extends the footer to the bottom of the page */
+  box-shadow: 0 50vh 0 50vh ${({ theme }) => theme.colors.white};
+`;
+
+// NavBar
+
+export const StyledNavigation = styled.nav`
+  /* display */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+
+  /* box */
+  position: relative;
+  width: 100%;
+
+  /* colors */
+  color: ${({ theme }) => theme.colors.primary};
+  background-color: ${({ theme }) => theme.colors.white};
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+
+  /* text */
+  font-size: 1.1em;
+`;
+
+export const StyledList = styled.ul`
+  /* display */
+  flex: 1;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+
+  /* box */
+  padding: 0;
+  margin-left: 2%;
+  list-style-type: none;
+`;
+
+export const NavItemContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-end;
 `;
