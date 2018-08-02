@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 
-import { Input, Label } from "components/atoms";
 import { Companies } from "components/organisms";
-
+import { Input, Label, Container } from "styles";
 import { capitalize } from "util/functions";
 
 class Locations extends Component {
@@ -119,14 +118,5 @@ const CompanySearch = ({ handleSubmit, handleChange }) => {
     </form>
   );
 };
-
-const Container = styled.main`
-  /* display */
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
 
 export default Locations;

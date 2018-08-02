@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import { connect } from "react-redux";
 
-import { Paragraph } from "components/atoms";
+import { Paragraph } from "styles";
 
 const Tagline = ({ tagline }) => (
   <Paragraph style={{ margin: "auto 4% 7%" }}>

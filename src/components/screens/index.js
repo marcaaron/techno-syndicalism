@@ -1,7 +1,7 @@
 export { default as Home } from "./Home";
 export { default as Landing } from "./Landing";
 export { default as Login } from "./Login";
-export { default as LearnMore } from "./LearnMore";
+export { default as Learn } from "./Learn";
 export { default as Locations } from "./Locations";
 export { default as MyMessages } from "./MyMessages";
 export { default as MyNotifications } from "./MyNotifications";

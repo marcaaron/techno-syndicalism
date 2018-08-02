@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import DevLoginButton from "./DevLoginButton";
+import LoginBtn from "./LoginBtn";
 
 import { toggleTestAuth } from "state/actions";
 
@@ -21,4 +21,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(DevLoginButton);
+)(LoginBtn);

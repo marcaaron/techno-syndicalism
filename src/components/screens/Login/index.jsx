@@ -1,11 +1,11 @@
 import React from "react";
 
-import { DevLoginButton } from "components/molecules";
+import { LoginBtn } from "components/molecules";
 
 const Login = () => (
   <div>
     <p>LoginPage</p>
-    <DevLoginButton />
+    <LoginBtn />
   </div>
 );
 

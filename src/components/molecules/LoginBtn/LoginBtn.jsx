@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 
-class DevLoginButton extends Component {
+class LoginBtn extends Component {
   static propTypes = {
     isAuthenticated: PropTypes.bool,
     updateAuth: PropTypes.func
@@ -35,4 +35,4 @@ class DevLoginButton extends Component {
   }
 }
 
-export default DevLoginButton;
+export default LoginBtn;

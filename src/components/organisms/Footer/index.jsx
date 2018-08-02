@@ -1,12 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
-import { DevLoginButton } from "components/molecules";
+import { LoginBtn } from "components/molecules";
 
 const Footer = () => (
   <Wrapper>
     <StyledFooter>
-      <DevLoginButton />
+      <LoginBtn />
     </StyledFooter>
   </Wrapper>
 );

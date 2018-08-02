@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import { graphql } from "react-apollo";
 import { gql } from "apollo-boost";
 import { Post, Comment } from "components/molecules";
+import { StyledContent } from "styles";
 
 const GET_POST = gql`
   query postById($id: ID!) {
@@ -45,14 +46,6 @@ const Thread = props => {
     </StyledContent>
   );
 };
-
-const StyledContent = styled.div`
-  max-width: 98vw;
-  overflow: auto;
-  background-color: white;
-  width: 90%;
-  font-family: ${({ theme }) => theme.fonts.secondary};
-`;
 
 Thread.propTypes = {
   match: PropTypes.shape({

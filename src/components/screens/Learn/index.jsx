@@ -1,8 +1,9 @@
 import React from "react";
 
-import { Paragraph, ButtonNav } from "components/atoms";
+import { ButtonNav } from "components/atoms";
+import { Paragraph } from "styles";
 
-const LearnMore = () => (
+const Learn = () => (
   <main>
     <Paragraph>
       Wobbly is a workers chat app designed for new or expanding workplace
@@ -30,4 +31,4 @@ const LearnMore = () => (
   </main>
 );
 
-export default LearnMore;
+export default Learn;
