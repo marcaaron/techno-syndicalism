@@ -127,6 +127,12 @@ It is currently sub-divided into an [Atomic-like](http://bradfrost.com/blog/post
 * `/organisms/` for unique, distinct UI features
 * `/screens/` for laying the above components into any given complete UI
 
+### `/src/styles`
+
+Contains named exports of Styled Components to keep all global and component specific Styled Components in one place. Think of this as the "stylesheet" for the app. Styled Components can be imported from this directory for use in other components e.g.
+
+`import { Input, Label } from 'styles'`
+
 #### `/src/state`
 
 For managing app data.
@@ -171,7 +177,7 @@ If you wish to configure VS Code to use your own settings instead of the project
 
 #### `/theme.js`
 
-Includes top-level CSS styling.
+Top-level CSS styling. This files affects global HTML elements and theming used in Styled Components, but is not to be used for defining Styled Components themselves.
 
 #### `/src/setupTests.js`
 
