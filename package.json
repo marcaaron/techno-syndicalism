@@ -22,8 +22,10 @@
   "dependencies": {
     "apollo-boost": "^0.1.6",
     "apollo-link": "^1.2.2",
+    "apollo-link-context": "^1.0.8",
     "apollo-link-state": "^0.4.1",
     "axios": "^0.18.0",
+    "formik": "^1.0.2",
     "graphql": "^0.13.2",
     "lodash": "^4.17.10",
     "normalize.css": "^8.0.0",

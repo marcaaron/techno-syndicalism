@@ -18,6 +18,14 @@ export const StyledFormText = styled.p`
   text-align: center;
 `;
 
+export const StyledFormError = styled.p`
+  border: 1px solid black;
+  background-color: rgb(251, 245, 162);
+  padding: 5px;
+  margin: 0;
+  margin-bottom: 20px;
+`;
+
 export const StyledH2 = styled.h2`
   padding: 20px 0 0 20px;
   margin: 0;

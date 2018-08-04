@@ -3,12 +3,12 @@ import { StyledNavigation } from "styles";
 import LeftNav from "./LeftNav";
 import RightNav from "./RightNav";
 
-const NavBar = ({ userInfo }) => {
-  console.log(userInfo);
+const NavBar = ({ user }) => {
+  console.log(user);
   return (
     <StyledNavigation>
       <LeftNav appName="Wobbly" />
-      <RightNav userInfo={userInfo} />
+      <RightNav user={user} />
     </StyledNavigation>
   );
 };

@@ -1,18 +1,19 @@
-import React from "react";
-import { ListLink, TextVisibility } from "components/atoms";
+import React, { Fragment } from "react";
+import { ListLink, TextVisibility, ButtonSignout } from "components/atoms";
 import { Home } from "components/atoms/Icons";
-
 import { NavItemContainer, StyledList } from "styles";
 import SubNavNoAuth from "./SubNavNoAuth";
 import SubNavWithAuth from "./SubNavWithAuth";
 
-const RightNav = ({ userInfo }) => {
-  console.log(userInfo);
+const RightNav = ({ user }) => {
   return (
     <StyledList>
       <ListLink to="/home" render={<HomeView />} />
-      {userInfo.isAuthenticated ? (
-        <SubNavWithAuth {...userInfo} />
+      {user ? (
+        <Fragment>
+          <SubNavWithAuth {...user} />
+          <ButtonSignout />
+        </Fragment>
       ) : (
         <SubNavNoAuth />
       )}

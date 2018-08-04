@@ -21,3 +21,6 @@ export const switchPlural = n => (n > 1 ? "s" : "");
 export function dateToString(createdAt) {
   return new Date(createdAt).toLocaleDateString();
 }
+
+export { default as validateSignup } from "./validateSignup";
+export { default as catchGqlErrors } from "./catchGqlErrors";
