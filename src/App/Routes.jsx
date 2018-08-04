@@ -7,7 +7,7 @@ import * as Screens from "components/screens";
 const Routes = () => (
   <Switch>
     <Route exact path="/login" component={Screens.Login} />
-    <Route exact path="/signup" component={Screens.Login} />
+    <Route exact path="/signup" component={Screens.Signup} />
     <Route exact path="/learn" component={Screens.Learn} />
     <Route exact path="/locations" component={Screens.Locations} />
     <Route exact path="/users/:username" component={Screens.Users} />

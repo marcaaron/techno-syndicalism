@@ -4,9 +4,10 @@ import { ButtonNav } from "components/atoms";
 
 const CallToActions = () => (
   <div>
-    <ButtonNav to="/login">Create An Account</ButtonNav>
+    <ButtonNav to="/signup">Create An Account</ButtonNav>
+    <ButtonNav to="/login">Login to Your Account</ButtonNav>
     <ButtonNav to="/locations" isWhite>
-      Find My Workplace
+      Find A Group
     </ButtonNav>
   </div>
 );

@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Input, Label } from "styles";
+import { StyledInput, StyledLabel } from "styles";
 
 export default class CompanySearch extends Component {
   state = {
@@ -20,11 +20,11 @@ export default class CompanySearch extends Component {
     const { handleChange, handleSubmit } = this;
     return (
       <form onSubmit={handleSubmit}>
-        <Label>
+        <StyledLabel>
           Search Companies<br />
-          <Input type="text" name="search" onChange={handleChange} />
-          <Input type="submit" name="search" />
-        </Label>
+          <StyledInput type="text" name="search" onChange={handleChange} />
+          <StyledInput type="submit" name="search" />
+        </StyledLabel>
       </form>
     );
   }
