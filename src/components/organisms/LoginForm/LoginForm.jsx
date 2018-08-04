@@ -19,7 +19,7 @@ class LoginForm extends Component {
   handleSubmit = e => {
     e.preventDefault();
     const { userInfo, toggleTestAuth } = this.props;
-    const { notifications, imageUrl, messages } = userInfo;
+    // const { notifications, imageUrl, messages } = userInfo;
     const { email, password } = this.state;
     this.props
       .loginUser({
