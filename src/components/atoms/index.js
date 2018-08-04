@@ -11,3 +11,4 @@ export { default as ImagePlaceholder } from "./ImagePlaceholder";
 export { default as ListLink } from "./ListLink";
 export { default as TextVisibility } from "./TextVisibility";
 export { default as AngleBracket } from "./AngleBracket";
+export { default as ButtonSubmit } from "./ButtonSubmit";

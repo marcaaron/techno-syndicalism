@@ -1,12 +1,15 @@
 import React from "react";
+import { StyledH2 } from "styles";
+import { LoginForm } from "components/organisms";
 
-import { LoginBtn } from "components/molecules";
-
-const Login = () => (
-  <div>
-    <p>LoginPage</p>
-    <LoginBtn />
-  </div>
-);
+const Login = props => {
+  console.log(props);
+  return (
+    <div>
+      <StyledH2>Log Into Your Account</StyledH2>
+      <LoginForm />
+    </div>
+  );
+};
 
 export default Login;

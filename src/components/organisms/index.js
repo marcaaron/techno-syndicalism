@@ -3,3 +3,5 @@ export { default as CompanySearch } from "./CompanySearch";
 export { default as Footer } from "./Footer";
 export { default as NavBar } from "./NavBar";
 export { default as Posts } from "./Posts";
+export { default as SignupForm } from "./SignupForm";
+export { default as LoginForm } from "./LoginForm";

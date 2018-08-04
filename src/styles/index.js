@@ -7,6 +7,28 @@ export const StyledArticle = styled.article`
   margin: 0;
 `;
 
+export const StyledForm = styled.form`
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  padding: 20px;
+`;
+
+export const StyledFormText = styled.p`
+  text-align: center;
+`;
+
+export const StyledH2 = styled.h2`
+  padding: 20px 0 0 20px;
+  margin: 0;
+`;
+
+export const StyledFormItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 20px;
+`;
+
 export const Display = styled.div`
   /* display */
   display: flex;
@@ -16,9 +38,18 @@ export const Display = styled.div`
   min-height: 100vh;
 `;
 
-export const Input = styled.input``;
+export const StyledInput = styled.input`
+  padding: 5px;
+`;
 
-export const Label = styled.label``;
+export const StyledLabel = styled.label`
+  padding-bottom: 5px;
+`;
+
+export const StyledButtonSubmit = styled.button`
+  margin-top: 10px;
+  padding: 5px 0;
+`;
 
 export const Container = styled.main`
   /* display */
