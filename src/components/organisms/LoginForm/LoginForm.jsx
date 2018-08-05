@@ -8,7 +8,7 @@ import {
 import { FormItem } from "components/molecules";
 import { ButtonSubmit } from "components/atoms";
 import { withFormik } from "formik";
-import { validateLogin, catchGqlErrors } from "util/functions";
+import { validateSignup, catchGqlErrors } from "util/functions";
 import { withRouter } from "react-router-dom";
 import { signIn } from "util/loginUtils";
 import { withApollo } from "react-apollo";
@@ -57,7 +57,7 @@ const LoginForm = withFormik({
     email: "",
     password: ""
   }),
-  validate: validateLogin,
+  validate: validateSignup,
   handleSubmit: ({ password, email }, { props, setSubmitting, setErrors }) => {
     console.log("submitting");
     props

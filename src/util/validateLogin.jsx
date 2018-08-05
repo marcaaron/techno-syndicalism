@@ -1,4 +1,5 @@
 export default function validateLogin(values, props) {
+  console.log(Object.keys(values));
   const errors = {};
   // If email is not present or badly formatted then return error
   if (!values.email) {

@@ -16,7 +16,10 @@ const UserSubNav = props => (
       to="/home/messages"
       render={<Messages number={props.messages} />}
     />
-    <ListLink to="/login" render={<UserView {...props} />} />
+    <ListLink
+      to={`/users/${props.username}`}
+      render={<UserView {...props} />}
+    />
   </Fragment>
 );
 
