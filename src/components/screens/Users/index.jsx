@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { dateToString, switchPlural } from "util/functions";
+import { USER_BY_USERNAME } from "state/queries";
 
 class Users extends Component {
   render() {
@@ -25,22 +26,7 @@ class Users extends Component {
   }
 }
 
-const USER_BY_ID = gql`
-  query userById($username: String!) {
-    User(username: $username) {
-      id
-      username
-      bio
-      createdAt
-      groups {
-        id
-        name
-      }
-    }
-  }
-`;
-
-export default graphql(USER_BY_ID, {
+export default graphql(USER_BY_USERNAME, {
   options: ({ match }) => ({
     variables: { username: match.params.username }
   }),

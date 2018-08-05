@@ -3,7 +3,9 @@ import PropTypes from "prop-types";
 
 import { Route, Redirect } from "react-router-dom";
 
-const AuthRoute = ({ component: Component, user, ...rest }) => {
+const AuthRoute = ({ component: Component, user, loading, error, ...rest }) => {
+  if (loading) return null;
+  if (error) return null;
   return (
     <Route
       {...rest}

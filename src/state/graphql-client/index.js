@@ -21,37 +21,31 @@ const client = new ApolloClient({
   },
   clientState: {
     defaults: {
-      userInfo: {
-        __typename: "UserInfo",
-        username: "",
-        imageUrl: "http://placekitten.com/g/50/50",
-        messages: 0,
-        notifications: 0,
-        isAuthenticated: false
-      }
+      // clientInfo: {
+      //   __typename: "ClientInfo",
+      //   token: "",
+      //   id: ""
+      // }
     },
     resolvers: {
       Query: {},
       Mutation: {
-        toggleTestAuth: (
-          _,
-          { username, imageUrl, messages, notifications, isAuthenticated },
-          { cache }
-        ) => {
-          cache.writeData({
-            data: {
-              userInfo: {
-                __typename: "UserInfo",
-                isAuthenticated,
-                username,
-                imageUrl,
-                messages,
-                notifications
-              }
-            }
-          });
-          return null;
-        }
+        // updateClientInfo: (
+        //   _,
+        //   { id, token },
+        //   { cache }
+        // ) => {
+        //   cache.writeData({
+        //     data: {
+        //       clientInfo: {
+        //         __typename: "ClientInfo",
+        //         token,
+        //         id
+        //       }
+        //     }
+        //   });
+        //   return null;
+        // }
         // End Mutation
       }
       // End Resolver

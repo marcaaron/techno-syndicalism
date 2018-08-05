@@ -1,13 +1,58 @@
 import gql from "graphql-tag";
 
-export const GET_TEST_AUTH = gql`
-  query getAuthUser {
-    userInfo @client {
-      isAuthenticated
+export const GET_CURRENT_USER = gql`
+  query {
+    clientInfo @client {
+      id
+      token
+    }
+  }
+`;
+
+export const FETCH_GROUPS = gql`
+  query fetchGroups {
+    allGroups {
+      id
+      name
+      slug
+    }
+  }
+`;
+
+export const GET_GROUP = gql`
+  query groupBySlug($slug: String!) {
+    Group(slug: $slug) {
+      id
+      name
+      users {
+        id
+        username
+      }
+    }
+  }
+`;
+
+export const GET_USER = gql`
+  query getUser {
+    user {
+      id
       username
       imageUrl
-      messages
-      notifications
+    }
+  }
+`;
+
+export const USER_BY_USERNAME = gql`
+  query userByUserName($username: String!) {
+    User(username: $username) {
+      id
+      username
+      bio
+      createdAt
+      groups {
+        id
+        name
+      }
     }
   }
 `;
