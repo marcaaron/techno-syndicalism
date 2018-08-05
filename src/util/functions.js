@@ -23,4 +23,5 @@ export function dateToString(createdAt) {
 }
 
 export { default as validateSignup } from "./validateSignup";
+export { default as validateLogin } from "./validateLogin";
 export { default as catchGqlErrors } from "./catchGqlErrors";

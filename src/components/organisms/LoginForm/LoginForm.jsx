@@ -1,63 +1,79 @@
-import React, { Component } from "react";
-import { StyledForm, StyledLink, StyledFormText } from "styles";
+import React from "react";
+import {
+  StyledForm,
+  StyledLink,
+  StyledFormText,
+  StyledFormError
+} from "styles";
 import { FormItem } from "components/molecules";
 import { ButtonSubmit } from "components/atoms";
+import { withFormik } from "formik";
+import { validateLogin, catchGqlErrors } from "util/functions";
 import { withRouter } from "react-router-dom";
 import { signIn } from "util/loginUtils";
 import { withApollo } from "react-apollo";
 
-class LoginForm extends Component {
-  state = {
+const InnerForm = ({
+  values,
+  errors,
+  touched,
+  handleChange,
+  handleSubmit,
+  handleBlur,
+  isSubmitting
+}) => {
+  return (
+    <StyledForm key="login_form" onSubmit={handleSubmit}>
+      <FormItem
+        labelText="Email: "
+        value={values.email}
+        name="email"
+        type="email"
+        onBlur={handleBlur}
+        handleChange={handleChange}
+      />
+      {touched.email &&
+        errors.email && <StyledFormError>{errors.email}</StyledFormError>}
+      <FormItem
+        labelText="Password: "
+        value={values.password}
+        name="password"
+        type="password"
+        onBlur={handleBlur}
+        handleChange={handleChange}
+      />
+      {touched.password &&
+        errors.password && <StyledFormError>{errors.password}</StyledFormError>}
+      <ButtonSubmit text="Log In" />
+      <StyledFormText>
+        Don't have an account? <StyledLink to="/signin">Register</StyledLink>
+      </StyledFormText>
+    </StyledForm>
+  );
+};
+
+const LoginForm = withFormik({
+  mapPropsToValues: props => ({
     email: "",
     password: ""
-  };
-
-  handleChange = ({ target }) => {
-    this.setState({ [target.id]: target.value });
-  };
-
-  handleSubmit = e => {
-    e.preventDefault();
-    const { userInfo, toggleTestAuth } = this.props;
-    // const { notifications, imageUrl, messages } = userInfo;
-    const { email, password } = this.state;
-    this.props
+  }),
+  validate: validateLogin,
+  handleSubmit: ({ password, email }, { props, setSubmitting, setErrors }) => {
+    console.log("submitting");
+    props
       .loginUser({
-        variables: { email, password }
+        variables: {
+          email,
+          password
+        }
       })
       .then(data => {
         signIn(data.data.signinUser.token);
-        this.props.client.resetStore();
-        this.props.history.push("/home");
-      });
-  };
-
-  render() {
-    const { handleChange, handleSubmit } = this;
-    const { email, password } = this.state;
-    return (
-      <StyledForm onSubmit={handleSubmit}>
-        <FormItem
-          labelText="Email: "
-          value={email}
-          name="email"
-          type="email"
-          handleChange={handleChange}
-        />
-        <FormItem
-          labelText="Password: "
-          value={password}
-          name="password"
-          type="password"
-          handleChange={handleChange}
-        />
-        <ButtonSubmit text="Log In" />
-        <StyledFormText>
-          Don't have an account? <StyledLink to="/signup">Register</StyledLink>
-        </StyledFormText>
-      </StyledForm>
-    );
+        props.client.resetStore();
+        props.history.push("/home");
+      })
+      .catch(err => setErrors(catchGqlErrors(err)));
   }
-}
+})(InnerForm);
 
 export default withRouter(withApollo(LoginForm));

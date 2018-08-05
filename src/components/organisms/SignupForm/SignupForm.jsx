@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   StyledForm,
   StyledLink,
@@ -22,7 +22,7 @@ const InnerForm = ({
   handleBlur,
   isSubmitting
 }) => (
-  <StyledForm onSubmit={handleSubmit}>
+  <StyledForm key="signup_form" onSubmit={handleSubmit}>
     <FormItem
       labelText="Username: "
       value={values.username}
