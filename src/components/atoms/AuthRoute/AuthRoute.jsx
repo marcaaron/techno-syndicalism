@@ -5,7 +5,7 @@ import { Route, Redirect } from "react-router-dom";
 
 const AuthRoute = ({ component: Component, user, loading, error, ...rest }) => {
   if (loading) return null;
-  if (error) return null;
+  console.log(user);
   return (
     <Route
       {...rest}

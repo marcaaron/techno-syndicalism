@@ -21,7 +21,7 @@ export const FETCH_GROUPS = gql`
 
 export const GET_GROUP = gql`
   query groupBySlug($slug: String!) {
-    Group(slug: $slug) {
+    groupBySlug(slug: $slug) {
       id
       name
       users {
@@ -44,7 +44,7 @@ export const GET_USER = gql`
 
 export const USER_BY_USERNAME = gql`
   query userByUserName($username: String!) {
-    User(username: $username) {
+    userByUsername(username: $username) {
       id
       username
       bio

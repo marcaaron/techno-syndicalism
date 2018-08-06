@@ -8,9 +8,12 @@ class Users extends Component {
   render() {
     if (this.props.loading) return null;
     if (this.props.error) return null;
+    console.log(this.props);
+
     const {
-      User: { username, id, createdAt, bio, groups }
+      userByUsername: { username, id, createdAt, bio, groups }
     } = this.props;
+    console.log(username, id, createdAt, bio, groups);
     return (
       <div>
         <p>username: {username}</p>
@@ -18,8 +21,8 @@ class Users extends Component {
         <p>bio: {bio}</p>
         <p>account created on: {dateToString(createdAt)}</p>
         <p>
-          belongs to workplace{switchPlural(groups.length)}:{" "}
-          {groups.map(({ id, name }) => <span key={id}>{name}</span>)}{" "}
+          belongs to workplace{switchPlural(groups.length) || 0}:{" "}
+          {groups && groups.map(({ id, name }) => <span key={id}>{name}</span>)}{" "}
         </p>
       </div>
     );

@@ -11,7 +11,7 @@ const getHeaders = async () => {
 // Set up Apollo Apollo Client
 const client = new ApolloClient({
   cache,
-  uri: "https://api.graph.cool/simple/v1/cjkbae1k593u7019023n2fxpo",
+  uri: "http://localhost:4000/",
   request: async operation => {
     operation.setContext({
       headers: {

@@ -68,12 +68,12 @@ const LoginForm = withFormik({
         }
       })
       .then(data => {
+        console.log(data);
         const {
           token,
           user: { id }
-        } = data.data.signinUser;
-        console.log(id);
-        signIn(data.data.signinUser.token);
+        } = data.data.login;
+        signIn(token);
         props.client.resetStore();
         props.history.push("/home");
       })

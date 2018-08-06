@@ -29,7 +29,7 @@ export const CREATE_GROUP = gql`
 
 export const LOGIN_USER = gql`
   mutation loginUser($email: String!, $password: String!) {
-    signinUser(email: { email: $email, password: $password }) {
+    login(email: $email, password: $password) {
       token
       user {
         id

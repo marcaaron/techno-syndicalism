@@ -8,7 +8,7 @@ import { NavItemContainer } from "styles";
 const SubNavNoAuth = () => (
   <Fragment>
     <ListLink to="/learn" render={<LearnMore />} />
-    <ListLink to="/locations" render={<Workplaces />} />
+    <ListLink to="/groups" render={<Workplaces />} />
     <ListLink to="/login" render={<Login />} />
   </Fragment>
 );
@@ -22,8 +22,8 @@ const LearnMore = () => (
 
 const Workplaces = () => (
   <NavItemContainer>
-    <Map title="Find My Workplace" />
-    <TextVisibility>Find&nbsp;My&nbsp;Workplace</TextVisibility>
+    <Map title="Find My Group" />
+    <TextVisibility>Find&nbsp;My&nbsp;Group</TextVisibility>
   </NavItemContainer>
 );
 

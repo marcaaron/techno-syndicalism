@@ -39,12 +39,12 @@ class Group extends Component {
   renderJoinButtons = () => {
     if (this.props.user) {
       const {
-        data: { Group },
+        data: { groupBySlug },
         user
       } = this.props;
       return (
         <Fragment>
-          {!hasUser(Group.users, user.id) ? (
+          {!hasUser(groupBySlug.users, user.id) ? (
             <button onClick={this.handleJoin}>Join</button>
           ) : (
             <button onClick={this.handleLeave}>Leave</button>
@@ -60,12 +60,11 @@ class Group extends Component {
     console.log(this.props);
     const { loading, error, data } = this.props;
     if (loading || data.loading) return null;
-    if (error || data.error) return null;
-    const { Group } = this.props.data;
-    console.log(Group);
+    const { groupBySlug } = this.props.data;
+    console.log(groupBySlug);
     return (
       <div>
-        <p>Group Name: {Group.name}</p>
+        <p>Group Name: {groupBySlug.name}</p>
         {this.renderJoinButtons()}
       </div>
     );
