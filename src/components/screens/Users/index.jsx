@@ -21,7 +21,7 @@ class Users extends Component {
         <p>bio: {bio}</p>
         <p>account created on: {dateToString(createdAt)}</p>
         <p>
-          belongs to workplace{switchPlural(groups.length) || 0}:{" "}
+          belongs to workplace{switchPlural(groups.length)}:{" "}
           {groups && groups.map(({ id, name }) => <span key={id}>{name}</span>)}{" "}
         </p>
       </div>

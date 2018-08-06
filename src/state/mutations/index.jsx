@@ -8,21 +8,27 @@ export const UPDATE_CLIENT_INFO = gql`
 
 export const SIGNUP_USER = gql`
   mutation signupUser($username: String!, $email: String!, $password: String!) {
-    createUser(
-      username: $username
-      authProvider: { email: { email: $email, password: $password } }
-    ) {
-      id
+    signup(username: $username, email: $email, password: $password) {
+      user {
+        id
+      }
+      token
     }
   }
 `;
 
 export const CREATE_GROUP = gql`
-  mutation createGroup($name: String!, $slug: String!) {
-    createGroup(name: $name, slug: $slug) {
+  mutation createGroup($name: String!, $slug: String!, $userId: ID!) {
+    createGroup(name: $name, slug: $slug, userId: $userId) {
       id
       name
       slug
+      users {
+        username
+      }
+      owner {
+        username
+      }
     }
   }
 `;
@@ -41,30 +47,80 @@ export const LOGIN_USER = gql`
   }
 `;
 
-export const CONNECT_USER_TO_GROUP = gql`
-  mutation connectUserToGroup($usersUserId: ID!, $groupsGroupId: ID!) {
-    addToGroupOnUser(usersUserId: $usersUserId, groupsGroupId: $groupsGroupId) {
-      groupsGroup {
-        updatedAt
-      }
-      usersUser {
-        updatedAt
+export const JOIN_GROUP = gql`
+  mutation JoinGroup($userId: ID!, $groupId: ID!) {
+    joinGroup(userId: $userId, groupId: $groupId) {
+      id
+      users {
+        id
+        username
       }
     }
   }
 `;
 
-export const DISCONNECT_USER_FROM_GROUP = gql`
-  mutation disconnectUserFromGroup($usersUserId: ID!, $groupsGroupId: ID!) {
-    removeFromGroupOnUser(
-      usersUserId: $usersUserId
-      groupsGroupId: $groupsGroupId
-    ) {
-      groupsGroup {
-        updatedAt
+export const LEAVE_GROUP = gql`
+  mutation leaveGroup($userId: ID!, $groupId: ID!) {
+    leaveGroup(userId: $userId, groupId: $groupId) {
+      id
+      users {
+        id
+        username
       }
-      usersUser {
-        updatedAt
+    }
+  }
+`;
+
+export const CREATE_POST = gql`
+  mutation createPost(
+    $title: String!
+    $content: String!
+    $userId: ID!
+    $groupId: ID!
+  ) {
+    createPost(
+      title: $title
+      content: $content
+      userId: $userId
+      groupId: $groupId
+    ) {
+      id
+      title
+      content
+      user {
+        username
+      }
+      group {
+        name
+      }
+    }
+  }
+`;
+
+export const CREATE_COMMENT = gql`
+  mutation createComment(
+    $postId: ID!
+    $userId: ID!
+    $content: String!
+    $replyToCommentId: ID
+  ) {
+    createComment(
+      userId: $userId
+      postId: $postId
+      content: $content
+      replyToCommentId: $replyToCommentId
+    ) {
+      id
+      content
+      post {
+        content
+      }
+      user {
+        username
+      }
+      replyToComment {
+        id
+        content
       }
     }
   }

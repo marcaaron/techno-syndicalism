@@ -92,20 +92,11 @@ const SignupForm = withFormik({
           password
         }
       })
-      .then(() => {
-        props
-          .loginUser({
-            variables: {
-              email,
-              password
-            }
-          })
-          .then(data => {
-            signIn(data.data.signinUser.token);
-            props.client.resetStore();
-            props.history.push("/home");
-          })
-          .catch(err => setErrors(catchGqlErrors(err)));
+      .then(data => {
+        console.log(data);
+        signIn(data.data.signup.token);
+        props.client.resetStore();
+        props.history.push("/home");
       })
       .catch(err => setErrors(catchGqlErrors(err)));
   }

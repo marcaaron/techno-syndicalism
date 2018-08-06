@@ -4,14 +4,14 @@ import { hasUser } from "util/functions";
 class Group extends Component {
   handleJoin = () => {
     const {
-      data: { Group },
-      connectUserToGroup,
-      user
+      getGroup: { groupBySlug },
+      joinGroup,
+      getUser: { user }
     } = this.props;
-    connectUserToGroup({
+    joinGroup({
       variables: {
-        groupsGroupId: Group.id,
-        usersUserId: user.id
+        groupId: groupBySlug.id,
+        userId: user.id
       },
       refetchQueries: ["groupBySlug"]
     })
@@ -21,14 +21,14 @@ class Group extends Component {
 
   handleLeave = () => {
     const {
-      data: { Group },
-      disconnectUserFromGroup,
-      user
+      getGroup: { groupBySlug },
+      leaveGroup,
+      getUser: { user }
     } = this.props;
-    disconnectUserFromGroup({
+    leaveGroup({
       variables: {
-        groupsGroupId: Group.id,
-        usersUserId: user.id
+        groupId: groupBySlug.id,
+        userId: user.id
       },
       refetchQueries: ["groupBySlug"]
     })
@@ -37,10 +37,12 @@ class Group extends Component {
   };
 
   renderJoinButtons = () => {
-    if (this.props.user) {
+    const {
+      getUser: { user }
+    } = this.props;
+    if (user) {
       const {
-        data: { groupBySlug },
-        user
+        getGroup: { groupBySlug }
       } = this.props;
       return (
         <Fragment>
@@ -57,11 +59,10 @@ class Group extends Component {
   };
 
   render() {
-    console.log(this.props);
-    const { loading, error, data } = this.props;
-    if (loading || data.loading) return null;
-    const { groupBySlug } = this.props.data;
-    console.log(groupBySlug);
+    const { getUser, getGroup } = this.props;
+    if (getUser.loading || getGroup.loading) return null;
+    const { user } = getUser;
+    const { groupBySlug } = getGroup;
     return (
       <div>
         <p>Group Name: {groupBySlug.name}</p>

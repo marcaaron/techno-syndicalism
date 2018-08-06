@@ -1,7 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { AuthRoute } from "components/atoms";
-
 import * as Screens from "components/screens";
 
 const Routes = () => (
