@@ -35,7 +35,7 @@ const InnerForm = ({
   );
 };
 
-const CreateGroupForm = withFormik({
+const UpdateGroupForm = withFormik({
   mapPropsToValues: props => ({
     name: ""
   }),
@@ -58,4 +58,4 @@ const CreateGroupForm = withFormik({
   }
 })(InnerForm);
 
-export default withRouter(withApollo(CreateGroupForm));
+export default withRouter(withApollo(UpdateGroupForm));

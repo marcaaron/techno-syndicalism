@@ -93,9 +93,7 @@ const SignupForm = withFormik({
         }
       })
       .then(data => {
-        console.log(data);
         signIn(data.data.signup.token);
-        props.client.resetStore();
         props.history.push("/home");
       })
       .catch(err => setErrors(catchGqlErrors(err)));

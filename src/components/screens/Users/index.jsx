@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import gql from "graphql-tag";
 import { graphql } from "react-apollo";
 import { dateToString, switchPlural } from "util/functions";
 import { USER_BY_USERNAME } from "state/queries";

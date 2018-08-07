@@ -12,6 +12,7 @@ import { validateSignup, catchGqlErrors } from "util/functions";
 import { withRouter } from "react-router-dom";
 import { signIn } from "util/loginUtils";
 import { withApollo } from "react-apollo";
+import { GET_USER } from "state/queries";
 
 const InnerForm = ({
   values,
@@ -46,7 +47,7 @@ const InnerForm = ({
         errors.password && <StyledFormError>{errors.password}</StyledFormError>}
       <ButtonSubmit text="Log In" />
       <StyledFormText>
-        Don't have an account? <StyledLink to="/signin">Register</StyledLink>
+        Don't have an account? <StyledLink to="/signup">Register</StyledLink>
       </StyledFormText>
     </StyledForm>
   );
@@ -59,7 +60,6 @@ const LoginForm = withFormik({
   }),
   validate: validateSignup,
   handleSubmit: ({ password, email }, { props, setSubmitting, setErrors }) => {
-    console.log("submitting");
     props
       .loginUser({
         variables: {
@@ -68,14 +68,11 @@ const LoginForm = withFormik({
         }
       })
       .then(data => {
-        console.log(data);
-        const {
-          token,
-          user: { id }
-        } = data.data.login;
+        const { token } = data.data.login;
         signIn(token);
-        props.client.resetStore();
-        props.history.push("/home");
+        props.client.resetStore().then(() => {
+          props.history.push("/home");
+        });
       })
       .catch(err => setErrors(catchGqlErrors(err)));
   }

@@ -4,7 +4,6 @@ import LeftNav from "./LeftNav";
 import RightNav from "./RightNav";
 
 const NavBar = ({ user }) => {
-  console.log(user);
   return (
     <StyledNavigation>
       <LeftNav appName="Wobbly" />

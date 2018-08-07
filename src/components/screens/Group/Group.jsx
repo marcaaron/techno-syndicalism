@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { hasUser } from "util/functions";
+import { User } from "components/molecules";
 
 class Group extends Component {
   handleJoin = () => {
@@ -13,10 +14,24 @@ class Group extends Component {
         groupId: groupBySlug.id,
         userId: user.id
       },
+      optimisticResponse: {
+        __typename: "Mutation",
+        joinGroup: {
+          __typename: "Group",
+          id: groupBySlug.id,
+          users: [
+            {
+              id: user.id,
+              username: user.username,
+              __typename: "User"
+            }
+          ]
+        }
+      },
       refetchQueries: ["groupBySlug"]
     })
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+      .then(data => {})
+      .catch(err => {});
   };
 
   handleLeave = () => {
@@ -30,10 +45,18 @@ class Group extends Component {
         groupId: groupBySlug.id,
         userId: user.id
       },
+      optimisticResponse: {
+        __typename: "Mutation",
+        leaveGroup: {
+          __typename: "Group",
+          id: groupBySlug.id,
+          users: []
+        }
+      },
       refetchQueries: ["groupBySlug"]
     })
-      .then(data => console.log(data))
-      .catch(err => console.log(err));
+      .then(data => {})
+      .catch(err => {});
   };
 
   renderJoinButtons = () => {
@@ -61,11 +84,12 @@ class Group extends Component {
   render() {
     const { getUser, getGroup } = this.props;
     if (getUser.loading || getGroup.loading) return null;
-    const { user } = getUser;
     const { groupBySlug } = getGroup;
     return (
       <div>
         <p>Group Name: {groupBySlug.name}</p>
+        <strong>Users: </strong>
+        <ul>{groupBySlug.users.map(user => <User user={user} />)}</ul>
         {this.renderJoinButtons()}
       </div>
     );

@@ -9,4 +9,5 @@ export { default as Thread } from "./Thread";
 export { default as Groups } from "./Groups";
 export { default as Users } from "./Users";
 export { default as CreateGroup } from "./CreateGroup";
+export { default as UpdateGroup } from "./UpdateGroup";
 export { default as Group } from "./Group";

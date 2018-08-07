@@ -1,7 +1,12 @@
 import React, { Fragment } from "react";
 import PropTypes from "prop-types";
 
-import { Image, ListLink, TextVisibility } from "components/atoms";
+import {
+  Image,
+  ListLink,
+  TextVisibility,
+  ButtonSignout
+} from "components/atoms";
 import { Messages, Notifications } from "components/atoms/Icons";
 
 import { NavItemContainer } from "styles";
@@ -20,6 +25,7 @@ const UserSubNav = props => (
       to={`/users/${props.username}`}
       render={<UserView {...props} />}
     />
+    <ButtonSignout />
   </Fragment>
 );
 

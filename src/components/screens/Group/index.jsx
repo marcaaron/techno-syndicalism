@@ -1,6 +1,5 @@
 import Group from "./Group";
 import { graphql, compose } from "react-apollo";
-import gql from "graphql-tag";
 import { GET_GROUP, GET_USER } from "state/queries";
 import { JOIN_GROUP, LEAVE_GROUP } from "state/mutations";
 

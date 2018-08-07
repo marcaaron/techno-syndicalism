@@ -11,6 +11,7 @@ export default class FormItem extends Component {
           onChange={handleChange}
           id={name}
           value={value}
+          autocomplete="on"
         />
       </StyledFormItem>
     );

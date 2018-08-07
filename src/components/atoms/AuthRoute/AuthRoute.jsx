@@ -5,11 +5,12 @@ import { Route, Redirect } from "react-router-dom";
 
 const AuthRoute = ({ component: Component, user, loading, error, ...rest }) => {
   if (loading) return null;
-  console.log(user);
   return (
     <Route
       {...rest}
-      render={props => (user ? <Component {...props} /> : <Redirect to="/" />)}
+      render={props =>
+        user ? <Component user={user} {...props} /> : <Redirect to="/" />
+      }
     />
   );
 };

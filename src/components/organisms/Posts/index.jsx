@@ -1,35 +1,17 @@
-import React, { Fragment } from "react";
-import { Post } from "components/molecules";
+import React from "react";
 import { Query } from "react-apollo";
-import { gql } from "apollo-boost";
+import Posts from "./Posts";
+import { GET_POSTS } from "state/queries";
 
-const FETCH_POSTS = gql`
-  query fetchPosts {
-    allPosts {
-      id
-      title
-      content
-      createdAt
-      user {
-        id
-        username
-      }
-    }
-  }
-`;
-
-const Posts = () => (
-  <Query query={FETCH_POSTS}>
+const PostsQuery = () => (
+  <Query query={GET_POSTS}>
     {({ loading, error, data: { allPosts } }) => {
       if (loading) return null;
       if (error) return null;
-      return (
-        <Fragment>
-          {allPosts.map(post => <Post {...post} key={post.id} />)}
-        </Fragment>
-      );
+      console.log(allPosts);
+      return <Posts allPosts={allPosts} />;
     }}
   </Query>
 );
 
-export default Posts;
+export default PostsQuery;

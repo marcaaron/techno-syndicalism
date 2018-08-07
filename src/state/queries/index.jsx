@@ -9,12 +9,59 @@ export const GET_CURRENT_USER = gql`
   }
 `;
 
-export const FETCH_GROUPS = gql`
+export const GET_GROUPS = gql`
   query fetchGroups {
     allGroups {
       id
       name
       slug
+    }
+  }
+`;
+
+export const GET_POSTS = gql`
+  query allPosts {
+    allPosts {
+      id
+      title
+      content
+      createdAt
+      user {
+        id
+        username
+      }
+      comments {
+        id
+        content
+        createdAt
+        user {
+          username
+        }
+      }
+    }
+  }
+`;
+
+export const POST_BY_ID = gql`
+  query postById($id: ID!) {
+    postById(id: $id) {
+      id
+      title
+      content
+      createdAt
+      user {
+        id
+        username
+      }
+      comments {
+        id
+        content
+        createdAt
+        user {
+          id
+          username
+        }
+      }
     }
   }
 `;

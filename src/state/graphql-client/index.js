@@ -18,38 +18,6 @@ const client = new ApolloClient({
         authorization: await getHeaders()
       }
     });
-  },
-  clientState: {
-    defaults: {
-      // clientInfo: {
-      //   __typename: "ClientInfo",
-      //   token: "",
-      //   id: ""
-      // }
-    },
-    resolvers: {
-      Query: {},
-      Mutation: {
-        // updateClientInfo: (
-        //   _,
-        //   { id, token },
-        //   { cache }
-        // ) => {
-        //   cache.writeData({
-        //     data: {
-        //       clientInfo: {
-        //         __typename: "ClientInfo",
-        //         token,
-        //         id
-        //       }
-        //     }
-        //   });
-        //   return null;
-        // }
-        // End Mutation
-      }
-      // End Resolver
-    }
   }
 });
 
