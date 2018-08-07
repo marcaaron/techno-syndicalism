@@ -6,13 +6,22 @@ export default class FormItem extends Component {
     return (
       <StyledFormItem>
         <StyledLabel htmlFor={name}>{labelText}</StyledLabel>
-        <StyledInput
-          type={type}
-          onChange={handleChange}
-          id={name}
-          value={value}
-          autocomplete="on"
-        />
+        {type === "textarea" ? (
+          <textarea
+            type="textarea"
+            onChange={handleChange}
+            id={name}
+            value={value}
+          />
+        ) : (
+          <StyledInput
+            type={type}
+            onChange={handleChange}
+            id={name}
+            value={value}
+            autocomplete="on"
+          />
+        )}
       </StyledFormItem>
     );
   }

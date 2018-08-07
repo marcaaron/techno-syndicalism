@@ -16,7 +16,7 @@ export function consoleState(state) {
   }
 }
 
-export const switchPlural = n => (n > 1 ? "s" : "");
+export const switchPlural = n => (n !== 1 ? "s" : "");
 
 export function dateToString(createdAt) {
   return new Date(createdAt).toLocaleDateString();

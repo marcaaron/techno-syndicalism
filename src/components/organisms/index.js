@@ -7,3 +7,5 @@ export { default as SignupForm } from "./SignupForm";
 export { default as LoginForm } from "./LoginForm";
 export { default as CreateGroupForm } from "./CreateGroupForm";
 export { default as UpdateGroupForm } from "./UpdateGroupForm";
+export { default as CreatePostForm } from "./CreatePostForm";
+export { default as PostsWithTitles } from "./PostsWithTitles";

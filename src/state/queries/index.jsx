@@ -75,6 +75,18 @@ export const GET_GROUP = gql`
         id
         username
       }
+      posts {
+        id
+        title
+        createdAt
+        user {
+          username
+        }
+        comments {
+          id
+        }
+        commentCount
+      }
     }
   }
 `;

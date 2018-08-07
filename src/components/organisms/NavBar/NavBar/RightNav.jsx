@@ -10,6 +10,7 @@ const RightNav = ({ user }) => {
   return (
     <StyledList>
       <ListLink to="/home" render={<HomeView />} />
+      <ListLink to="/groups" render={<Groups />} />
       {user ? <SubNavWithAuth {...user} /> : <SubNavNoAuth />}
     </StyledList>
   );
@@ -19,7 +20,6 @@ const HomeView = () => (
   <NavItemContainer>
     <Home />
     <TextVisibility>Home</TextVisibility>
-    <ListLink to="/groups" render={<Groups />} />
   </NavItemContainer>
 );
 

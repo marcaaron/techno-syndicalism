@@ -1,6 +1,12 @@
 import React from "react";
+import { StyledLink } from "styles";
 
-const User = ({ user }) => {
-  return <li>{user.username}</li>;
+const User = ({ user: { username } }) => {
+  return (
+    <StyledLink to={`/users/${username}`}>
+      {username}
+      <br />
+    </StyledLink>
+  );
 };
 export default User;

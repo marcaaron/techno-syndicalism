@@ -2,6 +2,7 @@ import React, { Component, Fragment } from "react";
 import { hasUser } from "util/functions";
 import { User } from "components/molecules";
 import { StyledLink } from "styles";
+import { PostsWithTitles } from "components/organisms";
 
 class Group extends Component {
   handleJoin = () => {
@@ -87,11 +88,16 @@ class Group extends Component {
     if (getUser.loading || getGroup.loading) return null;
     const { groupBySlug } = getGroup;
     const { user } = getUser;
+    console.log(groupBySlug);
     return (
       <div>
         <p>Group Name: {groupBySlug.name}</p>
         <strong>Users: </strong>
-        <ul>{groupBySlug.users.map(user => <User user={user} />)}</ul>
+        <ul>
+          {groupBySlug.users.map(user => (
+            <User key={`userlist_${user.id}`} user={user} />
+          ))}
+        </ul>
         {this.renderJoinButtons()}
         {hasUser(groupBySlug.users, user.id) && (
           <div>
@@ -100,6 +106,8 @@ class Group extends Component {
             </StyledLink>
           </div>
         )}
+        <h3>Posts in this Group: </h3>
+        {<PostsWithTitles posts={groupBySlug.posts} />}
       </div>
     );
   }
