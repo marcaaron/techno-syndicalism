@@ -11,3 +11,4 @@ export { default as Users } from "./Users";
 export { default as CreateGroup } from "./CreateGroup";
 export { default as UpdateGroup } from "./UpdateGroup";
 export { default as Group } from "./Group";
+export { default as CreatePost } from "./CreatePost";

@@ -1,6 +1,7 @@
 import React, { Component, Fragment } from "react";
 import { hasUser } from "util/functions";
 import { User } from "components/molecules";
+import { StyledLink } from "styles";
 
 class Group extends Component {
   handleJoin = () => {
@@ -85,12 +86,20 @@ class Group extends Component {
     const { getUser, getGroup } = this.props;
     if (getUser.loading || getGroup.loading) return null;
     const { groupBySlug } = getGroup;
+    const { user } = getUser;
     return (
       <div>
         <p>Group Name: {groupBySlug.name}</p>
         <strong>Users: </strong>
         <ul>{groupBySlug.users.map(user => <User user={user} />)}</ul>
         {this.renderJoinButtons()}
+        {hasUser(groupBySlug.users, user.id) && (
+          <div>
+            <StyledLink to={`/create-post/${groupBySlug.id}`}>
+              Create a New Post in this Group
+            </StyledLink>
+          </div>
+        )}
       </div>
     );
   }
