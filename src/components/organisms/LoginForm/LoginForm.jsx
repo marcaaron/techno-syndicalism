@@ -12,7 +12,6 @@ import { validateSignup, catchGqlErrors } from "util/functions";
 import { withRouter } from "react-router-dom";
 import { signIn } from "util/loginUtils";
 import { withApollo } from "react-apollo";
-import { GET_USER } from "state/queries";
 
 const InnerForm = ({
   values,

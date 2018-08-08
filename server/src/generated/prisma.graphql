@@ -1,0 +1,3224 @@
+# source: https://wobbly-postgres.herokuapp.com/heroku-wobbly/dev
+# timestamp: Mon Aug 06 2018 22:13:30 GMT-0700 (PDT)
+
+type AccessGroup implements Node {
+  id: ID!
+  operation: AccessGroupOperation!
+  members(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  group(where: GroupWhereInput): Group
+}
+
+"""A connection to a list of items."""
+type AccessGroupConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [AccessGroupEdge]!
+  aggregate: AggregateAccessGroup!
+}
+
+input AccessGroupCreateInput {
+  operation: AccessGroupOperation!
+  members: UserCreateManyWithoutAccessGroupsInput
+  group: GroupCreateOneWithoutAccessGroupsInput
+}
+
+input AccessGroupCreateManyWithoutGroupInput {
+  create: [AccessGroupCreateWithoutGroupInput!]
+  connect: [AccessGroupWhereUniqueInput!]
+}
+
+input AccessGroupCreateManyWithoutMembersInput {
+  create: [AccessGroupCreateWithoutMembersInput!]
+  connect: [AccessGroupWhereUniqueInput!]
+}
+
+input AccessGroupCreateWithoutGroupInput {
+  operation: AccessGroupOperation!
+  members: UserCreateManyWithoutAccessGroupsInput
+}
+
+input AccessGroupCreateWithoutMembersInput {
+  operation: AccessGroupOperation!
+  group: GroupCreateOneWithoutAccessGroupsInput
+}
+
+"""An edge in a connection."""
+type AccessGroupEdge {
+  """The item at the end of the edge."""
+  node: AccessGroup!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum AccessGroupOperation {
+  READ
+  UPDATE
+  DELETE
+}
+
+enum AccessGroupOrderByInput {
+  id_ASC
+  id_DESC
+  operation_ASC
+  operation_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  createdAt_ASC
+  createdAt_DESC
+}
+
+type AccessGroupPreviousValues {
+  id: ID!
+  operation: AccessGroupOperation!
+}
+
+type AccessGroupSubscriptionPayload {
+  mutation: MutationType!
+  node: AccessGroup
+  updatedFields: [String!]
+  previousValues: AccessGroupPreviousValues
+}
+
+input AccessGroupSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AccessGroupSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AccessGroupSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AccessGroupSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: AccessGroupWhereInput
+}
+
+input AccessGroupUpdateInput {
+  operation: AccessGroupOperation
+  members: UserUpdateManyWithoutAccessGroupsInput
+  group: GroupUpdateOneWithoutAccessGroupsInput
+}
+
+input AccessGroupUpdateManyWithoutGroupInput {
+  create: [AccessGroupCreateWithoutGroupInput!]
+  connect: [AccessGroupWhereUniqueInput!]
+  disconnect: [AccessGroupWhereUniqueInput!]
+  delete: [AccessGroupWhereUniqueInput!]
+  update: [AccessGroupUpdateWithWhereUniqueWithoutGroupInput!]
+  upsert: [AccessGroupUpsertWithWhereUniqueWithoutGroupInput!]
+}
+
+input AccessGroupUpdateManyWithoutMembersInput {
+  create: [AccessGroupCreateWithoutMembersInput!]
+  connect: [AccessGroupWhereUniqueInput!]
+  disconnect: [AccessGroupWhereUniqueInput!]
+  delete: [AccessGroupWhereUniqueInput!]
+  update: [AccessGroupUpdateWithWhereUniqueWithoutMembersInput!]
+  upsert: [AccessGroupUpsertWithWhereUniqueWithoutMembersInput!]
+}
+
+input AccessGroupUpdateWithoutGroupDataInput {
+  operation: AccessGroupOperation
+  members: UserUpdateManyWithoutAccessGroupsInput
+}
+
+input AccessGroupUpdateWithoutMembersDataInput {
+  operation: AccessGroupOperation
+  group: GroupUpdateOneWithoutAccessGroupsInput
+}
+
+input AccessGroupUpdateWithWhereUniqueWithoutGroupInput {
+  where: AccessGroupWhereUniqueInput!
+  data: AccessGroupUpdateWithoutGroupDataInput!
+}
+
+input AccessGroupUpdateWithWhereUniqueWithoutMembersInput {
+  where: AccessGroupWhereUniqueInput!
+  data: AccessGroupUpdateWithoutMembersDataInput!
+}
+
+input AccessGroupUpsertWithWhereUniqueWithoutGroupInput {
+  where: AccessGroupWhereUniqueInput!
+  update: AccessGroupUpdateWithoutGroupDataInput!
+  create: AccessGroupCreateWithoutGroupInput!
+}
+
+input AccessGroupUpsertWithWhereUniqueWithoutMembersInput {
+  where: AccessGroupWhereUniqueInput!
+  update: AccessGroupUpdateWithoutMembersDataInput!
+  create: AccessGroupCreateWithoutMembersInput!
+}
+
+input AccessGroupWhereInput {
+  """Logical AND on all given filters."""
+  AND: [AccessGroupWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [AccessGroupWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [AccessGroupWhereInput!]
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  operation: AccessGroupOperation
+
+  """All values that are not equal to given value."""
+  operation_not: AccessGroupOperation
+
+  """All values that are contained in given list."""
+  operation_in: [AccessGroupOperation!]
+
+  """All values that are not contained in given list."""
+  operation_not_in: [AccessGroupOperation!]
+  members_every: UserWhereInput
+  members_some: UserWhereInput
+  members_none: UserWhereInput
+  group: GroupWhereInput
+}
+
+input AccessGroupWhereUniqueInput {
+  id: ID
+}
+
+type AggregateAccessGroup {
+  count: Int!
+}
+
+type AggregateComment {
+  count: Int!
+}
+
+type AggregateFile {
+  count: Int!
+}
+
+type AggregateGroup {
+  count: Int!
+}
+
+type AggregateKeyword {
+  count: Int!
+}
+
+type AggregatePost {
+  count: Int!
+}
+
+type AggregateUser {
+  count: Int!
+}
+
+type BatchPayload {
+  """The number of nodes that have been affected by the Batch operation."""
+  count: Long!
+}
+
+type Comment implements Node {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  content: String!
+  replyToComment(where: CommentWhereInput): Comment
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+  post(where: PostWhereInput): Post!
+  user(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type CommentConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [CommentEdge]!
+  aggregate: AggregateComment!
+}
+
+input CommentCreateInput {
+  content: String!
+  replyToComment: CommentCreateOneWithoutCommentsInput
+  comments: CommentCreateManyWithoutReplyToCommentInput
+  post: PostCreateOneWithoutCommentsInput!
+  user: UserCreateOneWithoutCommentsInput!
+}
+
+input CommentCreateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateManyWithoutReplyToCommentInput {
+  create: [CommentCreateWithoutReplyToCommentInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateManyWithoutUserInput {
+  create: [CommentCreateWithoutUserInput!]
+  connect: [CommentWhereUniqueInput!]
+}
+
+input CommentCreateOneWithoutCommentsInput {
+  create: CommentCreateWithoutCommentsInput
+  connect: CommentWhereUniqueInput
+}
+
+input CommentCreateWithoutCommentsInput {
+  content: String!
+  replyToComment: CommentCreateOneWithoutCommentsInput
+  post: PostCreateOneWithoutCommentsInput!
+  user: UserCreateOneWithoutCommentsInput!
+}
+
+input CommentCreateWithoutPostInput {
+  content: String!
+  replyToComment: CommentCreateOneWithoutCommentsInput
+  comments: CommentCreateManyWithoutReplyToCommentInput
+  user: UserCreateOneWithoutCommentsInput!
+}
+
+input CommentCreateWithoutReplyToCommentInput {
+  content: String!
+  comments: CommentCreateManyWithoutReplyToCommentInput
+  post: PostCreateOneWithoutCommentsInput!
+  user: UserCreateOneWithoutCommentsInput!
+}
+
+input CommentCreateWithoutUserInput {
+  content: String!
+  replyToComment: CommentCreateOneWithoutCommentsInput
+  comments: CommentCreateManyWithoutReplyToCommentInput
+  post: PostCreateOneWithoutCommentsInput!
+}
+
+"""An edge in a connection."""
+type CommentEdge {
+  """The item at the end of the edge."""
+  node: Comment!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum CommentOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  content_ASC
+  content_DESC
+}
+
+type CommentPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  content: String!
+}
+
+type CommentSubscriptionPayload {
+  mutation: MutationType!
+  node: Comment
+  updatedFields: [String!]
+  previousValues: CommentPreviousValues
+}
+
+input CommentSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CommentSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CommentSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CommentSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: CommentWhereInput
+}
+
+input CommentUpdateInput {
+  content: String
+  replyToComment: CommentUpdateOneWithoutCommentsInput
+  comments: CommentUpdateManyWithoutReplyToCommentInput
+  post: PostUpdateOneWithoutCommentsInput
+  user: UserUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateManyWithoutPostInput {
+  create: [CommentCreateWithoutPostInput!]
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  delete: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutPostInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutPostInput!]
+}
+
+input CommentUpdateManyWithoutReplyToCommentInput {
+  create: [CommentCreateWithoutReplyToCommentInput!]
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  delete: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutReplyToCommentInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutReplyToCommentInput!]
+}
+
+input CommentUpdateManyWithoutUserInput {
+  create: [CommentCreateWithoutUserInput!]
+  connect: [CommentWhereUniqueInput!]
+  disconnect: [CommentWhereUniqueInput!]
+  delete: [CommentWhereUniqueInput!]
+  update: [CommentUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [CommentUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input CommentUpdateOneWithoutCommentsInput {
+  create: CommentCreateWithoutCommentsInput
+  connect: CommentWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: CommentUpdateWithoutCommentsDataInput
+  upsert: CommentUpsertWithoutCommentsInput
+}
+
+input CommentUpdateWithoutCommentsDataInput {
+  content: String
+  replyToComment: CommentUpdateOneWithoutCommentsInput
+  post: PostUpdateOneWithoutCommentsInput
+  user: UserUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateWithoutPostDataInput {
+  content: String
+  replyToComment: CommentUpdateOneWithoutCommentsInput
+  comments: CommentUpdateManyWithoutReplyToCommentInput
+  user: UserUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateWithoutReplyToCommentDataInput {
+  content: String
+  comments: CommentUpdateManyWithoutReplyToCommentInput
+  post: PostUpdateOneWithoutCommentsInput
+  user: UserUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateWithoutUserDataInput {
+  content: String
+  replyToComment: CommentUpdateOneWithoutCommentsInput
+  comments: CommentUpdateManyWithoutReplyToCommentInput
+  post: PostUpdateOneWithoutCommentsInput
+}
+
+input CommentUpdateWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutPostDataInput!
+}
+
+input CommentUpdateWithWhereUniqueWithoutReplyToCommentInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutReplyToCommentDataInput!
+}
+
+input CommentUpdateWithWhereUniqueWithoutUserInput {
+  where: CommentWhereUniqueInput!
+  data: CommentUpdateWithoutUserDataInput!
+}
+
+input CommentUpsertWithoutCommentsInput {
+  update: CommentUpdateWithoutCommentsDataInput!
+  create: CommentCreateWithoutCommentsInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutPostInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutPostDataInput!
+  create: CommentCreateWithoutPostInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutReplyToCommentInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutReplyToCommentDataInput!
+  create: CommentCreateWithoutReplyToCommentInput!
+}
+
+input CommentUpsertWithWhereUniqueWithoutUserInput {
+  where: CommentWhereUniqueInput!
+  update: CommentUpdateWithoutUserDataInput!
+  create: CommentCreateWithoutUserInput!
+}
+
+input CommentWhereInput {
+  """Logical AND on all given filters."""
+  AND: [CommentWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [CommentWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [CommentWhereInput!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  content: String
+
+  """All values that are not equal to given value."""
+  content_not: String
+
+  """All values that are contained in given list."""
+  content_in: [String!]
+
+  """All values that are not contained in given list."""
+  content_not_in: [String!]
+
+  """All values less than the given value."""
+  content_lt: String
+
+  """All values less than or equal the given value."""
+  content_lte: String
+
+  """All values greater than the given value."""
+  content_gt: String
+
+  """All values greater than or equal the given value."""
+  content_gte: String
+
+  """All values containing the given string."""
+  content_contains: String
+
+  """All values not containing the given string."""
+  content_not_contains: String
+
+  """All values starting with the given string."""
+  content_starts_with: String
+
+  """All values not starting with the given string."""
+  content_not_starts_with: String
+
+  """All values ending with the given string."""
+  content_ends_with: String
+
+  """All values not ending with the given string."""
+  content_not_ends_with: String
+  replyToComment: CommentWhereInput
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
+  post: PostWhereInput
+  user: UserWhereInput
+}
+
+input CommentWhereUniqueInput {
+  id: ID
+}
+
+scalar DateTime
+
+type File implements Node {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  secret: String!
+  size: Int!
+  updatedAt: DateTime!
+  url: String!
+}
+
+"""A connection to a list of items."""
+type FileConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [FileEdge]!
+  aggregate: AggregateFile!
+}
+
+input FileCreateInput {
+  contentType: String!
+  name: String!
+  secret: String!
+  size: Int!
+  url: String!
+}
+
+"""An edge in a connection."""
+type FileEdge {
+  """The item at the end of the edge."""
+  node: File!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum FileOrderByInput {
+  contentType_ASC
+  contentType_DESC
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  name_ASC
+  name_DESC
+  secret_ASC
+  secret_DESC
+  size_ASC
+  size_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  url_ASC
+  url_DESC
+}
+
+type FilePreviousValues {
+  contentType: String!
+  createdAt: DateTime!
+  id: ID!
+  name: String!
+  secret: String!
+  size: Int!
+  updatedAt: DateTime!
+  url: String!
+}
+
+type FileSubscriptionPayload {
+  mutation: MutationType!
+  node: File
+  updatedFields: [String!]
+  previousValues: FilePreviousValues
+}
+
+input FileSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FileSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FileSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FileSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: FileWhereInput
+}
+
+input FileUpdateInput {
+  contentType: String
+  name: String
+  secret: String
+  size: Int
+  url: String
+}
+
+input FileWhereInput {
+  """Logical AND on all given filters."""
+  AND: [FileWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [FileWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [FileWhereInput!]
+  contentType: String
+
+  """All values that are not equal to given value."""
+  contentType_not: String
+
+  """All values that are contained in given list."""
+  contentType_in: [String!]
+
+  """All values that are not contained in given list."""
+  contentType_not_in: [String!]
+
+  """All values less than the given value."""
+  contentType_lt: String
+
+  """All values less than or equal the given value."""
+  contentType_lte: String
+
+  """All values greater than the given value."""
+  contentType_gt: String
+
+  """All values greater than or equal the given value."""
+  contentType_gte: String
+
+  """All values containing the given string."""
+  contentType_contains: String
+
+  """All values not containing the given string."""
+  contentType_not_contains: String
+
+  """All values starting with the given string."""
+  contentType_starts_with: String
+
+  """All values not starting with the given string."""
+  contentType_not_starts_with: String
+
+  """All values ending with the given string."""
+  contentType_ends_with: String
+
+  """All values not ending with the given string."""
+  contentType_not_ends_with: String
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  secret: String
+
+  """All values that are not equal to given value."""
+  secret_not: String
+
+  """All values that are contained in given list."""
+  secret_in: [String!]
+
+  """All values that are not contained in given list."""
+  secret_not_in: [String!]
+
+  """All values less than the given value."""
+  secret_lt: String
+
+  """All values less than or equal the given value."""
+  secret_lte: String
+
+  """All values greater than the given value."""
+  secret_gt: String
+
+  """All values greater than or equal the given value."""
+  secret_gte: String
+
+  """All values containing the given string."""
+  secret_contains: String
+
+  """All values not containing the given string."""
+  secret_not_contains: String
+
+  """All values starting with the given string."""
+  secret_starts_with: String
+
+  """All values not starting with the given string."""
+  secret_not_starts_with: String
+
+  """All values ending with the given string."""
+  secret_ends_with: String
+
+  """All values not ending with the given string."""
+  secret_not_ends_with: String
+  size: Int
+
+  """All values that are not equal to given value."""
+  size_not: Int
+
+  """All values that are contained in given list."""
+  size_in: [Int!]
+
+  """All values that are not contained in given list."""
+  size_not_in: [Int!]
+
+  """All values less than the given value."""
+  size_lt: Int
+
+  """All values less than or equal the given value."""
+  size_lte: Int
+
+  """All values greater than the given value."""
+  size_gt: Int
+
+  """All values greater than or equal the given value."""
+  size_gte: Int
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  url: String
+
+  """All values that are not equal to given value."""
+  url_not: String
+
+  """All values that are contained in given list."""
+  url_in: [String!]
+
+  """All values that are not contained in given list."""
+  url_not_in: [String!]
+
+  """All values less than the given value."""
+  url_lt: String
+
+  """All values less than or equal the given value."""
+  url_lte: String
+
+  """All values greater than the given value."""
+  url_gt: String
+
+  """All values greater than or equal the given value."""
+  url_gte: String
+
+  """All values containing the given string."""
+  url_contains: String
+
+  """All values not containing the given string."""
+  url_not_contains: String
+
+  """All values starting with the given string."""
+  url_starts_with: String
+
+  """All values not starting with the given string."""
+  url_not_starts_with: String
+
+  """All values ending with the given string."""
+  url_ends_with: String
+
+  """All values not ending with the given string."""
+  url_not_ends_with: String
+}
+
+input FileWhereUniqueInput {
+  id: ID
+  secret: String
+  url: String
+}
+
+type Group implements Node {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  name: String!
+  slug: String!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User!]
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  keywords(where: KeywordWhereInput, orderBy: KeywordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Keyword!]
+  accessGroups(where: AccessGroupWhereInput, orderBy: AccessGroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AccessGroup!]
+  owner(where: UserWhereInput): User!
+}
+
+"""A connection to a list of items."""
+type GroupConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [GroupEdge]!
+  aggregate: AggregateGroup!
+}
+
+input GroupCreateInput {
+  name: String!
+  slug: String!
+  users: UserCreateManyWithoutGroupsInput
+  posts: PostCreateManyWithoutGroupInput
+  keywords: KeywordCreateManyWithoutGroupsInput
+  accessGroups: AccessGroupCreateManyWithoutGroupInput
+  owner: UserCreateOneWithoutOwnGroupsInput!
+}
+
+input GroupCreateManyWithoutKeywordsInput {
+  create: [GroupCreateWithoutKeywordsInput!]
+  connect: [GroupWhereUniqueInput!]
+}
+
+input GroupCreateManyWithoutOwnerInput {
+  create: [GroupCreateWithoutOwnerInput!]
+  connect: [GroupWhereUniqueInput!]
+}
+
+input GroupCreateManyWithoutUsersInput {
+  create: [GroupCreateWithoutUsersInput!]
+  connect: [GroupWhereUniqueInput!]
+}
+
+input GroupCreateOneWithoutAccessGroupsInput {
+  create: GroupCreateWithoutAccessGroupsInput
+  connect: GroupWhereUniqueInput
+}
+
+input GroupCreateOneWithoutPostsInput {
+  create: GroupCreateWithoutPostsInput
+  connect: GroupWhereUniqueInput
+}
+
+input GroupCreateWithoutAccessGroupsInput {
+  name: String!
+  slug: String!
+  users: UserCreateManyWithoutGroupsInput
+  posts: PostCreateManyWithoutGroupInput
+  keywords: KeywordCreateManyWithoutGroupsInput
+  owner: UserCreateOneWithoutOwnGroupsInput!
+}
+
+input GroupCreateWithoutKeywordsInput {
+  name: String!
+  slug: String!
+  users: UserCreateManyWithoutGroupsInput
+  posts: PostCreateManyWithoutGroupInput
+  accessGroups: AccessGroupCreateManyWithoutGroupInput
+  owner: UserCreateOneWithoutOwnGroupsInput!
+}
+
+input GroupCreateWithoutOwnerInput {
+  name: String!
+  slug: String!
+  users: UserCreateManyWithoutGroupsInput
+  posts: PostCreateManyWithoutGroupInput
+  keywords: KeywordCreateManyWithoutGroupsInput
+  accessGroups: AccessGroupCreateManyWithoutGroupInput
+}
+
+input GroupCreateWithoutPostsInput {
+  name: String!
+  slug: String!
+  users: UserCreateManyWithoutGroupsInput
+  keywords: KeywordCreateManyWithoutGroupsInput
+  accessGroups: AccessGroupCreateManyWithoutGroupInput
+  owner: UserCreateOneWithoutOwnGroupsInput!
+}
+
+input GroupCreateWithoutUsersInput {
+  name: String!
+  slug: String!
+  posts: PostCreateManyWithoutGroupInput
+  keywords: KeywordCreateManyWithoutGroupsInput
+  accessGroups: AccessGroupCreateManyWithoutGroupInput
+  owner: UserCreateOneWithoutOwnGroupsInput!
+}
+
+"""An edge in a connection."""
+type GroupEdge {
+  """The item at the end of the edge."""
+  node: Group!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum GroupOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+}
+
+type GroupPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  name: String!
+  slug: String!
+}
+
+type GroupSubscriptionPayload {
+  mutation: MutationType!
+  node: Group
+  updatedFields: [String!]
+  previousValues: GroupPreviousValues
+}
+
+input GroupSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [GroupSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [GroupSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [GroupSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: GroupWhereInput
+}
+
+input GroupUpdateInput {
+  name: String
+  slug: String
+  users: UserUpdateManyWithoutGroupsInput
+  posts: PostUpdateManyWithoutGroupInput
+  keywords: KeywordUpdateManyWithoutGroupsInput
+  accessGroups: AccessGroupUpdateManyWithoutGroupInput
+  owner: UserUpdateOneWithoutOwnGroupsInput
+}
+
+input GroupUpdateManyWithoutKeywordsInput {
+  create: [GroupCreateWithoutKeywordsInput!]
+  connect: [GroupWhereUniqueInput!]
+  disconnect: [GroupWhereUniqueInput!]
+  delete: [GroupWhereUniqueInput!]
+  update: [GroupUpdateWithWhereUniqueWithoutKeywordsInput!]
+  upsert: [GroupUpsertWithWhereUniqueWithoutKeywordsInput!]
+}
+
+input GroupUpdateManyWithoutOwnerInput {
+  create: [GroupCreateWithoutOwnerInput!]
+  connect: [GroupWhereUniqueInput!]
+  disconnect: [GroupWhereUniqueInput!]
+  delete: [GroupWhereUniqueInput!]
+  update: [GroupUpdateWithWhereUniqueWithoutOwnerInput!]
+  upsert: [GroupUpsertWithWhereUniqueWithoutOwnerInput!]
+}
+
+input GroupUpdateManyWithoutUsersInput {
+  create: [GroupCreateWithoutUsersInput!]
+  connect: [GroupWhereUniqueInput!]
+  disconnect: [GroupWhereUniqueInput!]
+  delete: [GroupWhereUniqueInput!]
+  update: [GroupUpdateWithWhereUniqueWithoutUsersInput!]
+  upsert: [GroupUpsertWithWhereUniqueWithoutUsersInput!]
+}
+
+input GroupUpdateOneWithoutAccessGroupsInput {
+  create: GroupCreateWithoutAccessGroupsInput
+  connect: GroupWhereUniqueInput
+  disconnect: Boolean
+  delete: Boolean
+  update: GroupUpdateWithoutAccessGroupsDataInput
+  upsert: GroupUpsertWithoutAccessGroupsInput
+}
+
+input GroupUpdateOneWithoutPostsInput {
+  create: GroupCreateWithoutPostsInput
+  connect: GroupWhereUniqueInput
+  delete: Boolean
+  update: GroupUpdateWithoutPostsDataInput
+  upsert: GroupUpsertWithoutPostsInput
+}
+
+input GroupUpdateWithoutAccessGroupsDataInput {
+  name: String
+  slug: String
+  users: UserUpdateManyWithoutGroupsInput
+  posts: PostUpdateManyWithoutGroupInput
+  keywords: KeywordUpdateManyWithoutGroupsInput
+  owner: UserUpdateOneWithoutOwnGroupsInput
+}
+
+input GroupUpdateWithoutKeywordsDataInput {
+  name: String
+  slug: String
+  users: UserUpdateManyWithoutGroupsInput
+  posts: PostUpdateManyWithoutGroupInput
+  accessGroups: AccessGroupUpdateManyWithoutGroupInput
+  owner: UserUpdateOneWithoutOwnGroupsInput
+}
+
+input GroupUpdateWithoutOwnerDataInput {
+  name: String
+  slug: String
+  users: UserUpdateManyWithoutGroupsInput
+  posts: PostUpdateManyWithoutGroupInput
+  keywords: KeywordUpdateManyWithoutGroupsInput
+  accessGroups: AccessGroupUpdateManyWithoutGroupInput
+}
+
+input GroupUpdateWithoutPostsDataInput {
+  name: String
+  slug: String
+  users: UserUpdateManyWithoutGroupsInput
+  keywords: KeywordUpdateManyWithoutGroupsInput
+  accessGroups: AccessGroupUpdateManyWithoutGroupInput
+  owner: UserUpdateOneWithoutOwnGroupsInput
+}
+
+input GroupUpdateWithoutUsersDataInput {
+  name: String
+  slug: String
+  posts: PostUpdateManyWithoutGroupInput
+  keywords: KeywordUpdateManyWithoutGroupsInput
+  accessGroups: AccessGroupUpdateManyWithoutGroupInput
+  owner: UserUpdateOneWithoutOwnGroupsInput
+}
+
+input GroupUpdateWithWhereUniqueWithoutKeywordsInput {
+  where: GroupWhereUniqueInput!
+  data: GroupUpdateWithoutKeywordsDataInput!
+}
+
+input GroupUpdateWithWhereUniqueWithoutOwnerInput {
+  where: GroupWhereUniqueInput!
+  data: GroupUpdateWithoutOwnerDataInput!
+}
+
+input GroupUpdateWithWhereUniqueWithoutUsersInput {
+  where: GroupWhereUniqueInput!
+  data: GroupUpdateWithoutUsersDataInput!
+}
+
+input GroupUpsertWithoutAccessGroupsInput {
+  update: GroupUpdateWithoutAccessGroupsDataInput!
+  create: GroupCreateWithoutAccessGroupsInput!
+}
+
+input GroupUpsertWithoutPostsInput {
+  update: GroupUpdateWithoutPostsDataInput!
+  create: GroupCreateWithoutPostsInput!
+}
+
+input GroupUpsertWithWhereUniqueWithoutKeywordsInput {
+  where: GroupWhereUniqueInput!
+  update: GroupUpdateWithoutKeywordsDataInput!
+  create: GroupCreateWithoutKeywordsInput!
+}
+
+input GroupUpsertWithWhereUniqueWithoutOwnerInput {
+  where: GroupWhereUniqueInput!
+  update: GroupUpdateWithoutOwnerDataInput!
+  create: GroupCreateWithoutOwnerInput!
+}
+
+input GroupUpsertWithWhereUniqueWithoutUsersInput {
+  where: GroupWhereUniqueInput!
+  update: GroupUpdateWithoutUsersDataInput!
+  create: GroupCreateWithoutUsersInput!
+}
+
+input GroupWhereInput {
+  """Logical AND on all given filters."""
+  AND: [GroupWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [GroupWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [GroupWhereInput!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  slug: String
+
+  """All values that are not equal to given value."""
+  slug_not: String
+
+  """All values that are contained in given list."""
+  slug_in: [String!]
+
+  """All values that are not contained in given list."""
+  slug_not_in: [String!]
+
+  """All values less than the given value."""
+  slug_lt: String
+
+  """All values less than or equal the given value."""
+  slug_lte: String
+
+  """All values greater than the given value."""
+  slug_gt: String
+
+  """All values greater than or equal the given value."""
+  slug_gte: String
+
+  """All values containing the given string."""
+  slug_contains: String
+
+  """All values not containing the given string."""
+  slug_not_contains: String
+
+  """All values starting with the given string."""
+  slug_starts_with: String
+
+  """All values not starting with the given string."""
+  slug_not_starts_with: String
+
+  """All values ending with the given string."""
+  slug_ends_with: String
+
+  """All values not ending with the given string."""
+  slug_not_ends_with: String
+  users_every: UserWhereInput
+  users_some: UserWhereInput
+  users_none: UserWhereInput
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
+  keywords_every: KeywordWhereInput
+  keywords_some: KeywordWhereInput
+  keywords_none: KeywordWhereInput
+  accessGroups_every: AccessGroupWhereInput
+  accessGroups_some: AccessGroupWhereInput
+  accessGroups_none: AccessGroupWhereInput
+  owner: UserWhereInput
+}
+
+input GroupWhereUniqueInput {
+  id: ID
+  name: String
+  slug: String
+}
+
+type Keyword implements Node {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  name: String!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  groups(where: GroupWhereInput, orderBy: GroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Group!]
+}
+
+"""A connection to a list of items."""
+type KeywordConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [KeywordEdge]!
+  aggregate: AggregateKeyword!
+}
+
+input KeywordCreateInput {
+  name: String!
+  posts: PostCreateManyWithoutKeywordsInput
+  groups: GroupCreateManyWithoutKeywordsInput
+}
+
+input KeywordCreateManyWithoutGroupsInput {
+  create: [KeywordCreateWithoutGroupsInput!]
+  connect: [KeywordWhereUniqueInput!]
+}
+
+input KeywordCreateManyWithoutPostsInput {
+  create: [KeywordCreateWithoutPostsInput!]
+  connect: [KeywordWhereUniqueInput!]
+}
+
+input KeywordCreateWithoutGroupsInput {
+  name: String!
+  posts: PostCreateManyWithoutKeywordsInput
+}
+
+input KeywordCreateWithoutPostsInput {
+  name: String!
+  groups: GroupCreateManyWithoutKeywordsInput
+}
+
+"""An edge in a connection."""
+type KeywordEdge {
+  """The item at the end of the edge."""
+  node: Keyword!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum KeywordOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  name_ASC
+  name_DESC
+}
+
+type KeywordPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  name: String!
+}
+
+type KeywordSubscriptionPayload {
+  mutation: MutationType!
+  node: Keyword
+  updatedFields: [String!]
+  previousValues: KeywordPreviousValues
+}
+
+input KeywordSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [KeywordSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [KeywordSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [KeywordSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: KeywordWhereInput
+}
+
+input KeywordUpdateInput {
+  name: String
+  posts: PostUpdateManyWithoutKeywordsInput
+  groups: GroupUpdateManyWithoutKeywordsInput
+}
+
+input KeywordUpdateManyWithoutGroupsInput {
+  create: [KeywordCreateWithoutGroupsInput!]
+  connect: [KeywordWhereUniqueInput!]
+  disconnect: [KeywordWhereUniqueInput!]
+  delete: [KeywordWhereUniqueInput!]
+  update: [KeywordUpdateWithWhereUniqueWithoutGroupsInput!]
+  upsert: [KeywordUpsertWithWhereUniqueWithoutGroupsInput!]
+}
+
+input KeywordUpdateManyWithoutPostsInput {
+  create: [KeywordCreateWithoutPostsInput!]
+  connect: [KeywordWhereUniqueInput!]
+  disconnect: [KeywordWhereUniqueInput!]
+  delete: [KeywordWhereUniqueInput!]
+  update: [KeywordUpdateWithWhereUniqueWithoutPostsInput!]
+  upsert: [KeywordUpsertWithWhereUniqueWithoutPostsInput!]
+}
+
+input KeywordUpdateWithoutGroupsDataInput {
+  name: String
+  posts: PostUpdateManyWithoutKeywordsInput
+}
+
+input KeywordUpdateWithoutPostsDataInput {
+  name: String
+  groups: GroupUpdateManyWithoutKeywordsInput
+}
+
+input KeywordUpdateWithWhereUniqueWithoutGroupsInput {
+  where: KeywordWhereUniqueInput!
+  data: KeywordUpdateWithoutGroupsDataInput!
+}
+
+input KeywordUpdateWithWhereUniqueWithoutPostsInput {
+  where: KeywordWhereUniqueInput!
+  data: KeywordUpdateWithoutPostsDataInput!
+}
+
+input KeywordUpsertWithWhereUniqueWithoutGroupsInput {
+  where: KeywordWhereUniqueInput!
+  update: KeywordUpdateWithoutGroupsDataInput!
+  create: KeywordCreateWithoutGroupsInput!
+}
+
+input KeywordUpsertWithWhereUniqueWithoutPostsInput {
+  where: KeywordWhereUniqueInput!
+  update: KeywordUpdateWithoutPostsDataInput!
+  create: KeywordCreateWithoutPostsInput!
+}
+
+input KeywordWhereInput {
+  """Logical AND on all given filters."""
+  AND: [KeywordWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [KeywordWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [KeywordWhereInput!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  name: String
+
+  """All values that are not equal to given value."""
+  name_not: String
+
+  """All values that are contained in given list."""
+  name_in: [String!]
+
+  """All values that are not contained in given list."""
+  name_not_in: [String!]
+
+  """All values less than the given value."""
+  name_lt: String
+
+  """All values less than or equal the given value."""
+  name_lte: String
+
+  """All values greater than the given value."""
+  name_gt: String
+
+  """All values greater than or equal the given value."""
+  name_gte: String
+
+  """All values containing the given string."""
+  name_contains: String
+
+  """All values not containing the given string."""
+  name_not_contains: String
+
+  """All values starting with the given string."""
+  name_starts_with: String
+
+  """All values not starting with the given string."""
+  name_not_starts_with: String
+
+  """All values ending with the given string."""
+  name_ends_with: String
+
+  """All values not ending with the given string."""
+  name_not_ends_with: String
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
+  groups_every: GroupWhereInput
+  groups_some: GroupWhereInput
+  groups_none: GroupWhereInput
+}
+
+input KeywordWhereUniqueInput {
+  id: ID
+  name: String
+}
+
+"""
+The `Long` scalar type represents non-fractional signed whole numeric values.
+Long can represent values between -(2^63) and 2^63 - 1.
+"""
+scalar Long
+
+type Mutation {
+  createFile(data: FileCreateInput!): File!
+  createUser(data: UserCreateInput!): User!
+  createPost(data: PostCreateInput!): Post!
+  createGroup(data: GroupCreateInput!): Group!
+  createKeyword(data: KeywordCreateInput!): Keyword!
+  createComment(data: CommentCreateInput!): Comment!
+  createAccessGroup(data: AccessGroupCreateInput!): AccessGroup!
+  updateFile(data: FileUpdateInput!, where: FileWhereUniqueInput!): File
+  updateUser(data: UserUpdateInput!, where: UserWhereUniqueInput!): User
+  updatePost(data: PostUpdateInput!, where: PostWhereUniqueInput!): Post
+  updateGroup(data: GroupUpdateInput!, where: GroupWhereUniqueInput!): Group
+  updateKeyword(data: KeywordUpdateInput!, where: KeywordWhereUniqueInput!): Keyword
+  updateComment(data: CommentUpdateInput!, where: CommentWhereUniqueInput!): Comment
+  updateAccessGroup(data: AccessGroupUpdateInput!, where: AccessGroupWhereUniqueInput!): AccessGroup
+  deleteFile(where: FileWhereUniqueInput!): File
+  deleteUser(where: UserWhereUniqueInput!): User
+  deletePost(where: PostWhereUniqueInput!): Post
+  deleteGroup(where: GroupWhereUniqueInput!): Group
+  deleteKeyword(where: KeywordWhereUniqueInput!): Keyword
+  deleteComment(where: CommentWhereUniqueInput!): Comment
+  deleteAccessGroup(where: AccessGroupWhereUniqueInput!): AccessGroup
+  upsertFile(where: FileWhereUniqueInput!, create: FileCreateInput!, update: FileUpdateInput!): File!
+  upsertUser(where: UserWhereUniqueInput!, create: UserCreateInput!, update: UserUpdateInput!): User!
+  upsertPost(where: PostWhereUniqueInput!, create: PostCreateInput!, update: PostUpdateInput!): Post!
+  upsertGroup(where: GroupWhereUniqueInput!, create: GroupCreateInput!, update: GroupUpdateInput!): Group!
+  upsertKeyword(where: KeywordWhereUniqueInput!, create: KeywordCreateInput!, update: KeywordUpdateInput!): Keyword!
+  upsertComment(where: CommentWhereUniqueInput!, create: CommentCreateInput!, update: CommentUpdateInput!): Comment!
+  upsertAccessGroup(where: AccessGroupWhereUniqueInput!, create: AccessGroupCreateInput!, update: AccessGroupUpdateInput!): AccessGroup!
+  updateManyFiles(data: FileUpdateInput!, where: FileWhereInput): BatchPayload!
+  updateManyUsers(data: UserUpdateInput!, where: UserWhereInput): BatchPayload!
+  updateManyPosts(data: PostUpdateInput!, where: PostWhereInput): BatchPayload!
+  updateManyGroups(data: GroupUpdateInput!, where: GroupWhereInput): BatchPayload!
+  updateManyKeywords(data: KeywordUpdateInput!, where: KeywordWhereInput): BatchPayload!
+  updateManyComments(data: CommentUpdateInput!, where: CommentWhereInput): BatchPayload!
+  updateManyAccessGroups(data: AccessGroupUpdateInput!, where: AccessGroupWhereInput): BatchPayload!
+  deleteManyFiles(where: FileWhereInput): BatchPayload!
+  deleteManyUsers(where: UserWhereInput): BatchPayload!
+  deleteManyPosts(where: PostWhereInput): BatchPayload!
+  deleteManyGroups(where: GroupWhereInput): BatchPayload!
+  deleteManyKeywords(where: KeywordWhereInput): BatchPayload!
+  deleteManyComments(where: CommentWhereInput): BatchPayload!
+  deleteManyAccessGroups(where: AccessGroupWhereInput): BatchPayload!
+}
+
+enum MutationType {
+  CREATED
+  UPDATED
+  DELETED
+}
+
+"""An object with an ID"""
+interface Node {
+  """The id of the object."""
+  id: ID!
+}
+
+"""Information about pagination in a connection."""
+type PageInfo {
+  """When paginating forwards, are there more items?"""
+  hasNextPage: Boolean!
+
+  """When paginating backwards, are there more items?"""
+  hasPreviousPage: Boolean!
+
+  """When paginating backwards, the cursor to continue."""
+  startCursor: String
+
+  """When paginating forwards, the cursor to continue."""
+  endCursor: String
+}
+
+"""A User Post"""
+type Post implements Node {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  title: String!
+  content: String!
+  imageUrl: String
+  group(where: GroupWhereInput): Group!
+  user(where: UserWhereInput): User!
+  keywords(where: KeywordWhereInput, orderBy: KeywordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Keyword!]
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+  commentCount: Int
+}
+
+"""A connection to a list of items."""
+type PostConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [PostEdge]!
+  aggregate: AggregatePost!
+}
+
+input PostCreateInput {
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+  group: GroupCreateOneWithoutPostsInput!
+  user: UserCreateOneWithoutPostsInput!
+  keywords: KeywordCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+}
+
+input PostCreateManyWithoutGroupInput {
+  create: [PostCreateWithoutGroupInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateManyWithoutKeywordsInput {
+  create: [PostCreateWithoutKeywordsInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateManyWithoutUserInput {
+  create: [PostCreateWithoutUserInput!]
+  connect: [PostWhereUniqueInput!]
+}
+
+input PostCreateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  connect: PostWhereUniqueInput
+}
+
+input PostCreateWithoutCommentsInput {
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+  group: GroupCreateOneWithoutPostsInput!
+  user: UserCreateOneWithoutPostsInput!
+  keywords: KeywordCreateManyWithoutPostsInput
+}
+
+input PostCreateWithoutGroupInput {
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+  user: UserCreateOneWithoutPostsInput!
+  keywords: KeywordCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+}
+
+input PostCreateWithoutKeywordsInput {
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+  group: GroupCreateOneWithoutPostsInput!
+  user: UserCreateOneWithoutPostsInput!
+  comments: CommentCreateManyWithoutPostInput
+}
+
+input PostCreateWithoutUserInput {
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+  group: GroupCreateOneWithoutPostsInput!
+  keywords: KeywordCreateManyWithoutPostsInput
+  comments: CommentCreateManyWithoutPostInput
+}
+
+"""An edge in a connection."""
+type PostEdge {
+  """The item at the end of the edge."""
+  node: Post!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum PostOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  title_ASC
+  title_DESC
+  content_ASC
+  content_DESC
+  imageUrl_ASC
+  imageUrl_DESC
+  commentCount_ASC
+  commentCount_DESC
+}
+
+type PostPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  title: String!
+  content: String!
+  imageUrl: String
+  commentCount: Int
+}
+
+type PostSubscriptionPayload {
+  mutation: MutationType!
+  node: Post
+  updatedFields: [String!]
+  previousValues: PostPreviousValues
+}
+
+input PostSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: PostWhereInput
+}
+
+input PostUpdateInput {
+  title: String
+  content: String
+  imageUrl: String
+  commentCount: Int
+  group: GroupUpdateOneWithoutPostsInput
+  user: UserUpdateOneWithoutPostsInput
+  keywords: KeywordUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+}
+
+input PostUpdateManyWithoutGroupInput {
+  create: [PostCreateWithoutGroupInput!]
+  connect: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutGroupInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutGroupInput!]
+}
+
+input PostUpdateManyWithoutKeywordsInput {
+  create: [PostCreateWithoutKeywordsInput!]
+  connect: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutKeywordsInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutKeywordsInput!]
+}
+
+input PostUpdateManyWithoutUserInput {
+  create: [PostCreateWithoutUserInput!]
+  connect: [PostWhereUniqueInput!]
+  disconnect: [PostWhereUniqueInput!]
+  delete: [PostWhereUniqueInput!]
+  update: [PostUpdateWithWhereUniqueWithoutUserInput!]
+  upsert: [PostUpsertWithWhereUniqueWithoutUserInput!]
+}
+
+input PostUpdateOneWithoutCommentsInput {
+  create: PostCreateWithoutCommentsInput
+  connect: PostWhereUniqueInput
+  delete: Boolean
+  update: PostUpdateWithoutCommentsDataInput
+  upsert: PostUpsertWithoutCommentsInput
+}
+
+input PostUpdateWithoutCommentsDataInput {
+  title: String
+  content: String
+  imageUrl: String
+  commentCount: Int
+  group: GroupUpdateOneWithoutPostsInput
+  user: UserUpdateOneWithoutPostsInput
+  keywords: KeywordUpdateManyWithoutPostsInput
+}
+
+input PostUpdateWithoutGroupDataInput {
+  title: String
+  content: String
+  imageUrl: String
+  commentCount: Int
+  user: UserUpdateOneWithoutPostsInput
+  keywords: KeywordUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+}
+
+input PostUpdateWithoutKeywordsDataInput {
+  title: String
+  content: String
+  imageUrl: String
+  commentCount: Int
+  group: GroupUpdateOneWithoutPostsInput
+  user: UserUpdateOneWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+}
+
+input PostUpdateWithoutUserDataInput {
+  title: String
+  content: String
+  imageUrl: String
+  commentCount: Int
+  group: GroupUpdateOneWithoutPostsInput
+  keywords: KeywordUpdateManyWithoutPostsInput
+  comments: CommentUpdateManyWithoutPostInput
+}
+
+input PostUpdateWithWhereUniqueWithoutGroupInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutGroupDataInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutKeywordsInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutKeywordsDataInput!
+}
+
+input PostUpdateWithWhereUniqueWithoutUserInput {
+  where: PostWhereUniqueInput!
+  data: PostUpdateWithoutUserDataInput!
+}
+
+input PostUpsertWithoutCommentsInput {
+  update: PostUpdateWithoutCommentsDataInput!
+  create: PostCreateWithoutCommentsInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutGroupInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutGroupDataInput!
+  create: PostCreateWithoutGroupInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutKeywordsInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutKeywordsDataInput!
+  create: PostCreateWithoutKeywordsInput!
+}
+
+input PostUpsertWithWhereUniqueWithoutUserInput {
+  where: PostWhereUniqueInput!
+  update: PostUpdateWithoutUserDataInput!
+  create: PostCreateWithoutUserInput!
+}
+
+input PostWhereInput {
+  """Logical AND on all given filters."""
+  AND: [PostWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [PostWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [PostWhereInput!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  title: String
+
+  """All values that are not equal to given value."""
+  title_not: String
+
+  """All values that are contained in given list."""
+  title_in: [String!]
+
+  """All values that are not contained in given list."""
+  title_not_in: [String!]
+
+  """All values less than the given value."""
+  title_lt: String
+
+  """All values less than or equal the given value."""
+  title_lte: String
+
+  """All values greater than the given value."""
+  title_gt: String
+
+  """All values greater than or equal the given value."""
+  title_gte: String
+
+  """All values containing the given string."""
+  title_contains: String
+
+  """All values not containing the given string."""
+  title_not_contains: String
+
+  """All values starting with the given string."""
+  title_starts_with: String
+
+  """All values not starting with the given string."""
+  title_not_starts_with: String
+
+  """All values ending with the given string."""
+  title_ends_with: String
+
+  """All values not ending with the given string."""
+  title_not_ends_with: String
+  content: String
+
+  """All values that are not equal to given value."""
+  content_not: String
+
+  """All values that are contained in given list."""
+  content_in: [String!]
+
+  """All values that are not contained in given list."""
+  content_not_in: [String!]
+
+  """All values less than the given value."""
+  content_lt: String
+
+  """All values less than or equal the given value."""
+  content_lte: String
+
+  """All values greater than the given value."""
+  content_gt: String
+
+  """All values greater than or equal the given value."""
+  content_gte: String
+
+  """All values containing the given string."""
+  content_contains: String
+
+  """All values not containing the given string."""
+  content_not_contains: String
+
+  """All values starting with the given string."""
+  content_starts_with: String
+
+  """All values not starting with the given string."""
+  content_not_starts_with: String
+
+  """All values ending with the given string."""
+  content_ends_with: String
+
+  """All values not ending with the given string."""
+  content_not_ends_with: String
+  imageUrl: String
+
+  """All values that are not equal to given value."""
+  imageUrl_not: String
+
+  """All values that are contained in given list."""
+  imageUrl_in: [String!]
+
+  """All values that are not contained in given list."""
+  imageUrl_not_in: [String!]
+
+  """All values less than the given value."""
+  imageUrl_lt: String
+
+  """All values less than or equal the given value."""
+  imageUrl_lte: String
+
+  """All values greater than the given value."""
+  imageUrl_gt: String
+
+  """All values greater than or equal the given value."""
+  imageUrl_gte: String
+
+  """All values containing the given string."""
+  imageUrl_contains: String
+
+  """All values not containing the given string."""
+  imageUrl_not_contains: String
+
+  """All values starting with the given string."""
+  imageUrl_starts_with: String
+
+  """All values not starting with the given string."""
+  imageUrl_not_starts_with: String
+
+  """All values ending with the given string."""
+  imageUrl_ends_with: String
+
+  """All values not ending with the given string."""
+  imageUrl_not_ends_with: String
+  commentCount: Int
+
+  """All values that are not equal to given value."""
+  commentCount_not: Int
+
+  """All values that are contained in given list."""
+  commentCount_in: [Int!]
+
+  """All values that are not contained in given list."""
+  commentCount_not_in: [Int!]
+
+  """All values less than the given value."""
+  commentCount_lt: Int
+
+  """All values less than or equal the given value."""
+  commentCount_lte: Int
+
+  """All values greater than the given value."""
+  commentCount_gt: Int
+
+  """All values greater than or equal the given value."""
+  commentCount_gte: Int
+  group: GroupWhereInput
+  user: UserWhereInput
+  keywords_every: KeywordWhereInput
+  keywords_some: KeywordWhereInput
+  keywords_none: KeywordWhereInput
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
+}
+
+input PostWhereUniqueInput {
+  id: ID
+}
+
+type Query {
+  files(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [File]!
+  users(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [User]!
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post]!
+  groups(where: GroupWhereInput, orderBy: GroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Group]!
+  keywords(where: KeywordWhereInput, orderBy: KeywordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Keyword]!
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment]!
+  accessGroups(where: AccessGroupWhereInput, orderBy: AccessGroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AccessGroup]!
+  file(where: FileWhereUniqueInput!): File
+  user(where: UserWhereUniqueInput!): User
+  post(where: PostWhereUniqueInput!): Post
+  group(where: GroupWhereUniqueInput!): Group
+  keyword(where: KeywordWhereUniqueInput!): Keyword
+  comment(where: CommentWhereUniqueInput!): Comment
+  accessGroup(where: AccessGroupWhereUniqueInput!): AccessGroup
+  filesConnection(where: FileWhereInput, orderBy: FileOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): FileConnection!
+  usersConnection(where: UserWhereInput, orderBy: UserOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): UserConnection!
+  postsConnection(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): PostConnection!
+  groupsConnection(where: GroupWhereInput, orderBy: GroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): GroupConnection!
+  keywordsConnection(where: KeywordWhereInput, orderBy: KeywordOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): KeywordConnection!
+  commentsConnection(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): CommentConnection!
+  accessGroupsConnection(where: AccessGroupWhereInput, orderBy: AccessGroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): AccessGroupConnection!
+
+  """Fetches an object given its ID"""
+  node(
+    """The ID of an object"""
+    id: ID!
+  ): Node
+}
+
+type Subscription {
+  file(where: FileSubscriptionWhereInput): FileSubscriptionPayload
+  user(where: UserSubscriptionWhereInput): UserSubscriptionPayload
+  post(where: PostSubscriptionWhereInput): PostSubscriptionPayload
+  group(where: GroupSubscriptionWhereInput): GroupSubscriptionPayload
+  keyword(where: KeywordSubscriptionWhereInput): KeywordSubscriptionPayload
+  comment(where: CommentSubscriptionWhereInput): CommentSubscriptionPayload
+  accessGroup(where: AccessGroupSubscriptionWhereInput): AccessGroupSubscriptionPayload
+}
+
+type User implements Node {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  username: String!
+  groups(where: GroupWhereInput, orderBy: GroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Group!]
+  posts(where: PostWhereInput, orderBy: PostOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Post!]
+  bio: String
+  comments(where: CommentWhereInput, orderBy: CommentOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Comment!]
+  email: String
+  imageUrl: String
+  password: String
+  accessGroups(where: AccessGroupWhereInput, orderBy: AccessGroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [AccessGroup!]
+  ownGroups(where: GroupWhereInput, orderBy: GroupOrderByInput, skip: Int, after: String, before: String, first: Int, last: Int): [Group!]
+}
+
+"""A connection to a list of items."""
+type UserConnection {
+  """Information to aid in pagination."""
+  pageInfo: PageInfo!
+
+  """A list of edges."""
+  edges: [UserEdge]!
+  aggregate: AggregateUser!
+}
+
+input UserCreateInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupCreateManyWithoutUsersInput
+  posts: PostCreateManyWithoutUserInput
+  comments: CommentCreateManyWithoutUserInput
+  accessGroups: AccessGroupCreateManyWithoutMembersInput
+  ownGroups: GroupCreateManyWithoutOwnerInput
+}
+
+input UserCreateManyWithoutAccessGroupsInput {
+  create: [UserCreateWithoutAccessGroupsInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateManyWithoutGroupsInput {
+  create: [UserCreateWithoutGroupsInput!]
+  connect: [UserWhereUniqueInput!]
+}
+
+input UserCreateOneWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutOwnGroupsInput {
+  create: UserCreateWithoutOwnGroupsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+}
+
+input UserCreateWithoutAccessGroupsInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupCreateManyWithoutUsersInput
+  posts: PostCreateManyWithoutUserInput
+  comments: CommentCreateManyWithoutUserInput
+  ownGroups: GroupCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutCommentsInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupCreateManyWithoutUsersInput
+  posts: PostCreateManyWithoutUserInput
+  accessGroups: AccessGroupCreateManyWithoutMembersInput
+  ownGroups: GroupCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutGroupsInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  posts: PostCreateManyWithoutUserInput
+  comments: CommentCreateManyWithoutUserInput
+  accessGroups: AccessGroupCreateManyWithoutMembersInput
+  ownGroups: GroupCreateManyWithoutOwnerInput
+}
+
+input UserCreateWithoutOwnGroupsInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupCreateManyWithoutUsersInput
+  posts: PostCreateManyWithoutUserInput
+  comments: CommentCreateManyWithoutUserInput
+  accessGroups: AccessGroupCreateManyWithoutMembersInput
+}
+
+input UserCreateWithoutPostsInput {
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupCreateManyWithoutUsersInput
+  comments: CommentCreateManyWithoutUserInput
+  accessGroups: AccessGroupCreateManyWithoutMembersInput
+  ownGroups: GroupCreateManyWithoutOwnerInput
+}
+
+"""An edge in a connection."""
+type UserEdge {
+  """The item at the end of the edge."""
+  node: User!
+
+  """A cursor for use in pagination."""
+  cursor: String!
+}
+
+enum UserOrderByInput {
+  createdAt_ASC
+  createdAt_DESC
+  id_ASC
+  id_DESC
+  updatedAt_ASC
+  updatedAt_DESC
+  username_ASC
+  username_DESC
+  bio_ASC
+  bio_DESC
+  email_ASC
+  email_DESC
+  imageUrl_ASC
+  imageUrl_DESC
+  password_ASC
+  password_DESC
+}
+
+type UserPreviousValues {
+  createdAt: DateTime!
+  id: ID!
+  updatedAt: DateTime!
+  username: String!
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+}
+
+type UserSubscriptionPayload {
+  mutation: MutationType!
+  node: User
+  updatedFields: [String!]
+  previousValues: UserPreviousValues
+}
+
+input UserSubscriptionWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserSubscriptionWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserSubscriptionWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserSubscriptionWhereInput!]
+
+  """
+  The subscription event gets dispatched when it's listed in mutation_in
+  """
+  mutation_in: [MutationType!]
+
+  """
+  The subscription event gets only dispatched when one of the updated fields names is included in this list
+  """
+  updatedFields_contains: String
+
+  """
+  The subscription event gets only dispatched when all of the field names included in this list have been updated
+  """
+  updatedFields_contains_every: [String!]
+
+  """
+  The subscription event gets only dispatched when some of the field names included in this list have been updated
+  """
+  updatedFields_contains_some: [String!]
+  node: UserWhereInput
+}
+
+input UserUpdateInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupUpdateManyWithoutUsersInput
+  posts: PostUpdateManyWithoutUserInput
+  comments: CommentUpdateManyWithoutUserInput
+  accessGroups: AccessGroupUpdateManyWithoutMembersInput
+  ownGroups: GroupUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateManyWithoutAccessGroupsInput {
+  create: [UserCreateWithoutAccessGroupsInput!]
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutAccessGroupsInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutAccessGroupsInput!]
+}
+
+input UserUpdateManyWithoutGroupsInput {
+  create: [UserCreateWithoutGroupsInput!]
+  connect: [UserWhereUniqueInput!]
+  disconnect: [UserWhereUniqueInput!]
+  delete: [UserWhereUniqueInput!]
+  update: [UserUpdateWithWhereUniqueWithoutGroupsInput!]
+  upsert: [UserUpsertWithWhereUniqueWithoutGroupsInput!]
+}
+
+input UserUpdateOneWithoutCommentsInput {
+  create: UserCreateWithoutCommentsInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutCommentsDataInput
+  upsert: UserUpsertWithoutCommentsInput
+}
+
+input UserUpdateOneWithoutOwnGroupsInput {
+  create: UserCreateWithoutOwnGroupsInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutOwnGroupsDataInput
+  upsert: UserUpsertWithoutOwnGroupsInput
+}
+
+input UserUpdateOneWithoutPostsInput {
+  create: UserCreateWithoutPostsInput
+  connect: UserWhereUniqueInput
+  delete: Boolean
+  update: UserUpdateWithoutPostsDataInput
+  upsert: UserUpsertWithoutPostsInput
+}
+
+input UserUpdateWithoutAccessGroupsDataInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupUpdateManyWithoutUsersInput
+  posts: PostUpdateManyWithoutUserInput
+  comments: CommentUpdateManyWithoutUserInput
+  ownGroups: GroupUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutCommentsDataInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupUpdateManyWithoutUsersInput
+  posts: PostUpdateManyWithoutUserInput
+  accessGroups: AccessGroupUpdateManyWithoutMembersInput
+  ownGroups: GroupUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutGroupsDataInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  posts: PostUpdateManyWithoutUserInput
+  comments: CommentUpdateManyWithoutUserInput
+  accessGroups: AccessGroupUpdateManyWithoutMembersInput
+  ownGroups: GroupUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithoutOwnGroupsDataInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupUpdateManyWithoutUsersInput
+  posts: PostUpdateManyWithoutUserInput
+  comments: CommentUpdateManyWithoutUserInput
+  accessGroups: AccessGroupUpdateManyWithoutMembersInput
+}
+
+input UserUpdateWithoutPostsDataInput {
+  username: String
+  bio: String
+  email: String
+  imageUrl: String
+  password: String
+  groups: GroupUpdateManyWithoutUsersInput
+  comments: CommentUpdateManyWithoutUserInput
+  accessGroups: AccessGroupUpdateManyWithoutMembersInput
+  ownGroups: GroupUpdateManyWithoutOwnerInput
+}
+
+input UserUpdateWithWhereUniqueWithoutAccessGroupsInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutAccessGroupsDataInput!
+}
+
+input UserUpdateWithWhereUniqueWithoutGroupsInput {
+  where: UserWhereUniqueInput!
+  data: UserUpdateWithoutGroupsDataInput!
+}
+
+input UserUpsertWithoutCommentsInput {
+  update: UserUpdateWithoutCommentsDataInput!
+  create: UserCreateWithoutCommentsInput!
+}
+
+input UserUpsertWithoutOwnGroupsInput {
+  update: UserUpdateWithoutOwnGroupsDataInput!
+  create: UserCreateWithoutOwnGroupsInput!
+}
+
+input UserUpsertWithoutPostsInput {
+  update: UserUpdateWithoutPostsDataInput!
+  create: UserCreateWithoutPostsInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutAccessGroupsInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutAccessGroupsDataInput!
+  create: UserCreateWithoutAccessGroupsInput!
+}
+
+input UserUpsertWithWhereUniqueWithoutGroupsInput {
+  where: UserWhereUniqueInput!
+  update: UserUpdateWithoutGroupsDataInput!
+  create: UserCreateWithoutGroupsInput!
+}
+
+input UserWhereInput {
+  """Logical AND on all given filters."""
+  AND: [UserWhereInput!]
+
+  """Logical OR on all given filters."""
+  OR: [UserWhereInput!]
+
+  """Logical NOT on all given filters combined by AND."""
+  NOT: [UserWhereInput!]
+  createdAt: DateTime
+
+  """All values that are not equal to given value."""
+  createdAt_not: DateTime
+
+  """All values that are contained in given list."""
+  createdAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  createdAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  createdAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  createdAt_lte: DateTime
+
+  """All values greater than the given value."""
+  createdAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  createdAt_gte: DateTime
+  id: ID
+
+  """All values that are not equal to given value."""
+  id_not: ID
+
+  """All values that are contained in given list."""
+  id_in: [ID!]
+
+  """All values that are not contained in given list."""
+  id_not_in: [ID!]
+
+  """All values less than the given value."""
+  id_lt: ID
+
+  """All values less than or equal the given value."""
+  id_lte: ID
+
+  """All values greater than the given value."""
+  id_gt: ID
+
+  """All values greater than or equal the given value."""
+  id_gte: ID
+
+  """All values containing the given string."""
+  id_contains: ID
+
+  """All values not containing the given string."""
+  id_not_contains: ID
+
+  """All values starting with the given string."""
+  id_starts_with: ID
+
+  """All values not starting with the given string."""
+  id_not_starts_with: ID
+
+  """All values ending with the given string."""
+  id_ends_with: ID
+
+  """All values not ending with the given string."""
+  id_not_ends_with: ID
+  updatedAt: DateTime
+
+  """All values that are not equal to given value."""
+  updatedAt_not: DateTime
+
+  """All values that are contained in given list."""
+  updatedAt_in: [DateTime!]
+
+  """All values that are not contained in given list."""
+  updatedAt_not_in: [DateTime!]
+
+  """All values less than the given value."""
+  updatedAt_lt: DateTime
+
+  """All values less than or equal the given value."""
+  updatedAt_lte: DateTime
+
+  """All values greater than the given value."""
+  updatedAt_gt: DateTime
+
+  """All values greater than or equal the given value."""
+  updatedAt_gte: DateTime
+  username: String
+
+  """All values that are not equal to given value."""
+  username_not: String
+
+  """All values that are contained in given list."""
+  username_in: [String!]
+
+  """All values that are not contained in given list."""
+  username_not_in: [String!]
+
+  """All values less than the given value."""
+  username_lt: String
+
+  """All values less than or equal the given value."""
+  username_lte: String
+
+  """All values greater than the given value."""
+  username_gt: String
+
+  """All values greater than or equal the given value."""
+  username_gte: String
+
+  """All values containing the given string."""
+  username_contains: String
+
+  """All values not containing the given string."""
+  username_not_contains: String
+
+  """All values starting with the given string."""
+  username_starts_with: String
+
+  """All values not starting with the given string."""
+  username_not_starts_with: String
+
+  """All values ending with the given string."""
+  username_ends_with: String
+
+  """All values not ending with the given string."""
+  username_not_ends_with: String
+  bio: String
+
+  """All values that are not equal to given value."""
+  bio_not: String
+
+  """All values that are contained in given list."""
+  bio_in: [String!]
+
+  """All values that are not contained in given list."""
+  bio_not_in: [String!]
+
+  """All values less than the given value."""
+  bio_lt: String
+
+  """All values less than or equal the given value."""
+  bio_lte: String
+
+  """All values greater than the given value."""
+  bio_gt: String
+
+  """All values greater than or equal the given value."""
+  bio_gte: String
+
+  """All values containing the given string."""
+  bio_contains: String
+
+  """All values not containing the given string."""
+  bio_not_contains: String
+
+  """All values starting with the given string."""
+  bio_starts_with: String
+
+  """All values not starting with the given string."""
+  bio_not_starts_with: String
+
+  """All values ending with the given string."""
+  bio_ends_with: String
+
+  """All values not ending with the given string."""
+  bio_not_ends_with: String
+  email: String
+
+  """All values that are not equal to given value."""
+  email_not: String
+
+  """All values that are contained in given list."""
+  email_in: [String!]
+
+  """All values that are not contained in given list."""
+  email_not_in: [String!]
+
+  """All values less than the given value."""
+  email_lt: String
+
+  """All values less than or equal the given value."""
+  email_lte: String
+
+  """All values greater than the given value."""
+  email_gt: String
+
+  """All values greater than or equal the given value."""
+  email_gte: String
+
+  """All values containing the given string."""
+  email_contains: String
+
+  """All values not containing the given string."""
+  email_not_contains: String
+
+  """All values starting with the given string."""
+  email_starts_with: String
+
+  """All values not starting with the given string."""
+  email_not_starts_with: String
+
+  """All values ending with the given string."""
+  email_ends_with: String
+
+  """All values not ending with the given string."""
+  email_not_ends_with: String
+  imageUrl: String
+
+  """All values that are not equal to given value."""
+  imageUrl_not: String
+
+  """All values that are contained in given list."""
+  imageUrl_in: [String!]
+
+  """All values that are not contained in given list."""
+  imageUrl_not_in: [String!]
+
+  """All values less than the given value."""
+  imageUrl_lt: String
+
+  """All values less than or equal the given value."""
+  imageUrl_lte: String
+
+  """All values greater than the given value."""
+  imageUrl_gt: String
+
+  """All values greater than or equal the given value."""
+  imageUrl_gte: String
+
+  """All values containing the given string."""
+  imageUrl_contains: String
+
+  """All values not containing the given string."""
+  imageUrl_not_contains: String
+
+  """All values starting with the given string."""
+  imageUrl_starts_with: String
+
+  """All values not starting with the given string."""
+  imageUrl_not_starts_with: String
+
+  """All values ending with the given string."""
+  imageUrl_ends_with: String
+
+  """All values not ending with the given string."""
+  imageUrl_not_ends_with: String
+  password: String
+
+  """All values that are not equal to given value."""
+  password_not: String
+
+  """All values that are contained in given list."""
+  password_in: [String!]
+
+  """All values that are not contained in given list."""
+  password_not_in: [String!]
+
+  """All values less than the given value."""
+  password_lt: String
+
+  """All values less than or equal the given value."""
+  password_lte: String
+
+  """All values greater than the given value."""
+  password_gt: String
+
+  """All values greater than or equal the given value."""
+  password_gte: String
+
+  """All values containing the given string."""
+  password_contains: String
+
+  """All values not containing the given string."""
+  password_not_contains: String
+
+  """All values starting with the given string."""
+  password_starts_with: String
+
+  """All values not starting with the given string."""
+  password_not_starts_with: String
+
+  """All values ending with the given string."""
+  password_ends_with: String
+
+  """All values not ending with the given string."""
+  password_not_ends_with: String
+  groups_every: GroupWhereInput
+  groups_some: GroupWhereInput
+  groups_none: GroupWhereInput
+  posts_every: PostWhereInput
+  posts_some: PostWhereInput
+  posts_none: PostWhereInput
+  comments_every: CommentWhereInput
+  comments_some: CommentWhereInput
+  comments_none: CommentWhereInput
+  accessGroups_every: AccessGroupWhereInput
+  accessGroups_some: AccessGroupWhereInput
+  accessGroups_none: AccessGroupWhereInput
+  ownGroups_every: GroupWhereInput
+  ownGroups_some: GroupWhereInput
+  ownGroups_none: GroupWhereInput
+}
+
+input UserWhereUniqueInput {
+  id: ID
+  username: String
+  email: String
+}

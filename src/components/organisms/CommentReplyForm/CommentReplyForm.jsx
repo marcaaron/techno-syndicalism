@@ -14,9 +14,10 @@ const InnerForm = ({
   handleChange,
   handleSubmit,
   handleBlur,
-  isSubmitting
+  isSubmitting,
+  comment_id
 }) => (
-  <StyledForm key="comment_form" onSubmit={handleSubmit}>
+  <StyledForm key={`comment_reply_form_${comment_id}`} onSubmit={handleSubmit}>
     <FormItem
       labelText="Leave a Comment: "
       value={values.content}
@@ -45,12 +46,14 @@ const CommentForm = withFormik({
   ) => {
     const userId = props.user.id;
     const postId = props.post.id;
+    const replyToCommentId = props.comment_id;
     props
-      .createComment({
+      .createCommentReply({
         variables: {
           content,
           postId,
-          userId
+          userId,
+          replyToCommentId
         },
         refetchQueries: ["postById"]
       })

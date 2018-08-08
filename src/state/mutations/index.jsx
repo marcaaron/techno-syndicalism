@@ -98,13 +98,28 @@ export const CREATE_POST = gql`
 `;
 
 export const CREATE_COMMENT = gql`
-  mutation createComment(
+  mutation createComment($postId: ID!, $userId: ID!, $content: String!) {
+    createComment(userId: $userId, postId: $postId, content: $content) {
+      id
+      content
+      post {
+        content
+      }
+      user {
+        username
+      }
+    }
+  }
+`;
+
+export const CREATE_COMMENT_REPLY = gql`
+  mutation createCommentReply(
     $postId: ID!
     $userId: ID!
     $content: String!
-    $replyToCommentId: ID
+    $replyToCommentId: ID!
   ) {
-    createComment(
+    createCommentReply(
       userId: $userId
       postId: $postId
       content: $content

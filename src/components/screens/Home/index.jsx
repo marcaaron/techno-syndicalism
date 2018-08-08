@@ -1,5 +1,4 @@
 import React from "react";
-import { StyledContent } from "styles";
 
 // Future home of some kind of user dashboard ?
 // A Successful Login redirects user to the /home route

@@ -11,7 +11,8 @@
     "storybook": "start-storybook -p 9009 -s public",
     "storybook:build": "build-storybook -s public",
     "eject": "react-scripts eject",
-    "precommit": "lint-staged"
+    "precommit": "lint-staged",
+    "dev": "concurrently \"yarn start\" \"cd server && yarn dev\""
   },
   "lint-staged": {
     "src/**/*.{js,jsx,json,css}": [
@@ -25,6 +26,7 @@
     "apollo-link-context": "^1.0.8",
     "apollo-link-state": "^0.4.1",
     "axios": "^0.18.0",
+    "concurrently": "^3.6.1",
     "formik": "^1.0.2",
     "graphql": "^0.13.2",
     "lodash": "^4.17.10",

@@ -1,5 +1,4 @@
 import React from "react";
-import slugify from "slugify";
 import { StyledForm, StyledFormText, StyledFormError } from "styles";
 import { FormItem } from "components/molecules";
 import { ButtonSubmit } from "components/atoms";

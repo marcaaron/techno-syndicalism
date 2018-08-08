@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "react-apollo";
-import { gql } from "apollo-boost";
 import { Post, Comment } from "components/molecules";
 import { CommentForm } from "components/organisms";
 import { StyledContent } from "styles";
@@ -20,7 +19,7 @@ const Thread = ({ loading, error, postById, user }) => {
       <Post {...postById} />
       <CommentForm user={user} post={postById} />
       {postById.comments.map(({ id, ...rest }) => (
-        <Comment {...rest} key={id} />
+        <Comment comment_id={id} post={postById} {...rest} key={id} />
       ))}
     </StyledContent>
   );

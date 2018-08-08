@@ -1,0 +1,31 @@
+# import User from './generated/prisma.graphql'
+# import Group from './generated/prisma.graphql'
+# import Post from './generated/prisma.graphql'
+# import Comment from './generated/prisma.graphql'
+
+type Query {
+  allUsers: [User]
+  allGroups: [Group]
+  groupBySlug(slug: String!): Group
+  userById(id: ID!): User
+  userByUsername(username: String!): User
+  user: User
+  allPosts: [Post]
+  postById(id:ID!): Post
+}
+
+type Mutation {
+  signup(email: String!, password: String!, username:String!): AuthPayload
+  login(email: String!, password: String!): AuthPayload
+  createGroup(name:String!, slug:String!, userId:ID!): Group
+  createPost(title:String!, content:String!, userId:ID!, groupId:ID!): Post
+  joinGroup(userId:ID!, groupId:ID!): Group
+  leaveGroup(userId:ID!, groupId:ID!): Group
+  createComment(userId:ID!, postId:ID!, content:String!): Comment
+  createCommentReply(userId:ID!, postId:ID!, content:String!, replyToCommentId:ID!): Comment
+}
+
+type AuthPayload {
+  token: String!
+  user: User!
+}

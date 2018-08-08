@@ -19,30 +19,17 @@ export const GET_GROUPS = gql`
   }
 `;
 
-export const GET_POSTS = gql`
-  query allPosts {
-    allPosts {
+export const POST_BY_ID = gql`
+  fragment CommentDetails on Comment {
+    id
+    content
+    createdAt
+    user {
       id
-      title
-      content
-      createdAt
-      user {
-        id
-        username
-      }
-      comments {
-        id
-        content
-        createdAt
-        user {
-          username
-        }
-      }
+      username
     }
   }
-`;
 
-export const POST_BY_ID = gql`
   query postById($id: ID!) {
     postById(id: $id) {
       id
@@ -54,12 +41,15 @@ export const POST_BY_ID = gql`
         username
       }
       comments {
-        id
-        content
-        createdAt
-        user {
-          id
-          username
+        ...CommentDetails
+        comments {
+          ...CommentDetails
+          comments {
+            ...CommentDetails
+            comments {
+              ...CommentDetails
+            }
+          }
         }
       }
     }
