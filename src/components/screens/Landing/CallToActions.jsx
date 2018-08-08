@@ -6,7 +6,7 @@ const CallToActions = () => (
   <div>
     <ButtonNav to="/signup">Create An Account</ButtonNav>
     <ButtonNav to="/login">Login to Your Account</ButtonNav>
-    <ButtonNav to="/locations" isWhite>
+    <ButtonNav to="/groups" isWhite>
       Find A Group
     </ButtonNav>
   </div>

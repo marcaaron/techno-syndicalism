@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import {
   StyledForm,
   StyledLink,
@@ -22,7 +22,7 @@ const InnerForm = ({
   handleBlur,
   isSubmitting
 }) => (
-  <StyledForm onSubmit={handleSubmit}>
+  <StyledForm key="signup_form" onSubmit={handleSubmit}>
     <FormItem
       labelText="Username: "
       value={values.username}
@@ -92,20 +92,9 @@ const SignupForm = withFormik({
           password
         }
       })
-      .then(() => {
-        props
-          .loginUser({
-            variables: {
-              email,
-              password
-            }
-          })
-          .then(data => {
-            signIn(data.data.signinUser.token);
-            props.client.resetStore();
-            props.history.push("/home");
-          })
-          .catch(err => setErrors(catchGqlErrors(err)));
+      .then(data => {
+        signIn(data.data.signup.token);
+        props.history.push("/home");
       })
       .catch(err => setErrors(catchGqlErrors(err)));
   }

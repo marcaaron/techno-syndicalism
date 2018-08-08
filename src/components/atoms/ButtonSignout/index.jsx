@@ -1,14 +1,16 @@
-import React from "react";
+import React, { Component } from "react";
 import { signOut } from "util/loginUtils";
 import { withApollo } from "react-apollo";
+import ButtonSignoutView from "./ButtonSignoutView";
 
-class ButtonSignout extends React.Component {
+class ButtonSignout extends Component {
   handleClick = () => {
     signOut();
     this.props.client.resetStore();
   };
   render() {
-    return <button onClick={this.handleClick}>Sign Out</button>;
+    const { handleClick } = this;
+    return <ButtonSignoutView handleClick={handleClick} />;
   }
 }
 

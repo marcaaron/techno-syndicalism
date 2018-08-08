@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { StyledInput, StyledLabel } from "styles";
 
-export default class CompanySearch extends Component {
+export default class GroupSearch extends Component {
   state = {
     value: ""
   };
@@ -21,7 +21,7 @@ export default class CompanySearch extends Component {
     return (
       <form onSubmit={handleSubmit}>
         <StyledLabel>
-          Search Companies<br />
+          Search Groups<br />
           <StyledInput type="text" name="search" onChange={handleChange} />
           <StyledInput type="submit" name="search" />
         </StyledLabel>

@@ -1,8 +1,14 @@
 import React, { Component } from "react";
-import { graphql, compose } from "react-apollo";
-import gql from "graphql-tag";
+import { StyledLink } from "styles";
 
-class Companies extends Component {
+/**
+| allGroups: description
+|   field1
+|   field2
+|
+*/
+
+export default class GroupList extends Component {
   render() {
     const { loading, error, allGroups } = this.props;
     if (loading) return <p>Loading the company list...</p>;
@@ -11,7 +17,7 @@ class Companies extends Component {
       <div>
         {allGroups.map(group => (
           <p key={group.id}>
-            {group.name}
+            <StyledLink to={`/groups/${group.slug}`}>{group.name}</StyledLink>
             <br />
           </p>
         ))}
@@ -19,18 +25,3 @@ class Companies extends Component {
     );
   }
 }
-
-const FETCH_GROUPS = gql`
-  query fetchGroups {
-    allGroups {
-      id
-      name
-    }
-  }
-`;
-
-export default compose(
-  graphql(FETCH_GROUPS, {
-    props: ({ data }) => ({ ...data })
-  })
-)(Companies);

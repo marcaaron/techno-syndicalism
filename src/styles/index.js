@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 export const StyledArticle = styled.article`
   margin: 0;
+  padding: 20px;
 `;
 
 export const StyledForm = styled.form`
@@ -235,4 +236,9 @@ export const NavItemContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: flex-end;
+`;
+
+export const CommentBox = styled.div`
+  padding-left: 20px;
+  border: solid 1px black;
 `;

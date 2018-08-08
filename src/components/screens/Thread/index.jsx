@@ -1,46 +1,25 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { graphql } from "react-apollo";
-import { gql } from "apollo-boost";
 import { Post, Comment } from "components/molecules";
+import { CommentForm } from "components/organisms";
 import { StyledContent } from "styles";
+import { POST_BY_ID } from "state/queries";
 
-const GET_POST = gql`
-  query postById($id: ID!) {
-    Post(id: $id) {
-      id
-      title
-      content
-      createdAt
-      user {
-        id
-        username
-      }
-      comments {
-        id
-        content
-        createdAt
-        user {
-          id
-          username
-        }
-      }
-    }
-  }
-`;
-
-const Thread = props => {
-  if (props.loading) return null;
-  if (props.error) {
+const Thread = ({ loading, error, postById, user }) => {
+  if (loading) return null;
+  if (error) {
     // Dev Only
-    console.log(props.error);
+    console.log(error);
     return null;
   }
+  console.log(postById, user);
   return (
     <StyledContent>
-      <Post {...props.Post} />
-      {props.Post.comments.map(({ id, ...rest }) => (
-        <Comment {...rest} key={id} />
+      <Post {...postById} />
+      <CommentForm user={user} post={postById} />
+      {postById.comments.map(({ id, ...rest }) => (
+        <Comment comment_id={id} post={postById} {...rest} key={id} />
       ))}
     </StyledContent>
   );
@@ -54,7 +33,7 @@ Thread.propTypes = {
   })
 };
 
-export default graphql(GET_POST, {
+export default graphql(POST_BY_ID, {
   options: ({ match }) => ({
     variables: { id: match.params.id }
   }),

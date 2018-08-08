@@ -1,15 +1,6 @@
 import AuthRoute from "./AuthRoute";
 import { graphql, compose } from "react-apollo";
-import gql from "graphql-tag";
-
-const GET_USER = gql`
-  query getUser {
-    user {
-      username
-      imageUrl
-    }
-  }
-`;
+import { GET_USER } from "state/queries";
 
 export default compose(
   graphql(GET_USER, {

@@ -1,7 +1,12 @@
-export { default as Companies } from "./Companies";
-export { default as CompanySearch } from "./CompanySearch";
+export { default as GroupList } from "./GroupList";
+export { default as GroupSearch } from "./GroupSearch";
 export { default as Footer } from "./Footer";
 export { default as NavBar } from "./NavBar";
-export { default as Posts } from "./Posts";
 export { default as SignupForm } from "./SignupForm";
 export { default as LoginForm } from "./LoginForm";
+export { default as CreateGroupForm } from "./CreateGroupForm";
+export { default as UpdateGroupForm } from "./UpdateGroupForm";
+export { default as CreatePostForm } from "./CreatePostForm";
+export { default as PostsWithTitles } from "./PostsWithTitles";
+export { default as CommentForm } from "./CommentForm";
+export { default as CommentReplyForm } from "./CommentReplyForm";

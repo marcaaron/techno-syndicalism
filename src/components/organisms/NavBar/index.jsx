@@ -1,16 +1,6 @@
 import NavBar from "./NavBar";
 import { graphql, compose } from "react-apollo";
-import { GET_TEST_AUTH } from "state/queries";
-import gql from "graphql-tag";
-
-const GET_USER = gql`
-  query getUser {
-    user {
-      username
-      imageUrl
-    }
-  }
-`;
+import { GET_USER } from "state/queries";
 
 export default compose(
   graphql(GET_USER, {
