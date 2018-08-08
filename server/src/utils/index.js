@@ -11,6 +11,29 @@ function getUserId(context) {
   // throw new Error('Not authenticated');
 }
 
+function capitalize(word){
+  return word.toLowerCase()[0].toUpperCase()+word.slice(1);
+}
+
+function queryToNormalizedArray(query){
+  return [
+    ...query.split(' ')
+    .map(word=>{
+      return {
+        name_contains: word.toLowerCase()
+      }
+    }),
+    ...query.split(' ')
+    .map(word=>{
+      return {
+        name_contains: capitalize(word)
+      }
+    })
+  ]
+}
+
 module.exports = {
-  getUserId
+  getUserId,
+  capitalize,
+  queryToNormalizedArray
 }

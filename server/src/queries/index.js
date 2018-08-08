@@ -1,4 +1,4 @@
-const { getUserId } = require('../utils');
+const { getUserId, queryToNormalizedArray } = require('../utils');
 
 const queries = {
   allUsers: async (parent, args, ctx, info) => {
@@ -37,9 +37,17 @@ const queries = {
     }else{
       return null;
     }
+  },
+  searchGroupsByName: async (parent, {search_query}, ctx, info) => {
+    const search_query_words = queryToNormalizedArray(search_query);
+    const groups = await ctx.prisma.query.groups({
+      where: {
+        OR: search_query_words
+      }
+    }, info)
+    return groups;
   }
 }
-
 module.exports = {
   queries
 }

@@ -12,6 +12,7 @@ type Query {
   user: User
   allPosts: [Post]
   postById(id:ID!): Post
+  searchGroupsByName(search_query:String!): [Group]
 }
 
 type Mutation {

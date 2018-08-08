@@ -64,7 +64,7 @@ const CreatePostForm = withFormik({
         refetchQueries: ["groupBySlug"]
       })
       .then(data => {
-        props.history.push(`/groups/`);
+        props.history.push(`/threads/${data.data.createPost.id}`);
       })
       .catch(err => setErrors(catchGqlErrors(err)));
   }

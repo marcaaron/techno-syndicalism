@@ -70,6 +70,7 @@ export const GET_GROUP = gql`
         title
         createdAt
         user {
+          id
           username
         }
         comments {
@@ -102,6 +103,16 @@ export const USER_BY_USERNAME = gql`
         id
         name
       }
+    }
+  }
+`;
+
+export const SEARCH_GROUP = gql`
+  query searchGroupsByName($search_query: String!) {
+    searchGroupsByName(search_query: $search_query) {
+      id
+      name
+      slug
     }
   }
 `;
