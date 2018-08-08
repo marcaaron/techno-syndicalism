@@ -10,12 +10,17 @@ import {
   BodyText
 } from "styles";
 
-const Post = ({ id, user: { username }, title, content, createdAt }) => (
+const Post = ({
+  id,
+  user: { username },
+  title,
+  content,
+  createdAt,
+  comments
+}) => (
   <StyledArticle>
-    <StyledLink to={`/threads/${id}`}>
-      <TitleText>{title} </TitleText>
-      <BodyText>{content} </BodyText>
-    </StyledLink>
+    <TitleText>{title} </TitleText>
+    <BodyText>{content} </BodyText>
     <UserText>
       posted by: <StyledLink to={`/users/${username}`}>{username}</StyledLink>{" "}
       at {dateToString(createdAt)}

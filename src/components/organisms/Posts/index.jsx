@@ -5,10 +5,10 @@ import { GET_POSTS } from "state/queries";
 
 const PostsQuery = () => (
   <Query query={GET_POSTS}>
-    {({ loading, error, data: { allPosts } }) => {
+    {({ loading, error, data }) => {
       if (loading) return null;
       if (error) return null;
-      console.log(allPosts);
+      const { allPosts } = data;
       return <Posts allPosts={allPosts} />;
     }}
   </Query>

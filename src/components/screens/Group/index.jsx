@@ -7,7 +7,8 @@ export default compose(
   graphql(GET_GROUP, {
     name: "getGroup",
     options: ({ match }) => ({
-      variables: { slug: match.params.slug }
+      variables: { slug: match.params.slug },
+      fetchPolicy: "network-only"
     })
   }),
   graphql(GET_USER, { name: "getUser" }),

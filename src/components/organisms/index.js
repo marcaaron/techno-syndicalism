@@ -9,3 +9,4 @@ export { default as CreateGroupForm } from "./CreateGroupForm";
 export { default as UpdateGroupForm } from "./UpdateGroupForm";
 export { default as CreatePostForm } from "./CreatePostForm";
 export { default as PostsWithTitles } from "./PostsWithTitles";
+export { default as CommentForm } from "./CommentForm";
