@@ -45,6 +45,7 @@ const queries = {
         OR: search_query_words
       }
     }, info)
+    console.log(groups);
     return groups;
   }
 }

@@ -9,6 +9,12 @@ const Routes = () => (
     <Route exact path="/signup" component={Screens.Signup} />
     <Route exact path="/learn" component={Screens.Learn} />
     <Route exact path="/groups" component={Screens.Groups} />
+    <Route exact path="/groups/search" component={Screens.Groups} />
+    <Route
+      exact
+      path="/groups/search/:query_string"
+      component={Screens.Groups}
+    />
     <Route exact path="/groups/:slug" component={Screens.Group} />
     <Route exact path="/users/:username" component={Screens.Users} />
     <AuthRoute exact path="/create-group" component={Screens.CreateGroup} />
